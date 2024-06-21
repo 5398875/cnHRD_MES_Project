@@ -11,13 +11,13 @@ using ActUtlTypeLib;
 
 namespace cnHRD_MES_Project
 {
-    public partial class Form1 : Form
+    public partial class Operator : Form
     {
         System.Windows.Forms.Timer Timer_Slide = new System.Windows.Forms.Timer(); //슬라이드용 타이머
         System.Windows.Forms.Timer Timer_Operation = new System.Windows.Forms.Timer(); //동작용 타이머
         ActUtlType PLC01 = new ActUtlType();
 
-        public Form1()
+        public Operator()
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace cnHRD_MES_Project
 {
-    partial class Form1
+    partial class Operator
     {
         /// <summary>
         /// 필수 디자이너 변수입니다.
