@@ -121,7 +121,7 @@ namespace cnHRD_MES_Project
                     */
                 }
             }
-            //// is Order 위치 잡아줄 것
+            //// 창고로부터 주소지 받아 올 것
         }
 
         private void tb_Quantity_KeyPress(object sender, KeyPressEventArgs e)
