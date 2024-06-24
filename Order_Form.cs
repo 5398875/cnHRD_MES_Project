@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -54,21 +55,24 @@ namespace cnHRD_MES_Project
 
         }
 
+        //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
+        int Existence_Order = 0;    //주문 유무 판단 0:무 1:비금속 2:금속
+        
         private void bt_Order_Click(object sender, EventArgs e)
         {
-            
 
-            if(cb_Type.Text == "")
+
+            if (cb_Type.Text == "")
             {
                 MessageBox.Show("주문 품목란이 비어있습니다", "[Error 1]");
             }
 
-            else if(cb_Location.Text == "")
+            else if (cb_Location.Text == "")
             {
                 MessageBox.Show("주문 지역란이 비어있습니다", "[Error 2]");
             }
 
-            else  if(tb_Quantity.Text == QuantityPlaceHolder || tb_Quantity == null)
+            else if (tb_Quantity.Text == QuantityPlaceHolder || tb_Quantity == null)
             {
                 MessageBox.Show("주문 수량란이 비어있습니다", "[Error 3]");
                 tb_Quantity.Focus();
@@ -76,7 +80,7 @@ namespace cnHRD_MES_Project
                 return;
             }
 
-            else if(int.Parse(tb_Quantity.Text) > 3 || int.Parse(tb_Quantity.Text) < 1)
+            else if (int.Parse(tb_Quantity.Text) > 3 || int.Parse(tb_Quantity.Text) < 1)
             {
                 MessageBox.Show("1회 주문 수량은 최소 1개, 최대 3개입니다", "[Error 4]");
                 tb_Quantity.Focus();
@@ -85,12 +89,39 @@ namespace cnHRD_MES_Project
             }
             else
             {
-                var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]",MessageBoxButtons.OKCancel);
-                if(OrderCheck == DialogResult.OK)
+                var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]", MessageBoxButtons.OKCancel);
+                if (OrderCheck == DialogResult.OK)
                 {
-
+                    if(cb_Type.SelectedIndex == 0)  //품목이 비금일 때
+                    {
+                        Existence_Order = 1;
+                    }
+                    if (cb_Type.SelectedIndex == 1) //품목이 금속일 때
+                    {
+                        Existence_Order = 2;
+                    }
+                    /*  4칸짜리 배열로 사용한다면
+                    if (cb_Type.SelectedIndex == 0)  //종류에 비금속을 넣었을 경우
+                    {
+                        get_Order[0] = 1;   //배열[0]: 유무+종류 비금속 코드: 1
+                    }
+                    if (cb_Type.SelectedIndex == 1)  //종류에 금속을 넣었을 경우
+                    {
+                        get_Order[0] = 2;   //금속 코드: 2
+                    }
+                    if(cb_Location.SelectedIndex == 0)
+                    {
+                        get_Order[3] = 0;   //배열[3]: 주소지 서울시 서초구 코드: 0
+                    }
+                    if(cb_Location.SelectedIndex == 1)
+                    {
+                        get_Order[3] = 1;   //부산시 부산진구 코드: 1
+                    }
+                    Debug.WriteLine("get_Order[3] = " + get_Order[3]);
+                    */
                 }
             }
+            //// 창고로부터 주소지 받아 올 것
         }
 
         private void tb_Quantity_KeyPress(object sender, KeyPressEventArgs e)
