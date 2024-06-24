@@ -68,7 +68,7 @@ namespace cnHRD_MES_Project
 
         private void Bt_OpenPLC_Click(object sender, EventArgs e) //PLC 연결버튼
         {
-            PLC01.ActLogicalStationNumber = 1;
+            PLC01.ActLogicalStationNumber = 2;
             PLC_Open = PLC01.Open();
             if (PLC_Open == 0)
             {
@@ -108,6 +108,8 @@ namespace cnHRD_MES_Project
 
             PLC01.WriteBuffer(6, 1518, 1, (short)temp[0]);
             PLC01.WriteBuffer(6, 1519, 1, (short)temp[1]);
+
+            Bt_Stop.Enabled = true;
         }
 
         private void Bt_OpenServo_Click(object sender, EventArgs e)
@@ -242,14 +244,14 @@ namespace cnHRD_MES_Project
 
         int[] X_DATA = new int[8];
         public bool[,] X = new bool[8, 16];
-        public int[] Is_Order = { 0, 0, 0, 0, 0 };
+        public int[] Is_Order = { 0, 0, 0, 0 }; //[0]:종류(0:주문X 1:비금속 2:금속) [1]X [2]Y [3]주소
         int iLoad = 0;
         int iDeliv = 0;
         public bool Is_Metal;
         public int[] Ware_Location = { 0, 0 };
         bool bStart = true;
         int iMode = 2;
-        int[] iLocation = { 0, 0, 0, 0, 0 };
+        int[] iLocation = { 0, 0, 0, 0 };
         int i;
         short Ware_Loc;
 
@@ -460,6 +462,62 @@ namespace cnHRD_MES_Project
                         break;
                 }
             }
+        }
+
+        private void Bt_JogUp_Click(object sender, EventArgs e)
+        {
+            int jogSpeed = (Convert.ToInt32(Tb_ServoSpeed.Text)) * 100;
+
+            //Console.WriteLine(jogSpeed);
+
+            ushort[] temp = new ushort[2];
+
+            temp[0] = (ushort)jogSpeed;
+            temp[1] = (ushort)(jogSpeed >> 16);
+
+            PLC01.WriteBuffer(6, 1518, 1, (short)temp[0]);
+            PLC01.WriteBuffer(6, 1519, 1, (short)temp[1]);
+        }
+
+
+        private void Bt_JogUP_up(object sender, EventArgs e)
+        {
+            PLC01.SetDevice("Y69", 1);
+        }
+
+        private void Bt_JogUP_down(object sender, EventArgs e)
+        {
+            PLC01.SetDevice("Y69", 1);
+        }
+
+        private void Bt_JogDown_Click(object sender, EventArgs e)
+        {
+            int jogSpeed = (Convert.ToInt32(Tb_ServoSpeed.Text)) * 100;
+
+            //Console.WriteLine(jogSpeed);
+
+            ushort[] temp = new ushort[2];
+
+            temp[0] = (ushort)jogSpeed;
+            temp[1] = (ushort)(jogSpeed >> 16);
+
+            PLC01.WriteBuffer(6, 1518, 1, (short)temp[0]);
+            PLC01.WriteBuffer(6, 1519, 1, (short)temp[1]);
+        }
+
+        private void Bt_JogDown_up(object sender, EventArgs e)
+        {
+            PLC01.SetDevice("Y68", 1);
+        }
+
+        private void Bt_JogDown_down(object sender, EventArgs e)
+        {
+            PLC01.SetDevice("Y68", 1);
+        }
+
+        private void Bt_Test_Click(object sender, EventArgs e)
+        {
+            Sup_Fwd();
         }
     }
 }

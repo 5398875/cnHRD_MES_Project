@@ -17,7 +17,7 @@ namespace cnHRD_MES_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cockpit());
+            Application.Run(new Operator());
         }
     }
 }

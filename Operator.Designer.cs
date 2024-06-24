@@ -41,6 +41,7 @@
             this.Bt_JogUp = new System.Windows.Forms.Button();
             this.Bt_JogDown = new System.Windows.Forms.Button();
             this.Tb_ServoLoc = new System.Windows.Forms.TextBox();
+            this.Bt_Test = new System.Windows.Forms.Button();
             this.Panel_SideMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -50,6 +51,7 @@
             this.Tb_ServoSpeed.Name = "Tb_ServoSpeed";
             this.Tb_ServoSpeed.Size = new System.Drawing.Size(144, 25);
             this.Tb_ServoSpeed.TabIndex = 17;
+            this.Tb_ServoSpeed.Text = "1000";
             // 
             // Bt_Stop
             // 
@@ -151,23 +153,23 @@
             // 
             // Bt_JogUp
             // 
-            this.Bt_JogUp.Enabled = false;
             this.Bt_JogUp.Location = new System.Drawing.Point(96, 240);
             this.Bt_JogUp.Name = "Bt_JogUp";
             this.Bt_JogUp.Size = new System.Drawing.Size(144, 48);
             this.Bt_JogUp.TabIndex = 18;
             this.Bt_JogUp.Text = "조그상";
             this.Bt_JogUp.UseVisualStyleBackColor = true;
+            this.Bt_JogUp.Click += new System.EventHandler(this.Bt_JogUp_Click);
             // 
             // Bt_JogDown
             // 
-            this.Bt_JogDown.Enabled = false;
             this.Bt_JogDown.Location = new System.Drawing.Point(96, 296);
             this.Bt_JogDown.Name = "Bt_JogDown";
             this.Bt_JogDown.Size = new System.Drawing.Size(144, 48);
             this.Bt_JogDown.TabIndex = 19;
             this.Bt_JogDown.Text = "조그하";
             this.Bt_JogDown.UseVisualStyleBackColor = true;
+            this.Bt_JogDown.Click += new System.EventHandler(this.Bt_JogDown_Click);
             // 
             // Tb_ServoLoc
             // 
@@ -176,11 +178,22 @@
             this.Tb_ServoLoc.Size = new System.Drawing.Size(144, 25);
             this.Tb_ServoLoc.TabIndex = 21;
             // 
+            // Bt_Test
+            // 
+            this.Bt_Test.Location = new System.Drawing.Point(456, 240);
+            this.Bt_Test.Name = "Bt_Test";
+            this.Bt_Test.Size = new System.Drawing.Size(144, 64);
+            this.Bt_Test.TabIndex = 22;
+            this.Bt_Test.Text = "button1";
+            this.Bt_Test.UseVisualStyleBackColor = true;
+            this.Bt_Test.Click += new System.EventHandler(this.Bt_Test_Click);
+            // 
             // Operator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.Bt_Test);
             this.Controls.Add(this.Tb_ServoLoc);
             this.Controls.Add(this.Bt_JogDown);
             this.Controls.Add(this.Bt_JogUp);
@@ -217,6 +230,7 @@
         private System.Windows.Forms.Button Bt_JogUp;
         private System.Windows.Forms.Button Bt_JogDown;
         private System.Windows.Forms.TextBox Tb_ServoLoc;
+        private System.Windows.Forms.Button Bt_Test;
     }
 }
 
