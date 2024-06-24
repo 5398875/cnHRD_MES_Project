@@ -85,8 +85,11 @@ namespace cnHRD_MES_Project
             }
             else
             {
-                MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]");
-                ////06.24 작업 이어서 할것
+                var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]",MessageBoxButtons.OKCancel);
+                if(OrderCheck == DialogResult.OK)
+                {
+
+                }
             }
         }
 
