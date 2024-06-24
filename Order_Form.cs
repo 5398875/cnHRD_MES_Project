@@ -32,7 +32,7 @@ namespace cnHRD_MES_Project
         private void RemovePlaceHolder(object sender, EventArgs e)
         {
             TextBox text = (TextBox)sender;
-            if(tb_Quantity.Text == QuantityPlaceHolder) //수량 란이 Placeholder일 경우
+            if (tb_Quantity.Text == QuantityPlaceHolder) //수량 란이 Placeholder일 경우
             {
                 tb_Quantity.ForeColor = Color.Black;
                 tb_Quantity.Text = string.Empty;
@@ -57,7 +57,11 @@ namespace cnHRD_MES_Project
 
         //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
         int Existence_Order = 0;    //주문 유무 판단 0:무 1:비금속 2:금속
+<<<<<<< HEAD
+
+=======
         
+>>>>>>> 943f1fb8bbf1fbd3225a4096a4f24c4bb7b5ebf4
         private void bt_Order_Click(object sender, EventArgs e)
         {
 
@@ -92,7 +96,7 @@ namespace cnHRD_MES_Project
                 var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]", MessageBoxButtons.OKCancel);
                 if (OrderCheck == DialogResult.OK)
                 {
-                    if(cb_Type.SelectedIndex == 0)  //품목이 비금일 때
+                    if (cb_Type.SelectedIndex == 0)  //품목이 비금일 때
                     {
                         Existence_Order = 1;
                     }
@@ -121,12 +125,12 @@ namespace cnHRD_MES_Project
                     */
                 }
             }
-            //// isOrder 통신구현 해야함
+            //// 창고로부터 주소지 받아 올 것
         }
 
         private void tb_Quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsDigit(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
