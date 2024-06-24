@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_v01;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,8 +17,7 @@ namespace cnHRD_MES_Project
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Order_Form());
-            Application.Run(new Operator());
+            Application.Run(new Cockpit());
         }
     }
 }
