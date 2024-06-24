@@ -137,7 +137,7 @@
             this.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Order_Form";
-            this.Text = "Form1";
+            this.Text = "Customer Order UI";
             this.Load += new System.EventHandler(this.Order_Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
