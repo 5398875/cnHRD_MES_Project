@@ -16,5 +16,10 @@ namespace cnHRD_MES_Project
         {
             InitializeComponent();
         }
+
+        private void Warehouse_Load(object sender, EventArgs e)
+        {
+            pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
+        }
     }
 }

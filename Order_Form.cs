@@ -16,6 +16,11 @@ namespace cnHRD_MES_Project
         string Quantity;   //수량 변수 선언
         const string QuantityPlaceHolder = "1~3 사이의 숫자만 입력 가능"; //수량 텍스트박스 PlaceHolder 설정
 
+        //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
+        int Existence_Order = 0;        //주문 유무 판단 0:무 1:비금속 2:금속
+        int Existence_Location;         //배송지에 따라 0:서울 1:부산
+        int[] Existence = new int[2];   //2칸짜리 배열 생성
+
         public Order_Form()
         {
             InitializeComponent();
@@ -55,8 +60,6 @@ namespace cnHRD_MES_Project
 
         }
 
-        //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
-        int Existence_Order = 0;    //주문 유무 판단 0:무 1:비금속 2:금속
         
         private void bt_Order_Click(object sender, EventArgs e)
         {
@@ -100,6 +103,16 @@ namespace cnHRD_MES_Project
                     {
                         Existence_Order = 2;
                     }
+                    if(cb_Location.SelectedIndex == 0)  //배송지가 서울일 때
+                    {
+                        Existence_Location = 0;
+                    }
+                    if(cb_Location.SelectedIndex == 1)  //배송지가 부산일 때
+                    {
+                        Existence_Location = 1;
+                    }
+                    Debug.WriteLine("Existence_Order = " + Existence_Order);
+                    Debug.WriteLine("Existence_Location = " + Existence_Location);
                     /*  4칸짜리 배열로 사용한다면
                     if (cb_Type.SelectedIndex == 0)  //종류에 비금속을 넣었을 경우
                     {
@@ -119,6 +132,7 @@ namespace cnHRD_MES_Project
                     }
                     Debug.WriteLine("get_Order[3] = " + get_Order[3]);
                     */
+                    return;
                 }
             }
             //// isOrder 통신 구현할 것
