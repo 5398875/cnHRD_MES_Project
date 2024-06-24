@@ -89,7 +89,7 @@
             this.Panel_SideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_SideMenu.Location = new System.Drawing.Point(0, 0);
             this.Panel_SideMenu.Name = "Panel_SideMenu";
-            this.Panel_SideMenu.Size = new System.Drawing.Size(50, 450);
+            this.Panel_SideMenu.Size = new System.Drawing.Size(50, 453);
             this.Panel_SideMenu.TabIndex = 9;
             // 
             // CheckBoxHide
@@ -99,7 +99,7 @@
             this.CheckBoxHide.FlatAppearance.BorderSize = 0;
             this.CheckBoxHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckBoxHide.ForeColor = System.Drawing.Color.White;
-            this.CheckBoxHide.Location = new System.Drawing.Point(0, 392);
+            this.CheckBoxHide.Location = new System.Drawing.Point(0, 395);
             this.CheckBoxHide.Name = "CheckBoxHide";
             this.CheckBoxHide.Size = new System.Drawing.Size(50, 58);
             this.CheckBoxHide.TabIndex = 0;
@@ -180,7 +180,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(982, 453);
             this.Controls.Add(this.Tb_ServoLoc);
             this.Controls.Add(this.Bt_JogDown);
             this.Controls.Add(this.Bt_JogUp);
