@@ -38,6 +38,9 @@
             this.Lb_Connect = new System.Windows.Forms.Label();
             this.Bt_ClosePLC = new System.Windows.Forms.Button();
             this.Bt_OpenPLC = new System.Windows.Forms.Button();
+            this.Bt_JogUp = new System.Windows.Forms.Button();
+            this.Bt_JogDown = new System.Windows.Forms.Button();
+            this.Tb_ServoLoc = new System.Windows.Forms.TextBox();
             this.Panel_SideMenu.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +89,7 @@
             this.Panel_SideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.Panel_SideMenu.Location = new System.Drawing.Point(0, 0);
             this.Panel_SideMenu.Name = "Panel_SideMenu";
-            this.Panel_SideMenu.Size = new System.Drawing.Size(50, 450);
+            this.Panel_SideMenu.Size = new System.Drawing.Size(50, 453);
             this.Panel_SideMenu.TabIndex = 9;
             // 
             // CheckBoxHide
@@ -96,7 +99,7 @@
             this.CheckBoxHide.FlatAppearance.BorderSize = 0;
             this.CheckBoxHide.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CheckBoxHide.ForeColor = System.Drawing.Color.White;
-            this.CheckBoxHide.Location = new System.Drawing.Point(0, 392);
+            this.CheckBoxHide.Location = new System.Drawing.Point(0, 395);
             this.CheckBoxHide.Name = "CheckBoxHide";
             this.CheckBoxHide.Size = new System.Drawing.Size(50, 58);
             this.CheckBoxHide.TabIndex = 0;
@@ -146,11 +149,41 @@
             this.Bt_OpenPLC.UseVisualStyleBackColor = true;
             this.Bt_OpenPLC.Click += new System.EventHandler(this.Bt_OpenPLC_Click);
             // 
-            // Form1
+            // Bt_JogUp
+            // 
+            this.Bt_JogUp.Enabled = false;
+            this.Bt_JogUp.Location = new System.Drawing.Point(96, 240);
+            this.Bt_JogUp.Name = "Bt_JogUp";
+            this.Bt_JogUp.Size = new System.Drawing.Size(144, 48);
+            this.Bt_JogUp.TabIndex = 18;
+            this.Bt_JogUp.Text = "조그상";
+            this.Bt_JogUp.UseVisualStyleBackColor = true;
+            // 
+            // Bt_JogDown
+            // 
+            this.Bt_JogDown.Enabled = false;
+            this.Bt_JogDown.Location = new System.Drawing.Point(96, 296);
+            this.Bt_JogDown.Name = "Bt_JogDown";
+            this.Bt_JogDown.Size = new System.Drawing.Size(144, 48);
+            this.Bt_JogDown.TabIndex = 19;
+            this.Bt_JogDown.Text = "조그하";
+            this.Bt_JogDown.UseVisualStyleBackColor = true;
+            // 
+            // Tb_ServoLoc
+            // 
+            this.Tb_ServoLoc.Location = new System.Drawing.Point(96, 352);
+            this.Tb_ServoLoc.Name = "Tb_ServoLoc";
+            this.Tb_ServoLoc.Size = new System.Drawing.Size(144, 25);
+            this.Tb_ServoLoc.TabIndex = 21;
+            // 
+            // Operator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.Tb_ServoLoc);
+            this.Controls.Add(this.Bt_JogDown);
+            this.Controls.Add(this.Bt_JogUp);
             this.Controls.Add(this.Panel_SideMenu);
             this.Controls.Add(this.Tb_ServoSpeed);
             this.Controls.Add(this.Bt_Stop);
@@ -160,7 +193,7 @@
             this.Controls.Add(this.Lb_Connect);
             this.Controls.Add(this.Bt_ClosePLC);
             this.Controls.Add(this.Bt_OpenPLC);
-            this.Name = "Form1";
+            this.Name = "Operator";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.Panel_SideMenu.ResumeLayout(false);
@@ -181,6 +214,9 @@
         private System.Windows.Forms.Label Lb_Connect;
         private System.Windows.Forms.Button Bt_ClosePLC;
         private System.Windows.Forms.Button Bt_OpenPLC;
+        private System.Windows.Forms.Button Bt_JogUp;
+        private System.Windows.Forms.Button Bt_JogDown;
+        private System.Windows.Forms.TextBox Tb_ServoLoc;
     }
 }
 

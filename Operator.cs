@@ -414,5 +414,10 @@ namespace cnHRD_MES_Project
                 }
             }
         }
+
+        private void Panel_SideMenu_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
