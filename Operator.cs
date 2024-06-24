@@ -243,13 +243,15 @@ namespace cnHRD_MES_Project
         int[] X_DATA = new int[8];
         public bool[,] X = new bool[8, 16];
         public int[] Is_Order = { 0, 0, 0, 0, 0 };
-        int iProLoad = 0;
+        int iLoad = 0;
         int iDeliv = 0;
         public bool Is_Metal;
         public int[] Ware_Location = { 0, 0 };
         bool bStart = true;
         int iMode = 2;
         int[] iLocation = { 0, 0, 0, 0, 0 };
+        int i;
+        short Ware_Loc;
 
         void Is_Load(string Is_Metal, int X, int Y)
         {
@@ -300,7 +302,7 @@ namespace cnHRD_MES_Project
                     iLocation[2] = Ware_Location[0];
                     iLocation[3] = Ware_Location[1];
                 }
-                iProLoad = 0;
+                iLoad = 0;
                 iDeliv = 0;
                 bStart = false;
             }
@@ -310,7 +312,7 @@ namespace cnHRD_MES_Project
                 switch (iDeliv)
                 {
                     case 0: //1위치 서보이동
-                        short Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
+                        Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
                         PLC01.WriteBuffer(6, 1500, 1, Ware_Loc);
                         PLC01.SetDevice("Y70", 1);
                         if (Ware_Location[0] == 0) //창고이동
@@ -319,43 +321,88 @@ namespace cnHRD_MES_Project
                             Ware_Bwd();
                         iDeliv++;
                         break;
+                    case 2: //if 1위치 이동완료 - 흡착전진 if 흡착전(X1A)까지 - 2위치 서보이동
+                        PLC01.GetDevice("X74", out int i);
+                        if (i == 1)
+                            Comp_Fwd();
+                        if (X[1, 10] == true)
+                        {
+                            Ware_Loc = (short)((Ware_Location[1] + 1) * 2); //2,4,6
+                            PLC01.WriteBuffer(6, 1500, 1, Ware_Loc);
+                            PLC01.SetDevice("Y70", 1);
+                            iDeliv++;
+                        }
+                        break;
+                    case 3: //if 2위치 이동완료 - 흡착온 - 1위치 재이동
+                        PLC01.GetDevice("X74", out i);
+                        if (i == 1)
+                        {
+                            CompPad_On();
+                            Task.Delay(500); //딜레이 0.5초
+                            Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
+                            PLC01.WriteBuffer(6, 1500, 1, Ware_Loc);
+                            PLC01.SetDevice("Y70", 1);
+                            iDeliv++;
+                        }
+                        break;
+                    case 4: //if 1위치 재이동완료 - 흡착후진 - if흡착후(X1B)까지 - 컨위치까지 이동
+                        PLC01.GetDevice("X74", out i);
+                        if (i == 1)
+                            Comp_Bwd();
+                        if (X[1, 11] == true)
+                        {
+                            PLC01.WriteBuffer(6, 1500, 1, 7); //7위치
+                            PLC01.SetDevice("Y70", 1);
+                            iDeliv++;
+                        }
+                        break;
+                    case 5: //if 컨위치 이동완료 - 흡착오프 - 컨역회전기동
+                        PLC01.GetDevice("X74", out i);
+                        if (i == 1)
+                        {
+                            CompPad_Off();
+                            Task.Delay(500); //딜레이 0.5초
+                            CCon_On();
+                            iDeliv++;
+                        }
+                        break;
                 }
             }
 
             else if (iMode == 2) //주문이 없다면
             {
-                switch (iProLoad)
+                switch (iLoad)
                 {
                     case 0: //공급전진 if 공급전(X10)까지
                         if (X[0, 8] && X[1, 1])
                             Sup_Fwd();
                         if (X[1, 0] == true)
-                            iProLoad++; break;
+                            iLoad++; break;
                     case 1: //공급후진 if 공급후(X11)까지
                         Sup_Bwd();
                         if (X[1, 1] == true)
-                            iProLoad++; break;
+                            iLoad++; break;
                     case 2: //송출전진 if 송출전(X14)까지
                         Trans_Fwd();
                         if (X[1, 4] == true)
-                            iProLoad++; break;
+                            iLoad++; break;
                     case 3: //송출후진, 컨구동 if 용량형(X0A)까지
                         Trans_Bwd(); Con_On();
                         if (X[0, 10] == true)
-                            iProLoad++; break;
+                            iLoad++; break;
                     case 4: //금속판별, 스톱다운
                         Stop_Fwd();
                         if (X[0, 9] == true) //고주파센서 감지
                             Is_Metal = true;
                         else //고주파센서 감지x
                             Is_Metal = false;
-                        iProLoad++; break;
+                        iLoad++; break;
                     case 5: //if 스토퍼(X0B) - 1위치 서보이동
                         if (X[0, 11] == true)
                         {
-                            PLC01.WriteBuffer(6, 1500, 1, 7);
+                            PLC01.WriteBuffer(6, 1500, 1, 7); //7위치
                             PLC01.SetDevice("Y70", 1);
-                            iProLoad++;
+                            iLoad++;
                         }
                         break;
                     case 6: //if 컨위치 이동완료 - 스톱업, 컨정지, 흡착온 - 1위치 서보이동
@@ -366,14 +413,14 @@ namespace cnHRD_MES_Project
                             Con_Off();
                             CompPad_On();
                             Task.Delay(500); //딜레이 0.5초
-                            short Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
+                            Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
                             PLC01.WriteBuffer(6, 1500, 1, Ware_Loc);
                             PLC01.SetDevice("Y70", 1);
                             if (Ware_Location[0] == 0) //창고이동
                                 Ware_Fwd();
                             else
                                 Ware_Bwd();
-                            iProLoad++;
+                            iLoad++;
                         }
                         break;
                     case 7: //if 1위치 이동완료 - 흡착전진 if 흡착전(X1A)까지 - 2위치 서보이동
@@ -382,10 +429,10 @@ namespace cnHRD_MES_Project
                             Comp_Fwd();
                         if (X[1, 10] == true)
                         {
-                            short Ware_Loc = (short)((Ware_Location[1] + 1) * 2); //2,4,6
+                            Ware_Loc = (short)((Ware_Location[1] + 1) * 2); //2,4,6
                             PLC01.WriteBuffer(6, 1500, 1, Ware_Loc);
                             PLC01.SetDevice("Y70", 1);
-                            iProLoad++;
+                            iLoad++;
                         }
                         break;
                     case 8: //if 2위치 이동완료 - 흡착오프 - 1위치 재이동
@@ -394,13 +441,13 @@ namespace cnHRD_MES_Project
                         {
                             CompPad_Off();
                             Task.Delay(500); //딜레이 0.5초
-                            short Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
+                            Ware_Loc = (short)(Ware_Location[1] * 2 + 1); //1,3,5
                             PLC01.WriteBuffer(6, 1500, 1, Ware_Loc);
                             PLC01.SetDevice("Y70", 1);
-                            iProLoad++;
+                            iLoad++;
                         }
                         break;
-                    case 9: //if 1위치 재이동완료 - 흡착후진 - if흡착후까지
+                    case 9: //if 1위치 재이동완료 - 흡착후진 - if흡착후(X1B)까지
                         PLC01.GetDevice("X74", out i);
                         if (i == 1)
                             Comp_Bwd();
