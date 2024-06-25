@@ -57,11 +57,7 @@ namespace cnHRD_MES_Project
 
         //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
         int Existence_Order = 0;    //주문 유무 판단 0:무 1:비금속 2:금속
-<<<<<<< HEAD
 
-=======
-        
->>>>>>> 943f1fb8bbf1fbd3225a4096a4f24c4bb7b5ebf4
         private void bt_Order_Click(object sender, EventArgs e)
         {
 
