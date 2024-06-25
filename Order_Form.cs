@@ -17,9 +17,9 @@ namespace cnHRD_MES_Project
         const string QuantityPlaceHolder = "1~3 사이의 숫자만 입력 가능"; //수량 텍스트박스 PlaceHolder 설정
 
         //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
-        int Existence_Order = 0;        //주문 유무 판단 0:무 1:비금속 2:금속
-        int Existence_Location;         //배송지에 따라 0:서울 1:부산
-        int[] Existence = new int[2];   //2칸짜리 배열 생성
+        int Exist_Order = 0;        //주문 유무 판단 0:무 1:비금속 2:금속
+        int Exist_Location;         //배송지에 따라 0:서울 1:부산
+        int[] Exist = new int[2];   //2칸짜리 배열 생성
 
         public Order_Form()
         {
@@ -57,11 +57,9 @@ namespace cnHRD_MES_Project
 
         private void Order_Form_Load(object sender, EventArgs e)
         {
-
+            Debug.WriteLine("Exist[0] = " + Exist[0]);          //주문이 없을 때, Exist[0]값 출력창 표시
+            Debug.WriteLine("Exist[1] = " + Exist[1]);          //주문이 없을 때, Exist[1]값 출력창 표시
         }
-
-        //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
-        int Existence_Order = 0;    //주문 유무 판단 0:무 1:비금속 2:금속
 
         private void bt_Order_Click(object sender, EventArgs e)
         {
@@ -99,12 +97,22 @@ namespace cnHRD_MES_Project
                 {
                     if (cb_Type.SelectedIndex == 0)  //품목이 비금일 때
                     {
-                        Existence_Order = 1;
+                        Exist_Order = 1;
                     }
                     if (cb_Type.SelectedIndex == 1) //품목이 금속일 때
                     {
-                        Existence_Order = 2;
+                        Exist_Order = 2;
                     }
+                    if (cb_Location.SelectedIndex == 0)
+                    {
+                        Exist_Location = 0;
+                    }
+                    if(cb_Type.SelectedIndex == 1)
+                    {
+                        Exist_Location = 1;
+                    }
+                   
+
                     /*  4칸짜리 배열로 사용한다면
                     if (cb_Type.SelectedIndex == 0)  //종류에 비금속을 넣었을 경우
                     {
@@ -125,8 +133,14 @@ namespace cnHRD_MES_Project
                     Debug.WriteLine("get_Order[3] = " + get_Order[3]);
                     */
                 }
+                Exist[0] = Exist_Order;
+                Exist[1] = Exist_Location;
+                Debug.WriteLine("Exist_Order(Exist) = " + Exist_Order);        //Exist_Order값 출력창 표시
+                Debug.WriteLine("Exist_Location(Exist) = " + Exist_Location);  //Exist_Location값 출력창 표시
+                Debug.WriteLine("Exist[0] = " + Exist[0]);                     //배열 [0]에 Exist_Order값 삽입 출력창 표시
+                Debug.WriteLine("Exist[1] = " + Exist[1]);                     //배열 [1]에 Exist_Location값 삽입 출력창 표시
             }
-            //// 창고로부터 주소지 받아 올 것
+            //// Operator에서 주문이 들어오면 배열로 반환 구현
         }
 
         private void tb_Quantity_KeyPress(object sender, KeyPressEventArgs e)

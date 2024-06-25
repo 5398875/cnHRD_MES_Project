@@ -11,8 +11,7 @@ using System.Windows.Forms;
 namespace cnHRD_MES_Project
 {
     public partial class Warehouse : Form
-    {
-        public void 
+    { 
         public Warehouse()
         {
             InitializeComponent();
