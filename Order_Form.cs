@@ -16,6 +16,11 @@ namespace cnHRD_MES_Project
         string Quantity;   //수량 변수 선언
         const string QuantityPlaceHolder = "1~3 사이의 숫자만 입력 가능"; //수량 텍스트박스 PlaceHolder 설정
 
+        //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
+        int Existence_Order = 0;        //주문 유무 판단 0:무 1:비금속 2:금속
+        int Existence_Location;         //배송지에 따라 0:서울 1:부산
+        int[] Existence = new int[2];   //2칸짜리 배열 생성
+
         public Order_Form()
         {
             InitializeComponent();
