@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.Tb_ServoSpeed = new System.Windows.Forms.TextBox();
             this.Bt_Stop = new System.Windows.Forms.Button();
             this.Lb_ServoConnect = new System.Windows.Forms.Label();
             this.Bt_OpenServo = new System.Windows.Forms.Button();
@@ -41,17 +40,16 @@
             this.Bt_JogUp = new System.Windows.Forms.Button();
             this.Bt_JogDown = new System.Windows.Forms.Button();
             this.Tb_ServoLoc = new System.Windows.Forms.TextBox();
-            this.Bt_Test = new System.Windows.Forms.Button();
+            this.Tb_Servo1 = new System.Windows.Forms.TextBox();
+            this.Tb_Servo2 = new System.Windows.Forms.TextBox();
+            this.Tb_Servo3 = new System.Windows.Forms.TextBox();
+            this.Tb_Servo4 = new System.Windows.Forms.TextBox();
+            this.Tb_Servo5 = new System.Windows.Forms.TextBox();
+            this.Tb_Servo6 = new System.Windows.Forms.TextBox();
+            this.Tb_Servo7 = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Panel_SideMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // Tb_ServoSpeed
-            // 
-            this.Tb_ServoSpeed.Location = new System.Drawing.Point(224, 24);
-            this.Tb_ServoSpeed.Name = "Tb_ServoSpeed";
-            this.Tb_ServoSpeed.Size = new System.Drawing.Size(144, 25);
-            this.Tb_ServoSpeed.TabIndex = 17;
-            this.Tb_ServoSpeed.Text = "1000";
             // 
             // Bt_Stop
             // 
@@ -112,7 +110,6 @@
             // 
             // Bt_Start
             // 
-            this.Bt_Start.Enabled = false;
             this.Bt_Start.Location = new System.Drawing.Point(376, 24);
             this.Bt_Start.Name = "Bt_Start";
             this.Bt_Start.Size = new System.Drawing.Size(144, 48);
@@ -159,7 +156,8 @@
             this.Bt_JogUp.TabIndex = 18;
             this.Bt_JogUp.Text = "조그상";
             this.Bt_JogUp.UseVisualStyleBackColor = true;
-            this.Bt_JogUp.Click += new System.EventHandler(this.Bt_JogUp_Click);
+            this.Bt_JogUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Bt_JogUp_MouseDown);
+            this.Bt_JogUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Bt_JogUp_MouseUp);
             // 
             // Bt_JogDown
             // 
@@ -169,7 +167,8 @@
             this.Bt_JogDown.TabIndex = 19;
             this.Bt_JogDown.Text = "조그하";
             this.Bt_JogDown.UseVisualStyleBackColor = true;
-            this.Bt_JogDown.Click += new System.EventHandler(this.Bt_JogDown_Click);
+            this.Bt_JogDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Bt_JogDown_MouseDown);
+            this.Bt_JogDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Bt_JogDown_MouseUp);
             // 
             // Tb_ServoLoc
             // 
@@ -178,27 +177,86 @@
             this.Tb_ServoLoc.Size = new System.Drawing.Size(144, 25);
             this.Tb_ServoLoc.TabIndex = 21;
             // 
-            // Bt_Test
+            // Tb_Servo1
             // 
-            this.Bt_Test.Location = new System.Drawing.Point(456, 240);
-            this.Bt_Test.Name = "Bt_Test";
-            this.Bt_Test.Size = new System.Drawing.Size(144, 64);
-            this.Bt_Test.TabIndex = 22;
-            this.Bt_Test.Text = "button1";
-            this.Bt_Test.UseVisualStyleBackColor = true;
-            this.Bt_Test.Click += new System.EventHandler(this.Bt_Test_Click);
+            this.Tb_Servo1.Location = new System.Drawing.Point(304, 200);
+            this.Tb_Servo1.Name = "Tb_Servo1";
+            this.Tb_Servo1.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo1.TabIndex = 22;
+            this.Tb_Servo1.Text = "59460";
+            // 
+            // Tb_Servo2
+            // 
+            this.Tb_Servo2.Location = new System.Drawing.Point(304, 232);
+            this.Tb_Servo2.Name = "Tb_Servo2";
+            this.Tb_Servo2.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo2.TabIndex = 22;
+            this.Tb_Servo2.Text = "165360";
+            // 
+            // Tb_Servo3
+            // 
+            this.Tb_Servo3.Location = new System.Drawing.Point(304, 264);
+            this.Tb_Servo3.Name = "Tb_Servo3";
+            this.Tb_Servo3.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo3.TabIndex = 22;
+            this.Tb_Servo3.Text = "707170";
+            // 
+            // Tb_Servo4
+            // 
+            this.Tb_Servo4.Location = new System.Drawing.Point(304, 296);
+            this.Tb_Servo4.Name = "Tb_Servo4";
+            this.Tb_Servo4.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo4.TabIndex = 22;
+            this.Tb_Servo4.Text = "821650";
+            // 
+            // Tb_Servo5
+            // 
+            this.Tb_Servo5.Location = new System.Drawing.Point(304, 328);
+            this.Tb_Servo5.Name = "Tb_Servo5";
+            this.Tb_Servo5.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo5.TabIndex = 22;
+            this.Tb_Servo5.Text = "1380260";
+            // 
+            // Tb_Servo6
+            // 
+            this.Tb_Servo6.Location = new System.Drawing.Point(304, 360);
+            this.Tb_Servo6.Name = "Tb_Servo6";
+            this.Tb_Servo6.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo6.TabIndex = 22;
+            this.Tb_Servo6.Text = "1461510";
+            // 
+            // Tb_Servo7
+            // 
+            this.Tb_Servo7.Location = new System.Drawing.Point(304, 392);
+            this.Tb_Servo7.Name = "Tb_Servo7";
+            this.Tb_Servo7.Size = new System.Drawing.Size(100, 25);
+            this.Tb_Servo7.TabIndex = 22;
+            this.Tb_Servo7.Text = "1460630";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(640, 272);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(176, 25);
+            this.textBox1.TabIndex = 23;
             // 
             // Operator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
-            this.Controls.Add(this.Bt_Test);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.Panel_SideMenu);
+            this.Controls.Add(this.Tb_Servo7);
+            this.Controls.Add(this.Tb_Servo6);
+            this.Controls.Add(this.Tb_Servo5);
+            this.Controls.Add(this.Tb_Servo4);
+            this.Controls.Add(this.Tb_Servo3);
+            this.Controls.Add(this.Tb_Servo2);
+            this.Controls.Add(this.Tb_Servo1);
             this.Controls.Add(this.Tb_ServoLoc);
             this.Controls.Add(this.Bt_JogDown);
             this.Controls.Add(this.Bt_JogUp);
-            this.Controls.Add(this.Panel_SideMenu);
-            this.Controls.Add(this.Tb_ServoSpeed);
             this.Controls.Add(this.Bt_Stop);
             this.Controls.Add(this.Lb_ServoConnect);
             this.Controls.Add(this.Bt_OpenServo);
@@ -216,8 +274,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.TextBox Tb_ServoSpeed;
         private System.Windows.Forms.Button Bt_Stop;
         private System.Windows.Forms.Label Lb_ServoConnect;
         private System.Windows.Forms.Button Bt_OpenServo;
@@ -230,7 +286,14 @@
         private System.Windows.Forms.Button Bt_JogUp;
         private System.Windows.Forms.Button Bt_JogDown;
         private System.Windows.Forms.TextBox Tb_ServoLoc;
-        private System.Windows.Forms.Button Bt_Test;
+        private System.Windows.Forms.TextBox Tb_Servo1;
+        private System.Windows.Forms.TextBox Tb_Servo2;
+        private System.Windows.Forms.TextBox Tb_Servo3;
+        private System.Windows.Forms.TextBox Tb_Servo4;
+        private System.Windows.Forms.TextBox Tb_Servo5;
+        private System.Windows.Forms.TextBox Tb_Servo6;
+        private System.Windows.Forms.TextBox Tb_Servo7;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
