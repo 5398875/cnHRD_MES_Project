@@ -37,7 +37,7 @@ namespace cnHRD_MES_Project
         private void RemovePlaceHolder(object sender, EventArgs e)
         {
             TextBox text = (TextBox)sender;
-            if(tb_Quantity.Text == QuantityPlaceHolder) //수량 란이 Placeholder일 경우
+            if (tb_Quantity.Text == QuantityPlaceHolder) //수량 란이 Placeholder일 경우
             {
                 tb_Quantity.ForeColor = Color.Black;
                 tb_Quantity.Text = string.Empty;
@@ -60,7 +60,9 @@ namespace cnHRD_MES_Project
 
         }
 
-        
+        //private int[] get_Order = { 0, 0, 0, 0 }; 4칸짜리 배열을 사용한 다면
+        int Existence_Order = 0;    //주문 유무 판단 0:무 1:비금속 2:금속
+
         private void bt_Order_Click(object sender, EventArgs e)
         {
 
@@ -95,7 +97,7 @@ namespace cnHRD_MES_Project
                 var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]", MessageBoxButtons.OKCancel);
                 if (OrderCheck == DialogResult.OK)
                 {
-                    if(cb_Type.SelectedIndex == 0)  //품목이 비금일 때
+                    if (cb_Type.SelectedIndex == 0)  //품목이 비금일 때
                     {
                         Existence_Order = 1;
                     }
@@ -103,16 +105,6 @@ namespace cnHRD_MES_Project
                     {
                         Existence_Order = 2;
                     }
-                    if(cb_Location.SelectedIndex == 0)  //배송지가 서울일 때
-                    {
-                        Existence_Location = 0;
-                    }
-                    if(cb_Location.SelectedIndex == 1)  //배송지가 부산일 때
-                    {
-                        Existence_Location = 1;
-                    }
-                    Debug.WriteLine("Existence_Order = " + Existence_Order);
-                    Debug.WriteLine("Existence_Location = " + Existence_Location);
                     /*  4칸짜리 배열로 사용한다면
                     if (cb_Type.SelectedIndex == 0)  //종류에 비금속을 넣었을 경우
                     {
@@ -132,15 +124,14 @@ namespace cnHRD_MES_Project
                     }
                     Debug.WriteLine("get_Order[3] = " + get_Order[3]);
                     */
-                    return;
                 }
             }
-            //// isOrder 통신 구현할 것
+            //// 창고로부터 주소지 받아 올 것
         }
 
         private void tb_Quantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(!char.IsDigit(e.KeyChar))
+            if (!char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
             }
