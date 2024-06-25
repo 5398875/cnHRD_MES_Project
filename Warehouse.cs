@@ -12,10 +12,13 @@ namespace cnHRD_MES_Project
 {
     public partial class Warehouse : Form
     {
+        public void 
         public Warehouse()
         {
             InitializeComponent();
         }
+
+
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
