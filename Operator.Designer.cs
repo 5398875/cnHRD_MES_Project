@@ -43,15 +43,28 @@
             this.Tb_ServoLoc = new System.Windows.Forms.TextBox();
             this.Bt_JogDown = new System.Windows.Forms.Button();
             this.Bt_JogUp = new System.Windows.Forms.Button();
-            this.Pn_Operator = new System.Windows.Forms.Panel();
             this.Bt_Stop = new System.Windows.Forms.Button();
             this.Bt_Start = new System.Windows.Forms.Button();
-            this.Pn_Operator.SuspendLayout();
+            this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button7 = new System.Windows.Forms.Button();
+            this.button8 = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // Bt_OpenPLC
             // 
-            this.Bt_OpenPLC.Location = new System.Drawing.Point(104, 32);
+            this.Bt_OpenPLC.Location = new System.Drawing.Point(8, 8);
             this.Bt_OpenPLC.Name = "Bt_OpenPLC";
             this.Bt_OpenPLC.Size = new System.Drawing.Size(144, 34);
             this.Bt_OpenPLC.TabIndex = 10;
@@ -62,7 +75,7 @@
             // Bt_ClosePLC
             // 
             this.Bt_ClosePLC.Enabled = false;
-            this.Bt_ClosePLC.Location = new System.Drawing.Point(104, 96);
+            this.Bt_ClosePLC.Location = new System.Drawing.Point(8, 48);
             this.Bt_ClosePLC.Name = "Bt_ClosePLC";
             this.Bt_ClosePLC.Size = new System.Drawing.Size(144, 34);
             this.Bt_ClosePLC.TabIndex = 11;
@@ -72,7 +85,7 @@
             // 
             // Lb_Connect
             // 
-            this.Lb_Connect.Location = new System.Drawing.Point(112, 144);
+            this.Lb_Connect.Location = new System.Drawing.Point(8, 88);
             this.Lb_Connect.Name = "Lb_Connect";
             this.Lb_Connect.Size = new System.Drawing.Size(144, 23);
             this.Lb_Connect.TabIndex = 12;
@@ -81,7 +94,7 @@
             // 
             // Lb_ServoConnect
             // 
-            this.Lb_ServoConnect.Location = new System.Drawing.Point(248, 80);
+            this.Lb_ServoConnect.Location = new System.Drawing.Point(184, 48);
             this.Lb_ServoConnect.Name = "Lb_ServoConnect";
             this.Lb_ServoConnect.Size = new System.Drawing.Size(144, 23);
             this.Lb_ServoConnect.TabIndex = 15;
@@ -91,7 +104,7 @@
             // Bt_OpenServo
             // 
             this.Bt_OpenServo.Enabled = false;
-            this.Bt_OpenServo.Location = new System.Drawing.Point(256, 32);
+            this.Bt_OpenServo.Location = new System.Drawing.Point(184, 8);
             this.Bt_OpenServo.Name = "Bt_OpenServo";
             this.Bt_OpenServo.Size = new System.Drawing.Size(144, 34);
             this.Bt_OpenServo.TabIndex = 14;
@@ -101,7 +114,7 @@
             // 
             // Tb_Servo1
             // 
-            this.Tb_Servo1.Location = new System.Drawing.Point(488, 128);
+            this.Tb_Servo1.Location = new System.Drawing.Point(528, 8);
             this.Tb_Servo1.Name = "Tb_Servo1";
             this.Tb_Servo1.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo1.TabIndex = 22;
@@ -109,7 +122,7 @@
             // 
             // Tb_Servo2
             // 
-            this.Tb_Servo2.Location = new System.Drawing.Point(480, 160);
+            this.Tb_Servo2.Location = new System.Drawing.Point(528, 40);
             this.Tb_Servo2.Name = "Tb_Servo2";
             this.Tb_Servo2.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo2.TabIndex = 22;
@@ -117,7 +130,7 @@
             // 
             // Tb_Servo3
             // 
-            this.Tb_Servo3.Location = new System.Drawing.Point(480, 184);
+            this.Tb_Servo3.Location = new System.Drawing.Point(528, 72);
             this.Tb_Servo3.Name = "Tb_Servo3";
             this.Tb_Servo3.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo3.TabIndex = 22;
@@ -125,7 +138,7 @@
             // 
             // Tb_Servo4
             // 
-            this.Tb_Servo4.Location = new System.Drawing.Point(472, 216);
+            this.Tb_Servo4.Location = new System.Drawing.Point(528, 104);
             this.Tb_Servo4.Name = "Tb_Servo4";
             this.Tb_Servo4.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo4.TabIndex = 22;
@@ -133,7 +146,7 @@
             // 
             // Tb_Servo5
             // 
-            this.Tb_Servo5.Location = new System.Drawing.Point(472, 248);
+            this.Tb_Servo5.Location = new System.Drawing.Point(528, 136);
             this.Tb_Servo5.Name = "Tb_Servo5";
             this.Tb_Servo5.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo5.TabIndex = 22;
@@ -141,7 +154,7 @@
             // 
             // Tb_Servo6
             // 
-            this.Tb_Servo6.Location = new System.Drawing.Point(464, 280);
+            this.Tb_Servo6.Location = new System.Drawing.Point(528, 168);
             this.Tb_Servo6.Name = "Tb_Servo6";
             this.Tb_Servo6.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo6.TabIndex = 22;
@@ -149,7 +162,7 @@
             // 
             // Tb_Servo7
             // 
-            this.Tb_Servo7.Location = new System.Drawing.Point(456, 312);
+            this.Tb_Servo7.Location = new System.Drawing.Point(528, 200);
             this.Tb_Servo7.Name = "Tb_Servo7";
             this.Tb_Servo7.Size = new System.Drawing.Size(144, 25);
             this.Tb_Servo7.TabIndex = 22;
@@ -157,14 +170,14 @@
             // 
             // Tb_ServoLoc
             // 
-            this.Tb_ServoLoc.Location = new System.Drawing.Point(392, 112);
+            this.Tb_ServoLoc.Location = new System.Drawing.Point(368, 88);
             this.Tb_ServoLoc.Name = "Tb_ServoLoc";
             this.Tb_ServoLoc.Size = new System.Drawing.Size(144, 25);
             this.Tb_ServoLoc.TabIndex = 21;
             // 
             // Bt_JogDown
             // 
-            this.Bt_JogDown.Location = new System.Drawing.Point(400, 72);
+            this.Bt_JogDown.Location = new System.Drawing.Point(368, 48);
             this.Bt_JogDown.Name = "Bt_JogDown";
             this.Bt_JogDown.Size = new System.Drawing.Size(144, 34);
             this.Bt_JogDown.TabIndex = 19;
@@ -175,7 +188,7 @@
             // 
             // Bt_JogUp
             // 
-            this.Bt_JogUp.Location = new System.Drawing.Point(400, 32);
+            this.Bt_JogUp.Location = new System.Drawing.Point(368, 8);
             this.Bt_JogUp.Name = "Bt_JogUp";
             this.Bt_JogUp.Size = new System.Drawing.Size(144, 34);
             this.Bt_JogUp.TabIndex = 18;
@@ -184,34 +197,9 @@
             this.Bt_JogUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Bt_JogUp_MouseDown);
             this.Bt_JogUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Bt_JogUp_MouseUp);
             // 
-            // Pn_Operator
-            // 
-            this.Pn_Operator.Controls.Add(this.Bt_Stop);
-            this.Pn_Operator.Controls.Add(this.Bt_Start);
-            this.Pn_Operator.Controls.Add(this.Bt_OpenPLC);
-            this.Pn_Operator.Controls.Add(this.Bt_JogUp);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo7);
-            this.Pn_Operator.Controls.Add(this.Tb_ServoLoc);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo6);
-            this.Pn_Operator.Controls.Add(this.Bt_JogDown);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo5);
-            this.Pn_Operator.Controls.Add(this.Bt_ClosePLC);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo4);
-            this.Pn_Operator.Controls.Add(this.Lb_Connect);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo3);
-            this.Pn_Operator.Controls.Add(this.Bt_OpenServo);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo2);
-            this.Pn_Operator.Controls.Add(this.Tb_Servo1);
-            this.Pn_Operator.Controls.Add(this.Lb_ServoConnect);
-            this.Pn_Operator.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Pn_Operator.Location = new System.Drawing.Point(0, 0);
-            this.Pn_Operator.Name = "Pn_Operator";
-            this.Pn_Operator.Size = new System.Drawing.Size(982, 453);
-            this.Pn_Operator.TabIndex = 25;
-            // 
             // Bt_Stop
             // 
-            this.Bt_Stop.Location = new System.Drawing.Point(256, 232);
+            this.Bt_Stop.Location = new System.Drawing.Point(200, 240);
             this.Bt_Stop.Name = "Bt_Stop";
             this.Bt_Stop.Size = new System.Drawing.Size(144, 34);
             this.Bt_Stop.TabIndex = 24;
@@ -221,7 +209,7 @@
             // 
             // Bt_Start
             // 
-            this.Bt_Start.Location = new System.Drawing.Point(248, 192);
+            this.Bt_Start.Location = new System.Drawing.Point(200, 200);
             this.Bt_Start.Name = "Bt_Start";
             this.Bt_Start.Size = new System.Drawing.Size(144, 34);
             this.Bt_Start.TabIndex = 23;
@@ -229,19 +217,183 @@
             this.Bt_Start.UseVisualStyleBackColor = true;
             this.Bt_Start.Click += new System.EventHandler(this.Bt_Start_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(616, 272);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(144, 34);
+            this.button1.TabIndex = 25;
+            this.button1.Text = "티칭";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(456, 280);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(144, 25);
+            this.textBox1.TabIndex = 26;
+            this.textBox1.Text = "1460630";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(680, 8);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(48, 24);
+            this.button2.TabIndex = 27;
+            this.button2.Text = "티칭";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(680, 40);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(48, 24);
+            this.button3.TabIndex = 27;
+            this.button3.Text = "티칭";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(680, 72);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(48, 24);
+            this.button4.TabIndex = 27;
+            this.button4.Text = "티칭";
+            this.button4.UseVisualStyleBackColor = true;
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(680, 104);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(48, 24);
+            this.button5.TabIndex = 27;
+            this.button5.Text = "티칭";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(680, 136);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(48, 24);
+            this.button6.TabIndex = 27;
+            this.button6.Text = "티칭";
+            this.button6.UseVisualStyleBackColor = true;
+            // 
+            // button7
+            // 
+            this.button7.Location = new System.Drawing.Point(680, 168);
+            this.button7.Name = "button7";
+            this.button7.Size = new System.Drawing.Size(48, 24);
+            this.button7.TabIndex = 27;
+            this.button7.Text = "티칭";
+            this.button7.UseVisualStyleBackColor = true;
+            // 
+            // button8
+            // 
+            this.button8.Location = new System.Drawing.Point(680, 200);
+            this.button8.Name = "button8";
+            this.button8.Size = new System.Drawing.Size(48, 24);
+            this.button8.TabIndex = 27;
+            this.button8.Text = "티칭";
+            this.button8.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(104, 400);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(45, 15);
+            this.label1.TabIndex = 28;
+            this.label1.Text = "label1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(160, 400);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(45, 15);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "label1";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(104, 384);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 15);
+            this.label3.TabIndex = 28;
+            this.label3.Text = "label1";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(160, 384);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(45, 15);
+            this.label4.TabIndex = 28;
+            this.label4.Text = "label1";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(104, 368);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(45, 15);
+            this.label5.TabIndex = 28;
+            this.label5.Text = "label1";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(160, 368);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(45, 15);
+            this.label6.TabIndex = 28;
+            this.label6.Text = "label1";
+            // 
             // Operator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
-            this.Controls.Add(this.Pn_Operator);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button8);
+            this.Controls.Add(this.button7);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.button4);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.Tb_Servo7);
+            this.Controls.Add(this.Bt_Stop);
+            this.Controls.Add(this.Tb_Servo6);
+            this.Controls.Add(this.Bt_OpenPLC);
+            this.Controls.Add(this.Tb_Servo5);
+            this.Controls.Add(this.Bt_Start);
+            this.Controls.Add(this.Tb_Servo4);
+            this.Controls.Add(this.Bt_ClosePLC);
+            this.Controls.Add(this.Tb_Servo3);
+            this.Controls.Add(this.Bt_JogUp);
+            this.Controls.Add(this.Tb_Servo2);
+            this.Controls.Add(this.Tb_ServoLoc);
+            this.Controls.Add(this.Tb_Servo1);
+            this.Controls.Add(this.Lb_Connect);
+            this.Controls.Add(this.Bt_OpenServo);
+            this.Controls.Add(this.Bt_JogDown);
+            this.Controls.Add(this.Lb_ServoConnect);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Operator";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Pn_Operator.ResumeLayout(false);
-            this.Pn_Operator.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -261,9 +413,23 @@
         private System.Windows.Forms.TextBox Tb_ServoLoc;
         private System.Windows.Forms.Button Bt_JogDown;
         private System.Windows.Forms.Button Bt_JogUp;
-        private System.Windows.Forms.Panel Pn_Operator;
         private System.Windows.Forms.Button Bt_Stop;
         private System.Windows.Forms.Button Bt_Start;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button button7;
+        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 
