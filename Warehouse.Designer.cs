@@ -186,6 +186,7 @@
             this.ClientSize = new System.Drawing.Size(982, 453);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Warehouse";
             this.Text = "Warehouse Monitor";
