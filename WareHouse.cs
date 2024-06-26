@@ -18,10 +18,19 @@ namespace cnHRD_MES_Project
         }
 
         public int[,] WH_Location = new int[2, 3]; //3행2열 배열 생성, 초기값은 전부 0
+        int initial_Value = 0;  //초기값을 0으로 설정
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
-            //pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
+            pb_DockMonitor.Image = Properties.Resources.loading_dock;
+            
+            for (int iYCount = 0; iYCount < WH_Location.GetLength(1); iYCount++)
+            {
+                for (int iXCount = 0; iXCount < WH_Location.GetLength(0); iXCount++)
+
+                    Update_Type(iXCount + 1, iYCount + 1, initial_Value);
+            }
+            
         }
 
         private int[] FindLocationXY(int Type)
@@ -75,15 +84,33 @@ namespace cnHRD_MES_Project
                 WH_Location[X, Y] = 0; //주어진 위치의 금속,비금속 제거
                 Update_Type(X + 1, Y + 1, 0);  //위치의 라벨에 저장된 종류 업데이트
         }
+
+        string sType;
+
         private void Update_Type(int X, int Y, int Type)    //매서드 선언, 3개의 매개변수 받아옴
         {
-            string labelName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
-            Control[] controls = this.Controls.Find(labelName, true);   
-            //this.control.find 내장함수 이용, 라벨네임과 같은 이름을 가진 컨트롤 controls 생성 및 반환
+            string lbName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
+            Control[] controls = this.Controls.Find(lbName, true);   
+            //this.control.find 내장함수 이용, lbname과 같은 이름을 가진 컨트롤 controls 생성 및 반환
 
-            if (controls[0] is Label label)  //찾은 controls가 라벨 타입이라면,
+            if (controls[0] is Label lb)  //찾은 controls가 라벨 타입이라면,
             {
-                label.Text = Type.ToString();   //해당 라벨에 Type을 string으로 입력
+                switch (Type)   //case문으로 받은 종류 한글 네이밍
+                {
+                    case 0:
+                        sType = "비어 있음";
+                        break;
+
+                    case 1:
+                        sType = "금속";
+                        break;
+
+                    case 2:
+                        sType = "비금속";
+                        break;
+                }
+
+                lb.Text = sType;    //한글 네이밍한 종류를 각 라벨 텍스트에 표시
             }
         }
     }
