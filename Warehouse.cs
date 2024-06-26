@@ -17,7 +17,7 @@ namespace cnHRD_MES_Project
             InitializeComponent();
         }
 
-        int[,] WH_Location = new int[2, 3]; //3행2열 배열 생성, 초기값은 전부 0
+        public int[,] WH_Location = new int[2, 3]; //3행2열 배열 생성, 초기값은 전부 0
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
