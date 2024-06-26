@@ -37,10 +37,12 @@ namespace cnHRD_MES_Project
             if (CheckBoxHide.Checked == false)
             {
                 CheckBoxHide.Text = ">";
+                Bt_Cockpit.Text = "C";
             }
             else
             {
                 CheckBoxHide.Text = "<";
+                Bt_Cockpit.Text = "콕핏";
             }
             Timer_Slide.Start();
         }
@@ -271,7 +273,12 @@ namespace cnHRD_MES_Project
             return temp; //없으면 이상한 좌표를 리턴
         }
 
-        public void Is_Load(string Is_Metal, int X, int Y) //창고에 종류, X좌표, Y좌표를 넣었다는 함수.
+        public void Is_Load(int Is_Metal, int X, int Y) //창고에 종류, X좌표, Y좌표를 넣었다는 함수.
+        {
+
+        }
+
+        public void Take_From(int X, int Y)
         {
 
         }
@@ -517,8 +524,8 @@ namespace cnHRD_MES_Project
                         Comp_Bwd();
                         if (Get_Device("X1B"))
                         {
-                            if (Is_Metal == 1) Is_Load("금속", iLocation[1], iLocation[2]); //금속 적재
-                            else if (Is_Metal == 2) Is_Load("비금속", iLocation[1], iLocation[2]); //비금속적재
+                            if (Is_Metal == 1) Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
+                            else if (Is_Metal == 2) Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
                             bStart = true; //공정종료. 초기상태로
                         }
                         break;
@@ -586,8 +593,8 @@ namespace cnHRD_MES_Project
                         Comp_Bwd();
                         if (Get_Device("X1B"))
                         {
-                            if (Is_Metal == 1) Is_Load("금속", iLocation[1], iLocation[2]); //금속 적재
-                            else if (Is_Metal == 2) Is_Load("비금속", iLocation[1], iLocation[2]); //비금속적재
+                            if (Is_Metal == 1) Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
+                            else if (Is_Metal == 2) Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
                             bStart = true; //공정종료. 초기상태로
                         }
                         break;

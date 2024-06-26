@@ -49,6 +49,8 @@
             this.Bt_JogDown = new System.Windows.Forms.Button();
             this.Bt_JogUp = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.Bt_Start = new System.Windows.Forms.Button();
+            this.Bt_Stop = new System.Windows.Forms.Button();
             this.TPanel_SideMenu.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -65,12 +67,14 @@
             this.TPanel_SideMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.TPanel_SideMenu.Location = new System.Drawing.Point(0, 0);
             this.TPanel_SideMenu.Name = "TPanel_SideMenu";
-            this.TPanel_SideMenu.RowCount = 5;
+            this.TPanel_SideMenu.RowCount = 7;
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.TPanel_SideMenu.Size = new System.Drawing.Size(50, 453);
             this.TPanel_SideMenu.TabIndex = 24;
             // 
@@ -96,7 +100,7 @@
             this.Bt_Close.FlatAppearance.BorderSize = 0;
             this.Bt_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Bt_Close.ForeColor = System.Drawing.Color.White;
-            this.Bt_Close.Location = new System.Drawing.Point(3, 406);
+            this.Bt_Close.Location = new System.Drawing.Point(3, 366);
             this.Bt_Close.Name = "Bt_Close";
             this.Bt_Close.Size = new System.Drawing.Size(44, 44);
             this.Bt_Close.TabIndex = 2;
@@ -267,6 +271,8 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.Bt_Stop);
+            this.panel1.Controls.Add(this.Bt_Start);
             this.panel1.Controls.Add(this.Bt_OpenPLC);
             this.panel1.Controls.Add(this.Bt_JogUp);
             this.panel1.Controls.Add(this.Tb_Servo7);
@@ -282,10 +288,30 @@
             this.panel1.Controls.Add(this.Tb_Servo2);
             this.panel1.Controls.Add(this.Tb_Servo1);
             this.panel1.Controls.Add(this.Lb_ServoConnect);
-            this.panel1.Location = new System.Drawing.Point(96, 40);
+            this.panel1.Location = new System.Drawing.Point(232, 24);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(568, 368);
             this.panel1.TabIndex = 25;
+            // 
+            // Bt_Start
+            // 
+            this.Bt_Start.Location = new System.Drawing.Point(152, 168);
+            this.Bt_Start.Name = "Bt_Start";
+            this.Bt_Start.Size = new System.Drawing.Size(144, 34);
+            this.Bt_Start.TabIndex = 23;
+            this.Bt_Start.Text = "시작";
+            this.Bt_Start.UseVisualStyleBackColor = true;
+            this.Bt_Start.Click += new System.EventHandler(this.Bt_Start_Click);
+            // 
+            // Bt_Stop
+            // 
+            this.Bt_Stop.Location = new System.Drawing.Point(160, 208);
+            this.Bt_Stop.Name = "Bt_Stop";
+            this.Bt_Stop.Size = new System.Drawing.Size(144, 34);
+            this.Bt_Stop.TabIndex = 24;
+            this.Bt_Stop.Text = "정지";
+            this.Bt_Stop.UseVisualStyleBackColor = true;
+            this.Bt_Stop.Click += new System.EventHandler(this.Bt_Stop_Click);
             // 
             // Operator
             // 
@@ -326,6 +352,8 @@
         private System.Windows.Forms.Button Bt_JogDown;
         private System.Windows.Forms.Button Bt_JogUp;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button Bt_Stop;
+        private System.Windows.Forms.Button Bt_Start;
     }
 }
 
