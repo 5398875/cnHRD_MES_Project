@@ -60,8 +60,8 @@ namespace Project_v01
 
         void ReadTimer_Tick(object sender, EventArgs e)
         {
-         
-            int X0,X10,Y20,plc_status,SM0,//Y2E;
+
+            int X0, X10, Y20, plc_status, SM0;//Y2E;
             PLC01.ReadDeviceBlock("X0", 1, out X0);
             PLC01.ReadDeviceBlock("X10", 1, out X10);
             PLC01.ReadDeviceBlock("Y20", 1, out Y20);
