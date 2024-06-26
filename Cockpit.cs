@@ -96,11 +96,11 @@ namespace Project_v01
                     bt_Lamp_NonMetal.Enabled = false;
                 }
             }
-            else
+        /*    else
             {
                 bt_Lamp_Metal.BackColor = Color.LightGray;
                 bt_Lamp_Metal.Enabled = false;
-            }
+            }*/
 
 
             //물품판별-비금속
@@ -112,11 +112,11 @@ namespace Project_v01
                     bt_Lamp_NonMetal.Enabled = false;
                 }
             }
-            else
+          /*  else
             {
                 bt_Lamp_NonMetal.BackColor = Color.LightGray;
                 bt_Lamp_NonMetal.Enabled = false;
-            }
+            }*/
             
             
             //컨베이어 CW Lamp
@@ -148,7 +148,7 @@ namespace Project_v01
             ///공급전진
             if ((X10&0x01)==0x01)
             {
-                bt_Sup_fwd.BackColor = Color.Red;
+                bt_Sup_fwd.BackColor = Color.Green;
                 bt_Sup_fwd.Enabled = false;
             
             }
@@ -161,7 +161,7 @@ namespace Project_v01
             //공급후진
             if ((X10 & 0x02) == 0x02)
             {
-                bt_Sup_bwd.BackColor = Color.Red;
+                bt_Sup_bwd.BackColor = Color.Green;
                 bt_Sup_bwd.Enabled = false;
             }
             else
@@ -173,7 +173,7 @@ namespace Project_v01
             //송출전진
             if ((X10 & 0x10) == 0x10)
             {
-                bt_Send_fwd.BackColor = Color.Red;
+                bt_Send_fwd.BackColor = Color.Green;
                 bt_Send_fwd.Enabled = false;
             }
 
@@ -186,7 +186,7 @@ namespace Project_v01
             //송출후진
             if ((X10 & 0x20) == 0x20)
             {
-                bt_Send_bwd.BackColor = Color.Red;
+                bt_Send_bwd.BackColor = Color.Green;
                 bt_Send_bwd.Enabled = false;
             }
             else
@@ -198,7 +198,7 @@ namespace Project_v01
             //컨베이어 동작 Lamp
             if (((Y20 & 0x100) == 0x100) || (Y20 & 0x8000) == 0x8000)
             {
-                bt_Conv.BackColor = Color.Red;
+                bt_Conv.BackColor = Color.Green;
                 bt_Conv.Enabled = false;
             }
             else
@@ -210,7 +210,7 @@ namespace Project_v01
             //배출전진
             if ((X10 & 0x40) == 0x40)
             {
-                bt_Push_fwd.BackColor = Color.Red;
+                bt_Push_fwd.BackColor = Color.Green;
                 bt_Push_fwd.Enabled = false;
             }
             else
@@ -222,7 +222,7 @@ namespace Project_v01
             //배출후진
             if ((X10 & 0x80) == 0x80)
             {
-                bt_Push_bwd.BackColor = Color.Red;
+                bt_Push_bwd.BackColor = Color.Green;
                 bt_Push_bwd.Enabled = false;
             }
             else
@@ -234,7 +234,7 @@ namespace Project_v01
             //스톱업
             if ((X10 & 0x100) == 0x100)
             {
-                bt_Stop_up.BackColor = Color.Red;
+                bt_Stop_up.BackColor = Color.Green;
                 bt_Stop_up.Enabled = false;
             }
             else
@@ -246,7 +246,7 @@ namespace Project_v01
             //스톱다운
             if ((X10 & 0x200) == 0x200)
             {
-                bt_Stop_down.BackColor = Color.Red;
+                bt_Stop_down.BackColor = Color.Green;
                 bt_Stop_down.Enabled = false;
             }
             else
@@ -258,7 +258,7 @@ namespace Project_v01
             //흡착전진
             if ((X10 & 0x400) == 0x400)
             {
-                bt_Suck_fwd.BackColor = Color.Red;
+                bt_Suck_fwd.BackColor = Color.Green;
                 bt_Suck_fwd.Enabled = false;
             }
             else
@@ -270,7 +270,7 @@ namespace Project_v01
             //흡착후진
             if ((X10 & 0x800) == 0x800)
             {
-                bt_Suck_bwd.BackColor = Color.Red;
+                bt_Suck_bwd.BackColor = Color.Green;
                 bt_Suck_bwd.Enabled = false;
             }
             else
@@ -282,7 +282,7 @@ namespace Project_v01
             //흡착공정
             if ((Y20 & 0x4000) == 0x4000)
             {
-                bt_Sucking_Lamp.BackColor = Color.Red;
+                bt_Sucking_Lamp.BackColor = Color.Green;
                 bt_Sucking_Lamp.Enabled = false;
             }
             else
@@ -295,7 +295,7 @@ namespace Project_v01
             //창고전진
             if ((X10 & 0x1000) == 0x1000)
             {
-                bt_Warehouse_fwd.BackColor = Color.Red;
+                bt_Warehouse_fwd.BackColor = Color.Green;
                 bt_Warehouse_fwd.Enabled = false;
             }
             else
@@ -307,7 +307,7 @@ namespace Project_v01
             //창고후진
             if ((X10 & 0x2000) == 0x2000)
             {
-                bt_Warehouse_bwd.BackColor = Color.Red;
+                bt_Warehouse_bwd.BackColor = Color.Green;
                 bt_Warehouse_bwd.Enabled = false;
             }
             else
