@@ -66,23 +66,24 @@ namespace cnHRD_MES_Project
             if (X >= 0 && X < WH_Location.GetLength(0) && Y >= 0 && Y < WH_Location.GetLength(1))
             {
                 WH_Location[X, Y] = Is_Metal; //주어진 위치에 금속, 비금속 값 저장
-                Update_Type(X + 1, Y + 1, WH_Location[X, Y]);   //위치에 저장된 종류 업데이트
+                Update_Type(X + 1, Y + 1, Is_Metal);   //위치의 라벨에 저장된 종류 업데이트
             }
         }
 
         public void Take_From(int X, int Y)
         {
                 WH_Location[X, Y] = 0; //주어진 위치의 금속,비금속 제거
-                Update_Type(X + 1, Y + 1, 0);  //위치에 저장된 종류 업데이트
+                Update_Type(X + 1, Y + 1, 0);  //위치의 라벨에 저장된 종류 업데이트
         }
-        private void Update_Type(int iXCount, int iYCount, int Type)
+        private void Update_Type(int X, int Y, int Type)    //매서드 선언, 3개의 매개변수 받아옴
         {
-            string labelName = $"lb{iYCount}{iXCount}";
-            Control[] controls = this.Controls.Find(labelName, true);
+            string labelName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
+            Control[] controls = this.Controls.Find(labelName, true);   
+            //this.control.find 내장함수 이용, 라벨네임과 같은 이름을 가진 컨트롤 controls 생성 및 반환
 
-            if (controls.Length > 0 && controls[0] is Label label)
+            if (controls[0] is Label label)  //찾은 controls가 라벨 타입이라면,
             {
-                label.Text = Type.ToString();
+                label.Text = Type.ToString();   //해당 라벨에 Type을 string으로 입력
             }
         }
     }

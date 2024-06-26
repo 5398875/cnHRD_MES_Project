@@ -60,7 +60,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.pb_DockMonitor);
             this.groupBox1.Location = new System.Drawing.Point(560, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(416, 432);
@@ -172,7 +171,7 @@
             // 
             // pb_DockMonitor
             // 
-            this.pb_DockMonitor.Location = new System.Drawing.Point(3, 35);
+            this.pb_DockMonitor.Location = new System.Drawing.Point(72, 40);
             this.pb_DockMonitor.Name = "pb_DockMonitor";
             this.pb_DockMonitor.Size = new System.Drawing.Size(413, 389);
             this.pb_DockMonitor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -185,6 +184,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pb_DockMonitor);
             this.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
