@@ -1098,6 +1098,7 @@
             this.Controls.Add(this.tb_Error_log);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Cockpit";
             this.Text = "CockpitMonitor";

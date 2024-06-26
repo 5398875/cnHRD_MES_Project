@@ -14,7 +14,6 @@ namespace cnHRD_MES_Project
 {
     public partial class Operator : Form
     {
-        System.Windows.Forms.Timer Timer_Slide = new System.Windows.Forms.Timer(); //슬라이드용 타이머
         System.Windows.Forms.Timer Timer_Operation = new System.Windows.Forms.Timer(); //동작용 타이머
         ActUtlType PLC01 = new ActUtlType();
 
@@ -25,47 +24,8 @@ namespace cnHRD_MES_Project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Timer_Slide.Interval = 10; //슬라이드메뉴
-            Timer_Slide.Tick += new EventHandler(Timer_Sl); //슬라이드 메뉴
             Timer_Operation.Interval = 100;
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
-        }
-
-        //-------------------------------------슬라이드메뉴-------------------------------------------
-        private void CheckBoxHide_CheckedChanged(object sender, EventArgs e) //슬라이드 버튼 이름변경
-        {
-            if (CheckBoxHide.Checked == false)
-            {
-                CheckBoxHide.Text = ">";
-                Bt_Cockpit.Text = "C";
-            }
-            else
-            {
-                CheckBoxHide.Text = "<";
-                Bt_Cockpit.Text = "콕핏";
-            }
-            Timer_Slide.Start();
-        }
-
-        int Slide_Width = 50; //초기 슬라이드메뉴 사이즈 = 50
-
-        void Timer_Sl(object sender, EventArgs e) //슬라이드 메뉴 사이즈 변경
-        {
-            if (CheckBoxHide.Checked == false)
-            {
-                Slide_Width -= 10;
-                if (Slide_Width <= 50)
-                    Timer_Slide.Stop();
-            }
-
-            if (CheckBoxHide.Checked == true)
-            {
-                Slide_Width += 10;
-                if (Slide_Width >= 200)
-                    Timer_Slide.Stop();
-            }
-
-            TPanel_SideMenu.Width = Slide_Width;
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -73,7 +33,7 @@ namespace cnHRD_MES_Project
 
         private void Bt_OpenPLC_Click(object sender, EventArgs e) //"PLC 연결"버튼
         {
-            PLC01.ActLogicalStationNumber = 2; //개인 MXComponent에 따라 수정할것
+            PLC01.ActLogicalStationNumber = 1; //개인 MXComponent에 따라 수정할것
             PLC_Open = PLC01.Open(); //연결시도
             if (PLC_Open == 0) //연결에 성공하면
             {
@@ -281,11 +241,6 @@ namespace cnHRD_MES_Project
         public void Take_From(int X, int Y)
         {
 
-        }
-
-        private void Bt_Close_Click(object sender, EventArgs e)
-        {
-            Dispose();
         }
 
         int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
