@@ -21,7 +21,7 @@ namespace cnHRD_MES_Project
 
         private void Warehouse_Load(object sender, EventArgs e)
         {
-            pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
+            //pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
         }
 
         private int[] FindLocationXY(int Type)
@@ -66,7 +66,7 @@ namespace cnHRD_MES_Project
             if (X >= 0 && X < WH_Location.GetLength(0) && Y >= 0 && Y < WH_Location.GetLength(1))
             {
                 WH_Location[X, Y] = Is_Metal; //주어진 위치에 금속, 비금속 값 저장
-                Update_Type(X + 1, Y + 1, WH_Location[X, Y]);   //위치에 저장된 종류 업데이트
+                Update_Type(X + 1, Y + 1, Is_Metal);   //위치에 저장된 종류 업데이트
             }
         }
 

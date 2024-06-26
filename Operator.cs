@@ -28,7 +28,7 @@ namespace cnHRD_MES_Project
             Timer_Operation.Interval = 100;
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
-            Timer_Jog.Tick += new EventHandler(Timer_Jo); //조그 타이머
+            Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -80,13 +80,13 @@ namespace cnHRD_MES_Project
                 Lb_ServoConnect.ForeColor = Color.Red;  //┴─빨간글씨로 "서보 준비실패"
             }
 
-            int JogSpeed = 200000; //조그 속도
+            int JogSpeed = 200000; //JOG 속도
             ushort[] uJog_Speed = new ushort[2];      //┐
-            uJog_Speed[0] = (ushort)JogSpeed;         //┼─조그속도를 ushort의 배열로 바꾸기 위함
+            uJog_Speed[0] = (ushort)JogSpeed;         //┼─JOG속도를 ushort의 배열로 바꾸기 위함
             uJog_Speed[1] = (ushort)(JogSpeed >> 16); //┘
 
             PLC01.WriteBuffer(6, 1518, 1, (short)uJog_Speed[0]); //┐
-            PLC01.WriteBuffer(6, 1519, 1, (short)uJog_Speed[1]); //┴─U6\G1518번에 조그속도
+            PLC01.WriteBuffer(6, 1519, 1, (short)uJog_Speed[1]); //┴─U6\G1518번에 JOG속도
         }
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
@@ -114,25 +114,25 @@ namespace cnHRD_MES_Project
            Bt_OpenServo.Enabled = true; //┘
         }
 
-       private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"조그상" 버튼을 눌렀을때
+       private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
        {
             Timer_Jog.Start();
             PLC01.SetDevice("Y69", 1); //역기동(Y69) ON
         }
 
-       private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"조그상" 버튼을 뗏을때
+       private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"JOG상" 버튼을 뗏을때
         {
             PLC01.SetDevice("Y69", 0); //역기동(Y69) OFF
             Timer_Jog.Stop();
         }
 
-       private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"조그하" 버튼을 눌렀을때
+       private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"JOG하" 버튼을 눌렀을때
         {
             Timer_Jog.Start();
             PLC01.SetDevice("Y68", 1); //정기동(Y68) ON
         }
 
-       private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"조그하" 버튼을 뗏을때
+       private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"JOG하" 버튼을 뗏을때
         {
            PLC01.SetDevice("Y68", 0); //정기동(Y68) OFF
             Timer_Jog.Stop();
@@ -220,14 +220,23 @@ namespace cnHRD_MES_Project
 
         public Warehouse WH = new Warehouse();
 
+        //서보위치를 티칭하기 위한 버튼들
+        private void Bt_Servo1_Teaching_Click(object sender, EventArgs e) { Tb_Servo1.Text = Tb_ServoLoc.Text; }
+        private void Bt_Servo2_Teaching_Click(object sender, EventArgs e) { Tb_Servo2.Text = Tb_ServoLoc.Text; }
+        private void Bt_Servo3_Teaching_Click(object sender, EventArgs e) { Tb_Servo3.Text = Tb_ServoLoc.Text; }
+        private void Bt_Servo4_Teaching_Click(object sender, EventArgs e) { Tb_Servo4.Text = Tb_ServoLoc.Text; }
+        private void Bt_Servo5_Teaching_Click(object sender, EventArgs e) { Tb_Servo5.Text = Tb_ServoLoc.Text; }
+        private void Bt_Servo6_Teaching_Click(object sender, EventArgs e) { Tb_Servo6.Text = Tb_ServoLoc.Text; }
+        private void Bt_Servo7_Teaching_Click(object sender, EventArgs e) { Tb_Servo7.Text = Tb_ServoLoc.Text; }
+
         //-------------------------------------공정-----------------------------------------
 
-        void Timer_Jo(object sender, EventArgs e) //JOG때 위치출력
+        void Timer_Jo(object sender, EventArgs e) //JOG할때 위치출력
         {
             short[] temp = new short[2];
             PLC01.ReadBuffer(6, 800, 2, out temp[0]); //U6\G800(현재위치)
             int temp2 = (ushort)temp[0] | ((int)temp[1] << 16); //2워드를 int(32비트)로 합치기
-            Tb_ServoLoc.Text = (temp2 / 10).ToString() + " um";
+            Tb_ServoLoc.Text = temp2.ToString();
         }
 
         void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
@@ -425,7 +434,7 @@ namespace cnHRD_MES_Project
                             iLoad++;
                         }
                         break;
-                    case 6: //스톱업, 컨정지, 흡착온 - 1위치 서보이동 if 이동완료(X6C)까지                  
+                    case 6: //컨정지, 흡착온 - 1위치 서보이동 if 이동완료(X6C)까지                  
                         Con_Off();
                         CompPad_On();
                         tAfter = DateTime.Now;
@@ -442,11 +451,11 @@ namespace cnHRD_MES_Project
                         break;
                     case 7: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
-                        Stop_Bwd();
                         if (Get_Device("X1A"))
                             iLoad++;
                         break;
-                    case 8: //2위치 서보이동 if 이동완료(X6C)까지
+                    case 8: //스톱업, 2위치 서보이동 if 이동완료(X6C)까지
+                        Stop_Bwd();
                         Servo_Move(iLocDown); //2,4,6
                         if (!Get_Device("X6C"))
                         {

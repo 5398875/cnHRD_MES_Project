@@ -47,13 +47,13 @@
             this.Bt_Start = new System.Windows.Forms.Button();
             this.Bt_WriteServo = new System.Windows.Forms.Button();
             this.Tb_ServoSpeed = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.Bt_Servo1_Teaching = new System.Windows.Forms.Button();
+            this.Bt_Servo2_Teaching = new System.Windows.Forms.Button();
+            this.Bt_Servo3_Teaching = new System.Windows.Forms.Button();
+            this.Bt_Servo4_Teaching = new System.Windows.Forms.Button();
+            this.Bt_Servo5_Teaching = new System.Windows.Forms.Button();
+            this.Bt_Servo6_Teaching = new System.Windows.Forms.Button();
+            this.Bt_Servo7_Teaching = new System.Windows.Forms.Button();
             this.lb00 = new System.Windows.Forms.Label();
             this.lb10 = new System.Windows.Forms.Label();
             this.lb01 = new System.Windows.Forms.Label();
@@ -181,7 +181,7 @@
             this.Bt_JogDown.Name = "Bt_JogDown";
             this.Bt_JogDown.Size = new System.Drawing.Size(144, 34);
             this.Bt_JogDown.TabIndex = 19;
-            this.Bt_JogDown.Text = "조그하";
+            this.Bt_JogDown.Text = "JOG하";
             this.Bt_JogDown.UseVisualStyleBackColor = true;
             this.Bt_JogDown.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Bt_JogDown_MouseDown);
             this.Bt_JogDown.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Bt_JogDown_MouseUp);
@@ -192,7 +192,7 @@
             this.Bt_JogUp.Name = "Bt_JogUp";
             this.Bt_JogUp.Size = new System.Drawing.Size(144, 34);
             this.Bt_JogUp.TabIndex = 18;
-            this.Bt_JogUp.Text = "조그상";
+            this.Bt_JogUp.Text = "JOG상";
             this.Bt_JogUp.UseVisualStyleBackColor = true;
             this.Bt_JogUp.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Bt_JogUp_MouseDown);
             this.Bt_JogUp.MouseUp += new System.Windows.Forms.MouseEventHandler(this.Bt_JogUp_MouseUp);
@@ -219,7 +219,7 @@
             // 
             // Bt_WriteServo
             // 
-            this.Bt_WriteServo.Location = new System.Drawing.Point(616, 272);
+            this.Bt_WriteServo.Location = new System.Drawing.Point(760, 96);
             this.Bt_WriteServo.Name = "Bt_WriteServo";
             this.Bt_WriteServo.Size = new System.Drawing.Size(144, 34);
             this.Bt_WriteServo.TabIndex = 25;
@@ -229,74 +229,81 @@
             // 
             // Tb_ServoSpeed
             // 
-            this.Tb_ServoSpeed.Location = new System.Drawing.Point(456, 280);
+            this.Tb_ServoSpeed.Location = new System.Drawing.Point(656, 256);
             this.Tb_ServoSpeed.Name = "Tb_ServoSpeed";
             this.Tb_ServoSpeed.Size = new System.Drawing.Size(144, 25);
             this.Tb_ServoSpeed.TabIndex = 26;
             this.Tb_ServoSpeed.Text = "4000";
             // 
-            // button2
+            // Bt_Servo1_Teaching
             // 
-            this.button2.Location = new System.Drawing.Point(680, 8);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(48, 24);
-            this.button2.TabIndex = 27;
-            this.button2.Text = "티칭";
-            this.button2.UseVisualStyleBackColor = true;
+            this.Bt_Servo1_Teaching.Location = new System.Drawing.Point(680, 8);
+            this.Bt_Servo1_Teaching.Name = "Bt_Servo1_Teaching";
+            this.Bt_Servo1_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo1_Teaching.TabIndex = 27;
+            this.Bt_Servo1_Teaching.Text = "티칭";
+            this.Bt_Servo1_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo1_Teaching.Click += new System.EventHandler(this.Bt_Servo1_Teaching_Click);
             // 
-            // button3
+            // Bt_Servo2_Teaching
             // 
-            this.button3.Location = new System.Drawing.Point(680, 40);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(48, 24);
-            this.button3.TabIndex = 27;
-            this.button3.Text = "티칭";
-            this.button3.UseVisualStyleBackColor = true;
+            this.Bt_Servo2_Teaching.Location = new System.Drawing.Point(680, 40);
+            this.Bt_Servo2_Teaching.Name = "Bt_Servo2_Teaching";
+            this.Bt_Servo2_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo2_Teaching.TabIndex = 27;
+            this.Bt_Servo2_Teaching.Text = "티칭";
+            this.Bt_Servo2_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo2_Teaching.Click += new System.EventHandler(this.Bt_Servo2_Teaching_Click);
             // 
-            // button4
+            // Bt_Servo3_Teaching
             // 
-            this.button4.Location = new System.Drawing.Point(680, 72);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(48, 24);
-            this.button4.TabIndex = 27;
-            this.button4.Text = "티칭";
-            this.button4.UseVisualStyleBackColor = true;
+            this.Bt_Servo3_Teaching.Location = new System.Drawing.Point(680, 72);
+            this.Bt_Servo3_Teaching.Name = "Bt_Servo3_Teaching";
+            this.Bt_Servo3_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo3_Teaching.TabIndex = 27;
+            this.Bt_Servo3_Teaching.Text = "티칭";
+            this.Bt_Servo3_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo3_Teaching.Click += new System.EventHandler(this.Bt_Servo3_Teaching_Click);
             // 
-            // button5
+            // Bt_Servo4_Teaching
             // 
-            this.button5.Location = new System.Drawing.Point(680, 104);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(48, 24);
-            this.button5.TabIndex = 27;
-            this.button5.Text = "티칭";
-            this.button5.UseVisualStyleBackColor = true;
+            this.Bt_Servo4_Teaching.Location = new System.Drawing.Point(680, 104);
+            this.Bt_Servo4_Teaching.Name = "Bt_Servo4_Teaching";
+            this.Bt_Servo4_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo4_Teaching.TabIndex = 27;
+            this.Bt_Servo4_Teaching.Text = "티칭";
+            this.Bt_Servo4_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo4_Teaching.Click += new System.EventHandler(this.Bt_Servo4_Teaching_Click);
             // 
-            // button6
+            // Bt_Servo5_Teaching
             // 
-            this.button6.Location = new System.Drawing.Point(680, 136);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(48, 24);
-            this.button6.TabIndex = 27;
-            this.button6.Text = "티칭";
-            this.button6.UseVisualStyleBackColor = true;
+            this.Bt_Servo5_Teaching.Location = new System.Drawing.Point(680, 136);
+            this.Bt_Servo5_Teaching.Name = "Bt_Servo5_Teaching";
+            this.Bt_Servo5_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo5_Teaching.TabIndex = 27;
+            this.Bt_Servo5_Teaching.Text = "티칭";
+            this.Bt_Servo5_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo5_Teaching.Click += new System.EventHandler(this.Bt_Servo5_Teaching_Click);
             // 
-            // button7
+            // Bt_Servo6_Teaching
             // 
-            this.button7.Location = new System.Drawing.Point(680, 168);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(48, 24);
-            this.button7.TabIndex = 27;
-            this.button7.Text = "티칭";
-            this.button7.UseVisualStyleBackColor = true;
+            this.Bt_Servo6_Teaching.Location = new System.Drawing.Point(680, 168);
+            this.Bt_Servo6_Teaching.Name = "Bt_Servo6_Teaching";
+            this.Bt_Servo6_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo6_Teaching.TabIndex = 27;
+            this.Bt_Servo6_Teaching.Text = "티칭";
+            this.Bt_Servo6_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo6_Teaching.Click += new System.EventHandler(this.Bt_Servo6_Teaching_Click);
             // 
-            // button8
+            // Bt_Servo7_Teaching
             // 
-            this.button8.Location = new System.Drawing.Point(680, 200);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(48, 24);
-            this.button8.TabIndex = 27;
-            this.button8.Text = "티칭";
-            this.button8.UseVisualStyleBackColor = true;
+            this.Bt_Servo7_Teaching.Location = new System.Drawing.Point(680, 200);
+            this.Bt_Servo7_Teaching.Name = "Bt_Servo7_Teaching";
+            this.Bt_Servo7_Teaching.Size = new System.Drawing.Size(48, 24);
+            this.Bt_Servo7_Teaching.TabIndex = 27;
+            this.Bt_Servo7_Teaching.Text = "티칭";
+            this.Bt_Servo7_Teaching.UseVisualStyleBackColor = true;
+            this.Bt_Servo7_Teaching.Click += new System.EventHandler(this.Bt_Servo7_Teaching_Click);
             // 
             // lb00
             // 
@@ -363,13 +370,13 @@
             this.Controls.Add(this.lb01);
             this.Controls.Add(this.lb10);
             this.Controls.Add(this.lb00);
-            this.Controls.Add(this.button8);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.Bt_Servo7_Teaching);
+            this.Controls.Add(this.Bt_Servo6_Teaching);
+            this.Controls.Add(this.Bt_Servo5_Teaching);
+            this.Controls.Add(this.Bt_Servo4_Teaching);
+            this.Controls.Add(this.Bt_Servo3_Teaching);
+            this.Controls.Add(this.Bt_Servo2_Teaching);
+            this.Controls.Add(this.Bt_Servo1_Teaching);
             this.Controls.Add(this.Tb_ServoSpeed);
             this.Controls.Add(this.Bt_WriteServo);
             this.Controls.Add(this.Tb_Servo7);
@@ -418,13 +425,13 @@
         private System.Windows.Forms.Button Bt_Start;
         private System.Windows.Forms.Button Bt_WriteServo;
         private System.Windows.Forms.TextBox Tb_ServoSpeed;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button8;
+        private System.Windows.Forms.Button Bt_Servo1_Teaching;
+        private System.Windows.Forms.Button Bt_Servo2_Teaching;
+        private System.Windows.Forms.Button Bt_Servo3_Teaching;
+        private System.Windows.Forms.Button Bt_Servo4_Teaching;
+        private System.Windows.Forms.Button Bt_Servo5_Teaching;
+        private System.Windows.Forms.Button Bt_Servo6_Teaching;
+        private System.Windows.Forms.Button Bt_Servo7_Teaching;
         private System.Windows.Forms.Label lb00;
         private System.Windows.Forms.Label lb10;
         private System.Windows.Forms.Label lb01;
