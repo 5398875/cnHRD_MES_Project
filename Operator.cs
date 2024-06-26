@@ -127,7 +127,7 @@ namespace cnHRD_MES_Project
             */
         }
 
-        private TextBox[] ServoInput; //바로 밑 서보 티칭할때 사용
+        //private TextBox[] ServoInput; //바로 밑 서보 티칭할때 사용
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
@@ -256,7 +256,7 @@ namespace cnHRD_MES_Project
             if (Is_Metal == 0) //빈자리를 찾는다
             {
                 temp[0] = 1;
-                temp[1] = 1;
+                temp[1] = 1;    
             }
             else if (Is_Metal == 1) //금속을 찾는다
             {
@@ -282,7 +282,7 @@ namespace cnHRD_MES_Project
 
         void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
-            textBox1.Text = iReload.ToString();
+            //textBox1.Text = iReload.ToString();
             /*
             //---------------------------------------------------■■■이부분은 티칭할때만 사용■■■-------------------
             short[] temp = new short[2];
