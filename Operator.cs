@@ -63,7 +63,7 @@ namespace cnHRD_MES_Project
                     Timer_Slide.Stop();
             }
 
-            Panel_SideMenu.Width = Slide_Width;
+            TPanel_SideMenu.Width = Slide_Width;
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -223,7 +223,7 @@ namespace cnHRD_MES_Project
         void Con_Off() { PLC01.SetDevice("Y28", 0); PLC01.SetDevice("Y2F", 0); } //컨베이어정지
         void CCon_On() { PLC01.SetDevice("Y28", 0); PLC01.SetDevice("Y2F", 1); } //컨베이어역회전
         void Out_Fwd() { PLC01.SetDevice("Y24", 1); PLC01.SetDevice("Y25", 0); } //배출전진
-        void Out_Bwd() { PLC01.SetDevice("Y24", 0); PLC01.SetDevice("Y25", 1); }//배출후진
+        void Out_Bwd() { PLC01.SetDevice("Y24", 0); PLC01.SetDevice("Y25", 1); } //배출후진
         void Stop_Fwd() { PLC01.SetDevice("Y2D", 1); } //스톱전진
         void Stop_Bwd() { PLC01.SetDevice("Y2D", 0); } //스톱후진
         void Comp_Fwd() { PLC01.SetDevice("Y29", 1); PLC01.SetDevice("Y2A", 0); } //흡착전진
@@ -237,17 +237,17 @@ namespace cnHRD_MES_Project
         int iDeliv = 0; //배송모드일때 기동순서
         int iReload = 0; //재적재모드일때 기동순서
         int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
-        bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
+        public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
         int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
         int i;
         DateTime tBefore, tAfter; //공정중에 시간지연이 필요할때 사용
-        short iLocUp, iLocDown;
+        short iLocUp, iLocDown; //서보의 위치결정데이터 1,3,5 and 2,4,6
 
         //---------------------------------도형이 볼것-------------------------------
         public int[] Is_Order() //주문에 물어보는 값을 답하는 함수. [0]:주문여부(0:주문X 1:금속 2:비금속) [1]주소, [2]수량
         {
-            int[] temp = new int[] { 1, 2, 1 };
-            return temp;
+            int[] temp = new int[] { 0, 2, 1 };
+            return temp; //리턴하면 주문에서 빼야한다
         }
 
         public int[] Ware_Location(int Is_Metal) //창고에 Is_Metal을 물어보면 위치를 답하는 함수. [0]:X좌표 [1]:Y좌표
@@ -256,19 +256,19 @@ namespace cnHRD_MES_Project
             if (Is_Metal == 0) //빈자리를 찾는다
             {
                 temp[0] = 1;
-                temp[1] = 1;
+                temp[1] = 2;
             }
             else if (Is_Metal == 1) //금속을 찾는다
             {
                 temp[0] = 1;
-                temp[1] = 1;
+                temp[1] = 2;
             }                 
             else //==2 비금속을 찾는다
             {
                 temp[0] = 1;
-                temp[1] = 1;
+                temp[1] = 2;
             }
-            return temp;
+            return temp; //없으면 이상한 좌표를 리턴
         }
 
         public void Is_Load(string Is_Metal, int X, int Y) //창고에 종류, X좌표, Y좌표를 넣었다는 함수.
@@ -276,42 +276,52 @@ namespace cnHRD_MES_Project
 
         }
 
-        int[] iLocation = { 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
+        private void Bt_Close_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
                                           //위의 Is_Order와 Ware_Location을 상황에 맞게 조합
-                                          //[0]:주문+종류 [1]:X좌표 [2]:Y좌표 [3]:배송지
+                                          //[0]:주문+종류 [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
 
         void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
-            textBox1.Text = iReload.ToString();
             /*
             //---------------------------------------------------■■■이부분은 티칭할때만 사용■■■-------------------
             short[] temp = new short[2];
-            PLC01.ReadBuffer(6, 800, 2, out temp[0]); //시작주소 60 버퍼 800 2워드 읽기
+            PLC01.ReadBuffer(6, 800, 2, out temp[0]); //U6\G800(현재위치)
             int temp2 = (ushort)temp[0] | ((int)temp[1] << 16); //2워드를 int(32비트)로 합치기
             Tb_ServoLoc.Text = (temp2 / 10).ToString() + " um";
             //----------------------------------------------------------------------------------------------------------
             */
             if (bStart == true) //초기상태에서
             {
-                if (Is_Order()[0] != 0) //주문이 있다면
+                if (iLocation[4] != 0) //남은 주문수량이 있다면
+                {
+                    //---------물품이 없다는 창고 신호가 필요
+                }
+                else if (Is_Order()[0] != 0) //주문이 있다면
                 {
                     iMode = 1; //배송모드
-                    iLocation[0] = Is_Order()[0]; //물품종류 기입
+                    iLocation[0] = Is_Order()[0]; //주문여부 or 물품종류를 주문에 물어봐서 기입
                     iLocation[1] = Ware_Location(iLocation[0])[0]; //┐
-                    iLocation[2] = Ware_Location(iLocation[0])[1]; //┴─해당 물품 종류를 창고에 물어봐서 기입
-                    iLocation[3] = Is_Order()[1]; //배송지를 기입
+                    iLocation[2] = Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
+                    iLocation[3] = Is_Order()[1]; //배송지를 주문에 물어봐서 기입
+                    iLocation[4] = Is_Order()[2]; //물품수량을 주문에 물어봐서 기입
                 }
                 else if (Is_Order()[0] == 0) //주문이 없다면
                 {
                     iMode = 2; //적재모드
-                    iLocation[2] = Ware_Location(0)[0]; //┐
-                    iLocation[3] = Ware_Location(0)[1]; //┴─빈자리를 창고에 물어봐서 기입
+                    iLocation[1] = Ware_Location(0)[0]; //┐
+                    iLocation[2] = Ware_Location(0)[1]; //┴─빈자리를 창고에 물어봐서 기입
                 }
-                iLocUp = (short)((iLocation[2] * 2) + 1); //Y좌표가 0,1,2일때 1,3,5로 변환
-                iLocDown = (short)((iLocation[2] + 1) * 2); //Y좌표가 0,1,2일때 2,4,6으로 변환
+                iLocUp = (short)((iLocation[2] * 2) + 1); //Y좌표가 0,1,2일때 위치결정데이터 1,3,5로 변환
+                iLocDown = (short)((iLocation[2] + 1) * 2); //Y좌표가 0,1,2일때 위치결정데이터 2,4,6으로 변환
                 iLoad = 0;   //┐
                 iDeliv = 0;  //├─각 공정순서 초기화
                 iReload = 0; //┘
+                Is_Metal = 2; //물품은 공정초기에 비금속으로 간주, 이후 자기센서가 한번이라도 들어오면 금속(1)로 전환
                 bStart = false; //초기상태 False. 공정시작
             }
 
@@ -401,6 +411,7 @@ namespace cnHRD_MES_Project
                             {
                                 Out_Bwd();
                                 Con_Off();
+                                iLocation[4]--; //배송수량 -1
                                 bStart = true; //공정종료. 초기상태로
                             }
                         }
@@ -411,6 +422,7 @@ namespace cnHRD_MES_Project
                         if (tAfter > tBefore.AddMilliseconds(8000)) //8초지연
                         {
                             Con_Off();
+                            iLocation[4]--; //배송수량 -1
                             bStart = true; //공정종료. 초기상태로
                         }
                         break;
@@ -437,29 +449,29 @@ namespace cnHRD_MES_Project
                         if (Get_Device("X14"))
                             iLoad++;
                         break;
-                    case 3: //송출후진, 컨구동 if 용량형(X0A)까지
+                    case 3: //송출후진, 컨구동 if 용량형(X0A)켜질때 까지 금속판별
                         Trans_Bwd(); Con_On();
+                        if (Get_Device("X09")) //고주파센서(X09)가 한번이라도 감지되면 금속
+                            Is_Metal = 1;
                         if (Get_Device("X0A"))
                             iLoad++;
                         break;
-                    case 4: //금속판별, 스톱다운
-                        Stop_Fwd();
-                        if (Get_Device("X09")) //고주파센서(X09)감지
+                    case 4: //if 용량형(X0A)이 꺼질때 금속판별, 스톱다운 if 스토퍼(X0B)까지
+                        if (Get_Device("X09")) //고주파센서(X09)가 한번이라도 감지되면 금속
                             Is_Metal = 1;
-                        else //고주파센서 감지x
-                            Is_Metal = 2;
-                        PLC01.SetDevice("Y70", 0);
-                        iLoad++;
+                        if (!Get_Device("X0A"))
+                        {
+                            Stop_Fwd();
+                            if (Get_Device("X0B"))
+                                iLoad++;
+                        }
                         break;
                     case 5: //if 스토퍼(X0B) - 컨위치 서보이동 if 이동완료(X6C)까지
-                        if (Get_Device("X0B"))
+                        Servo_Move(7);
+                        if (!Get_Device("X6C"))
                         {
-                            Servo_Move(7);
-                            if (!Get_Device("X6C"))
-                            {
-                                tBefore = DateTime.Now; //다음단계 500ms 지연을 위함
-                                iLoad++;
-                            }
+                            tBefore = DateTime.Now;
+                            iLoad++;
                         }
                         break;
                     case 6: //스톱업, 컨정지, 흡착온 - 1위치 서보이동 if 이동완료(X6C)까지                  
