@@ -66,14 +66,23 @@ namespace cnHRD_MES_Project
             if (X >= 0 && X < WH_Location.GetLength(0) && Y >= 0 && Y < WH_Location.GetLength(1))
             {
                 WH_Location[X, Y] = Is_Metal; //주어진 위치에 금속, 비금속 값 저장
+                Update_Type(X + 1, Y + 1, WH_Location[X, Y]);   //위치에 저장된 종류 업데이트
             }
         }
 
         public void Take_From(int X, int Y)
         {
-            if (X >= 0 && X < WH_Location.GetLength(0) && Y >= 0 && Y < WH_Location.GetLength(1))
-            {
                 WH_Location[X, Y] = 0; //주어진 위치의 금속,비금속 제거
+                Update_Type(X + 1, Y + 1, 0);  //위치에 저장된 종류 업데이트
+        }
+        private void Update_Type(int iXCount, int iYCount, int Type)
+        {
+            string labelName = $"lb{iYCount}{iXCount}";
+            Control[] controls = this.Controls.Find(labelName, true);
+
+            if (controls.Length > 0 && controls[0] is Label label)
+            {
+                label.Text = Type.ToString();
             }
         }
     }
