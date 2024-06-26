@@ -129,7 +129,7 @@ namespace cnHRD_MES_Project
             */
         }
 
-        private TextBox[] ServoInput; //바로 밑 서보 티칭할때 사용
+        //private TextBox[] ServoInput; //바로 밑 서보 티칭할때 사용
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
