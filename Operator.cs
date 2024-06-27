@@ -225,8 +225,6 @@ namespace cnHRD_MES_Project
             }
         }
 
-        //public Warehouse WH = new Warehouse();
-
         //서보위치를 티칭하기 위한 버튼들
         private void Bt_Servo1_Teaching_Click(object sender, EventArgs e) { Tb_Servo1.Text = Tb_ServoLoc.Text; }
         private void Bt_Servo2_Teaching_Click(object sender, EventArgs e) { Tb_Servo2.Text = Tb_ServoLoc.Text; }
@@ -249,6 +247,7 @@ namespace cnHRD_MES_Project
         void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
             Warehouse WH = main.Ware1;
+            Order ORD = main.Ord1;
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
@@ -258,14 +257,14 @@ namespace cnHRD_MES_Project
                     iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
                     iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
                 }
-                else if (Is_Order()[0] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //주문이 있고 그 물품이 창고에 있다면
+                else if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //주문이 있고 그 물품이 창고에 있다면
                 {
                     iMode = 1; //배송모드
-                    iLocation[0] = Is_Order()[0]; //주문여부 or 물품종류를 주문에 물어봐서 기입
+                    iLocation[0] = ORD.Is_Order()[0]; //주문여부 or 물품종류를 주문에 물어봐서 기입
                     iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
                     iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
-                    iLocation[3] = Is_Order()[1]; //배송지를 주문에 물어봐서 기입
-                    iLocation[4] = Is_Order()[2]; //물품수량을 주문에 물어봐서 기입
+                    iLocation[3] = ORD.Is_Order()[1]; //배송지를 주문에 물어봐서 기입
+                    iLocation[4] = ORD.Is_Order()[2]; //물품수량을 주문에 물어봐서 기입
                 }
                 else if (Is_Order()[0] == 0) //위의 주문이 용의치 않으면
                 {
@@ -293,6 +292,7 @@ namespace cnHRD_MES_Project
                         else
                             Ware_Bwd();
                         if (!Get_Device("X6C"))
+                            ORD.Deliv_Start();
                             iDeliv++;
                         break;
                     case 1: //흡착전진 if 흡착전(X1A)까지
@@ -557,6 +557,4 @@ namespace cnHRD_MES_Project
             }
         }
     }
-
-   // public static WareHouseEventHandler WareHouseEvent;
 }

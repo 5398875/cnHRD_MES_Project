@@ -11,21 +11,18 @@ using System.Windows.Forms;
 
 namespace cnHRD_MES_Project
 {
-    public delegate void WareHouseEventHandler(int[] iLocation);
-
     public partial class Main : Form
     {
         System.Threading.Timer Timer_Slide; //슬라이드용 타이머
 
-        cnHRD_MES_Project.Operator Oper = new cnHRD_MES_Project.Operator();      //┐
-        Project_v01.Cockpit Cock = new Project_v01.Cockpit();                    //┤
-        cnHRD_MES_Project.Warehouse Ware = new cnHRD_MES_Project.Warehouse();    //┼─각 폼들을 선언
-        cnHRD_MES_Project.Order_Form Order = new cnHRD_MES_Project.Order_Form(); //┘
+        cnHRD_MES_Project.Operator Oper = new cnHRD_MES_Project.Operator();   //┐
+        Project_v01.Cockpit Cock = new Project_v01.Cockpit();                 //┤
+        cnHRD_MES_Project.Warehouse Ware = new cnHRD_MES_Project.Warehouse(); //┼─각 폼들을 선언
+        cnHRD_MES_Project.Order Ord = new cnHRD_MES_Project.Order();          //┘
 
         public Main()
         {
             InitializeComponent();
-            //Operator.WareHouseEven
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -58,6 +55,7 @@ namespace cnHRD_MES_Project
         int Slide_Width = 50; //초기 슬라이드메뉴 사이즈 = 50
 
         public Warehouse Ware1 { get => Ware; set => Ware = value; }
+        public Order Ord1 { get => Ord; set => Ord = value; }
 
         private void Timer_Sl(object sender) //슬라이드 메뉴 사이즈 변경
         {
@@ -111,10 +109,10 @@ namespace cnHRD_MES_Project
 
         private void Bt_Order_Form_Click(object sender, EventArgs e) // Order_Form 버튼
         {
-            Order.TopLevel = false;
+            Ord.TopLevel = false;
             Pn_Main.Controls.Clear();
-            Pn_Main.Controls.Add(Order);
-            Order.Show();
+            Pn_Main.Controls.Add(Ord);
+            Ord.Show();
         }
 
         private void Pn_Main_Paint(object sender, PaintEventArgs e)
