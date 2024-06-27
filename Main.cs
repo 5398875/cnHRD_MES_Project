@@ -111,5 +111,10 @@ namespace cnHRD_MES_Project
             Pn_Main.Controls.Add(Order);
             Order.Show();
         }
+
+        private void Pn_Main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
