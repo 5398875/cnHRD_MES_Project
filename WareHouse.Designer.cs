@@ -61,7 +61,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.pb_DockMonitor);
-            this.groupBox1.Location = new System.Drawing.Point(560, 8);
+            this.groupBox1.Location = new System.Drawing.Point(216, 8);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(416, 432);
             this.groupBox1.TabIndex = 0;
@@ -172,7 +172,7 @@
             // 
             // pb_DockMonitor
             // 
-            this.pb_DockMonitor.Location = new System.Drawing.Point(3, 35);
+            this.pb_DockMonitor.Location = new System.Drawing.Point(0, 32);
             this.pb_DockMonitor.Name = "pb_DockMonitor";
             this.pb_DockMonitor.Size = new System.Drawing.Size(413, 389);
             this.pb_DockMonitor.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
