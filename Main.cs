@@ -15,10 +15,10 @@ namespace cnHRD_MES_Project
     {
         System.Threading.Timer Timer_Slide; //슬라이드용 타이머
 
-        public cnHRD_MES_Project.Operator Operator = new cnHRD_MES_Project.Operator();    //┐
-        public Project_v01.Cockpit Cockpit = new Project_v01.Cockpit();                   //┤
-        public cnHRD_MES_Project.Warehouse Warehouse = new cnHRD_MES_Project.Warehouse(); //┼─각 폼들을 선언
-        public cnHRD_MES_Project.Order Order = new cnHRD_MES_Project.Order();             //┘
+        cnHRD_MES_Project.Operator Oper = new cnHRD_MES_Project.Operator();      //┐
+        Project_v01.Cockpit Cock = new Project_v01.Cockpit();                    //┤
+        cnHRD_MES_Project.Warehouse Ware = new cnHRD_MES_Project.Warehouse();    //┼─각 폼들을 선언
+        cnHRD_MES_Project.Order_Form Order = new cnHRD_MES_Project.Order_Form(); //┘
 
         public Main()
         {
@@ -82,28 +82,26 @@ namespace cnHRD_MES_Project
 
         private void Bt_Operator_Click(object sender, EventArgs e) // Operator 버튼
         {
-            Operator.TopLevel = false;
+            Oper.TopLevel = false;
             Pn_Main.Controls.Clear();
-            Pn_Main.Controls.Add(Operator);
-            Operator.Show();
-            
+            Pn_Main.Controls.Add(Oper);
+            Oper.Show();
         }
 
         private void Bt_Cockpit_Click(object sender, EventArgs e) // Cockpit 버튼
         {
-            Cockpit.TopLevel = false;
+            Cock.TopLevel = false;
             Pn_Main.Controls.Clear();
-            Pn_Main.Controls.Add(Cockpit);
-            Cockpit.Show();
+            Pn_Main.Controls.Add(Cock);
+            Cock.Show();
         }
 
         private void Bt_WareHouse_Click(object sender, EventArgs e) // WareHouse 버튼
         {
-            Warehouse.TopLevel = false;
+            Ware.TopLevel = false;
             Pn_Main.Controls.Clear();
-            Pn_Main.Controls.Add(Warehouse);
-            Warehouse.Show();
-            Warehouse.TopLevel = true;
+            Pn_Main.Controls.Add(Ware);
+            Ware.Show();
         }
 
         private void Bt_Order_Form_Click(object sender, EventArgs e) // Order_Form 버튼
@@ -113,7 +111,5 @@ namespace cnHRD_MES_Project
             Pn_Main.Controls.Add(Order);
             Order.Show();
         }
-
-        
     }
 }

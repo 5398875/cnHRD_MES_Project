@@ -92,9 +92,7 @@ namespace cnHRD_MES_Project
             }
             else
             {
-                var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : "
-                    + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : "
-                    + tb_Quantity.Text, "[주문 확인]", MessageBoxButtons.OKCancel);
+                var OrderCheck = MessageBox.Show("품목 : " + cb_Type.SelectedItem + System.Environment.NewLine + "주문지 : " + cb_Location.SelectedItem + System.Environment.NewLine + "수량 : " + tb_Quantity.Text, "[주문 확인]", MessageBoxButtons.OKCancel);
                 if (OrderCheck == DialogResult.OK)
                 {
                     if (cb_Type.SelectedIndex == 0)  //품목이 비금일 때
