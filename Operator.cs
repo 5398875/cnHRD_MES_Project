@@ -75,8 +75,8 @@ namespace cnHRD_MES_Project
         {
             if (Get_Device("X60") && Get_Device("Y60")) //PLC레디(Y60),서보레디(X60)이 전부 true면
             {
-                Lb_ServoConnect.Text = "서보 준비완료";  //┐
-                Lb_ServoConnect.ForeColor = Color.Green; //┴─초록글씨로 "서보 준비완료"
+                Lb_ServoConnect.Text = "서보 준비완료";      //┐
+                Lb_ServoConnect.ForeColor = Color.Green;    //┴─초록글씨로 "서보 준비완료"
                 Bt_Start.Enabled = true;     //┐
                 Bt_OpenServo.Enabled = false;//┴─버튼의 중복동작을 방지하기 위함
                 Servo_Move(9001); //원점복귀
@@ -556,5 +556,7 @@ namespace cnHRD_MES_Project
                 }
             }
         }
+        }        
+        //public string ResultLog()
     }
 }
