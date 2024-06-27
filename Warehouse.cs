@@ -18,13 +18,13 @@ namespace cnHRD_MES_Project
         }
 
         public int[,] WH_Location = new int[2, 3]; //3행2열 배열 생성, 초기값은 전부 0
-        int initial_Value = 0;  //초기값을 0으로 설정
+        int initial_Value = 0;  //초기값은 0이라는 정수형 변수 선언
 
-        private void Warehouse_Load(object sender, EventArgs e)
+        private void Warehouse_Load(object sender, EventArgs e)//폼 실행시,
         {
             pb_DockMonitor.Image = Properties.Resources.loading_dock;
             
-            for (int iYCount = 0; iYCount < WH_Location.GetLength(1); iYCount++)
+            for (int iYCount = 0; iYCount < WH_Location.GetLength(1); iYCount++)//초기 창고 라벨 표시값은 0     
             {
                 for (int iXCount = 0; iXCount < WH_Location.GetLength(0); iXCount++)
 
@@ -33,7 +33,7 @@ namespace cnHRD_MES_Project
             
         }
 
-        private int[] FindLocationXY(int Type)
+        private int[] FindLocationXY(int Type)  //동작부에서 요구한 정보와 일치하는 위치를 2차원 배열에서 찾는 함수
         {
             for (int iYCount = 0; iYCount < WH_Location.GetLength(1); iYCount++)
             {
@@ -48,7 +48,7 @@ namespace cnHRD_MES_Project
             return new int[] { 10, 10 }; //조건에 맞는 위치를 찾지 못한 경우 {10, 10} 반환
         }
 
-        public int[] Ware_Location(int Is_Metal)
+        public int[] Ware_Location(int Is_Metal)    //동작부에서 요청한 빈자리/금,비금 창고 위치 반환함수
         {
             int[] WLocation = { 0, 0 };
 
@@ -70,7 +70,7 @@ namespace cnHRD_MES_Project
             return WLocation;
         }
 
-        public void Is_Load(int Is_Metal, int X, int Y)
+        public void Is_Load(int Is_Metal, int X, int Y) //동작부에서 넘긴 창고 적재 위치저장 함수
         {
             if (X >= 0 && X < WH_Location.GetLength(0) && Y >= 0 && Y < WH_Location.GetLength(1))
             {
@@ -79,15 +79,15 @@ namespace cnHRD_MES_Project
             }
         }
 
-        public void Take_From(int X, int Y)
+        public void Take_From(int X, int Y) //동작부에서 창고 적재물 추출 시 해당하는 창고 위치정보 클리어
         {
                 WH_Location[X, Y] = 0; //주어진 위치의 금속,비금속 제거
-                Update_Type(X + 1, Y + 1, 0);  //위치의 라벨에 저장된 종류 업데이트
+                Update_Type(X + 1, Y + 1, 0);  //위치에서 추출해간 상품 라벨에서 제거
         }
 
-        string sType;
+        string sType;   //라벨에 종류 네이밍을 위한 string 선언
 
-        private void Update_Type(int X, int Y, int Type)    //매서드 선언, 3개의 매개변수 받아옴
+        private void Update_Type(int X, int Y, int Type)    //라벨 네이밍을 위한 매서드 선언, 3개의 매개변수 받아옴
         {
             string lbName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
             Control[] controls = this.Controls.Find(lbName, true);   
