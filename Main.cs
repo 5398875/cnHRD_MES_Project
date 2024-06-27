@@ -11,6 +11,8 @@ using System.Windows.Forms;
 
 namespace cnHRD_MES_Project
 {
+    public delegate void WareHouseEventHandler(int[] iLocation);
+
     public partial class Main : Form
     {
         System.Threading.Timer Timer_Slide; //슬라이드용 타이머
@@ -23,11 +25,12 @@ namespace cnHRD_MES_Project
         public Main()
         {
             InitializeComponent();
+            //Operator.WareHouseEven
         }
 
         private void Main_Load(object sender, EventArgs e)
         {
-
+            Oper.setMain(this);
         }
             
 
@@ -54,7 +57,9 @@ namespace cnHRD_MES_Project
 
         int Slide_Width = 50; //초기 슬라이드메뉴 사이즈 = 50
 
-            private void Timer_Sl(object sender) //슬라이드 메뉴 사이즈 변경
+        public Warehouse Ware1 { get => Ware; set => Ware = value; }
+
+        private void Timer_Sl(object sender) //슬라이드 메뉴 사이즈 변경
         {
             if (CheckBoxHide.Checked == false)
             {
@@ -98,10 +103,10 @@ namespace cnHRD_MES_Project
 
         private void Bt_WareHouse_Click(object sender, EventArgs e) // WareHouse 버튼
         {
-            Ware.TopLevel = false;
+            Ware1.TopLevel = false;
             Pn_Main.Controls.Clear();
-            Pn_Main.Controls.Add(Ware);
-            Ware.Show();
+            Pn_Main.Controls.Add(Ware1);
+            Ware1.Show();
         }
 
         private void Bt_Order_Form_Click(object sender, EventArgs e) // Order_Form 버튼
@@ -111,5 +116,14 @@ namespace cnHRD_MES_Project
             Pn_Main.Controls.Add(Order);
             Order.Show();
         }
+
+        private void Pn_Main_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+
     }
+
+    
 }

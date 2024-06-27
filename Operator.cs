@@ -18,6 +18,13 @@ namespace cnHRD_MES_Project
         System.Windows.Forms.Timer Timer_Jog = new System.Windows.Forms.Timer(); //조그용 타이머
         ActUtlType PLC01 = new ActUtlType();
 
+        Main main = null;
+
+        public void setMain(Main main)
+        {
+            this.main = main; 
+        }
+
         public Operator()
         {
             InitializeComponent();
@@ -218,7 +225,7 @@ namespace cnHRD_MES_Project
             }
         }
 
-        public Warehouse WH = new Warehouse();
+        //public Warehouse WH = new Warehouse();
 
         //서보위치를 티칭하기 위한 버튼들
         private void Bt_Servo1_Teaching_Click(object sender, EventArgs e) { Tb_Servo1.Text = Tb_ServoLoc.Text; }
@@ -241,12 +248,7 @@ namespace cnHRD_MES_Project
 
         void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
-            lb00.Text = WH.WH_Location[0, 0].ToString();
-            lb01.Text = WH.WH_Location[0, 1].ToString();
-            lb02.Text = WH.WH_Location[0, 2].ToString();
-            lb10.Text = WH.WH_Location[1, 0].ToString();
-            lb11.Text = WH.WH_Location[1, 1].ToString();
-            lb12.Text = WH.WH_Location[1, 2].ToString();
+            Warehouse WH = main.Ware1;
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
@@ -553,7 +555,10 @@ namespace cnHRD_MES_Project
                         break;
                 }
             }
+        }
         }        
         //public string ResultLog()
     }
+
+   // public static WareHouseEventHandler WareHouseEvent;
 }

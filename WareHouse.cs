@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -22,18 +23,10 @@ namespace cnHRD_MES_Project
 
         private void Warehouse_Load(object sender, EventArgs e)//폼 실행시,
         {
-            pb_DockMonitor.Image = Properties.Resources.loading_dock;
-            
-            for (int iYCount = 0; iYCount < WH_Location.GetLength(1); iYCount++)//초기 창고 라벨 표시값은 0     
-            {
-                for (int iXCount = 0; iXCount < WH_Location.GetLength(0); iXCount++)
-
-                    Update_Type(iXCount + 1, iYCount + 1, initial_Value);
-            }
-            
+            pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
         }
 
-        private int[] FindLocationXY(int Type)  //동작부에서 요구한 정보와 일치하는 위치를 2차원 배열에서 찾는 함수
+        private int[] FindLocationXY(int Type)
         {
             for (int iYCount = 0; iYCount < WH_Location.GetLength(1); iYCount++)
             {
@@ -75,7 +68,7 @@ namespace cnHRD_MES_Project
             if (X >= 0 && X < WH_Location.GetLength(0) && Y >= 0 && Y < WH_Location.GetLength(1))
             {
                 WH_Location[X, Y] = Is_Metal; //주어진 위치에 금속, 비금속 값 저장
-                Update_Type(X + 1, Y + 1, Is_Metal);   //위치의 라벨에 저장된 종류 업데이트
+                Update_Type(X + 1, Y + 1, WH_Location[X, Y]);   //위치에 저장된 종류 업데이트
             }
         }
 

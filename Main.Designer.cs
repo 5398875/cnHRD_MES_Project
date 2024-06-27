@@ -160,6 +160,7 @@
             this.Pn_Main.Name = "Pn_Main";
             this.Pn_Main.Size = new System.Drawing.Size(936, 560);
             this.Pn_Main.TabIndex = 26;
+            this.Pn_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.Pn_Main_Paint);
             // 
             // label1
             // 
