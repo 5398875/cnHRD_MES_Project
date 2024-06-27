@@ -217,6 +217,7 @@ namespace cnHRD_MES_Project
                 PLC01.WriteBuffer(6, 2007 + (i * 10), 1, (short)uServo_Loc[1]); //┴─U6\G20i6번에 위치
             }
         }
+        
 
         public Warehouse WH = new Warehouse();
 

@@ -34,8 +34,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.cb_Type = new System.Windows.Forms.ComboBox();
             this.cb_Location = new System.Windows.Forms.ComboBox();
-            this.tb_Quantity = new System.Windows.Forms.TextBox();
             this.bt_Order = new System.Windows.Forms.Button();
+            this.tb_Quantity = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -103,14 +103,6 @@
             this.cb_Location.Size = new System.Drawing.Size(272, 35);
             this.cb_Location.TabIndex = 8;
             // 
-            // tb_Quantity
-            // 
-            this.tb_Quantity.Location = new System.Drawing.Point(48, 448);
-            this.tb_Quantity.Name = "tb_Quantity";
-            this.tb_Quantity.Size = new System.Drawing.Size(272, 39);
-            this.tb_Quantity.TabIndex = 9;
-            this.tb_Quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Quantity_KeyPress);
-            // 
             // bt_Order
             // 
             this.bt_Order.Location = new System.Drawing.Point(568, 144);
@@ -120,6 +112,14 @@
             this.bt_Order.Text = "주문";
             this.bt_Order.UseVisualStyleBackColor = true;
             this.bt_Order.Click += new System.EventHandler(this.bt_Order_Click);
+            // 
+            // tb_Quantity
+            // 
+            this.tb_Quantity.Location = new System.Drawing.Point(48, 448);
+            this.tb_Quantity.Name = "tb_Quantity";
+            this.tb_Quantity.Size = new System.Drawing.Size(272, 39);
+            this.tb_Quantity.TabIndex = 9;
+            this.tb_Quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_Quantity_KeyPress);
             // 
             // Order_Form
             // 
@@ -135,7 +135,6 @@
             this.Controls.Add(this.cb_Type);
             this.Controls.Add(this.label2);
             this.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(6, 5, 6, 5);
             this.Name = "Order_Form";
             this.Text = "Customer Order UI";
@@ -152,7 +151,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cb_Type;
         private System.Windows.Forms.ComboBox cb_Location;
-        private System.Windows.Forms.TextBox tb_Quantity;
         private System.Windows.Forms.Button bt_Order;
+        private System.Windows.Forms.TextBox tb_Quantity;
     }
 }
