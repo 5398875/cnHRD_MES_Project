@@ -252,32 +252,25 @@ namespace cnHRD_MES_Project
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
 
-            textBox1.Text = iMode.ToString();
-            textBox2.Text = iDeliv.ToString();
+            textBox3.Text = iLocation[0].ToString() + " " + iLocation[1] + " " + iLocation[2] + " " + iLocation[3] + " " + iLocation[4];
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
-                if (iLocation[4] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //남은 주문수량이 있고 그 물품이 창고에 있다면
-                {
-                    iMode = 1; //배송모드 - 배송할 물품이나 수량은 그대로
-                    iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
-                    iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
-                }
-                else if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //주문이 있고 그 물품이 창고에 있다면
+                if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(ORD.Is_Order()[0])[0] != 10) //주문이 있고 그게 창고에 있다면
                 {
                     iMode = 1; //배송모드
                     iLocation[0] = ORD.Is_Order()[0]; //주문여부 or 물품종류를 주문에 물어봐서 기입
                     iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
                     iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
                     iLocation[3] = ORD.Is_Order()[1]; //배송지를 주문에 물어봐서 기입
-                    iLocation[4] = ORD.Is_Order()[2]; //물품수량을 주문에 물어봐서 기입
                 }
-                else if (ORD.Is_Order()[0] == 0) //위의 주문이 용의치 않으면
+                else // 주문이 없거나 주문물품이 창고에 없다면
                 {
-                    iMode = 2; //적재모드
+                    iMode = 2; //기본적재모드
                     iLocation[1] = WH.Ware_Location(0)[0]; //┐
                     iLocation[2] = WH.Ware_Location(0)[1]; //┴─빈자리를 창고에 물어봐서 기입
                 }
+                
                 iLocUp = (short)(((2 - iLocation[2]) * 2) + 1); //Y좌표가 0,1,2일때 위치결정데이터 5,3,1로 변환
                 iLocDown = (short)(((2 - iLocation[2]) + 1) * 2); //Y좌표가 0,1,2일때 위치결정데이터 6,4,2으로 변환
                 iLoad = 0;   //┐
@@ -301,6 +294,7 @@ namespace cnHRD_MES_Project
                             Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Servo_Move(iLocUp); //1,3,5위치
+                        ORD.Deliv_Check();
                         if (iLocation[1] == 0) //창고이동
                             Ware_Fwd();
                         else
@@ -311,6 +305,10 @@ namespace cnHRD_MES_Project
                     case 1: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
                         if (Get_Device("X1A"))
+                        {
+                            Stop_Fwd(); //물품이 걸리지 않게 내려놓는다
+                            iDeliv++;
+                        }
                             ORD.Deliv_Start();
                         iDeliv++;
                         break;
@@ -355,6 +353,7 @@ namespace cnHRD_MES_Project
                         {
                             Servo_Move(3);
                             CCon_On();
+                            Stop_Bwd();
                             if (Get_Device("X0A"))
                                 iDeliv++;
                         }
@@ -363,16 +362,20 @@ namespace cnHRD_MES_Project
                         if (!Get_Device("X0A"))
                         {
                             if (iLocation[0] == 1 && Get_Device("X09") || (iLocation[0] == 2 && !Get_Device("X09")))
-                            //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때
+                            //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때 = 주문과 맞을때
                             {
+                                ORD.Deliv_Start();
                                 tBefore = DateTime.Now;
                                 if (iLocation[3] == 1) //배송지가 1이면
                                     iDeliv = 8;        //8번공정으로
                                 else            //배송지가 0이면
                                     iDeliv = 9; //9번공정으로
                             }
-                            else           //주문과 다를경우
+                            else //주문과 다를경우
+                            {
+                                ORD.Reload_Start();
                                 iMode = 3; //재적재모드로
+                            }
                         }
                         break;
                     case 8: //배송지1 : 2초후 배출전진 if 배출전(X16)까지
@@ -386,6 +389,7 @@ namespace cnHRD_MES_Project
                                 Out_Bwd();
                                 Con_Off();
                                 iLocation[4]--; //배송수량 -1
+                                ORD.Deliv_Complete();
                                 bStart = true; //공정종료. 초기상태로
                             }
                         }
@@ -397,6 +401,7 @@ namespace cnHRD_MES_Project
                         {
                             Con_Off();
                             iLocation[4]--; //주문수량 -1
+                            ORD.Deliv_Complete();
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
@@ -586,6 +591,7 @@ namespace cnHRD_MES_Project
                         {
                             if (Is_Metal == 1) WH.Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
                             else if (Is_Metal == 2) WH.Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
+                            ORD.Reload_Complete();
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
