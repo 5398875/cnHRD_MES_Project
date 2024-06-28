@@ -86,7 +86,6 @@ namespace cnHRD_MES_Project
             return iOrder;
         }
 
-
         public void Deliv_Start()
         {
             Lv_Order.Items.RemoveAt(0);

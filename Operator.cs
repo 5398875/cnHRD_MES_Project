@@ -181,23 +181,17 @@ namespace cnHRD_MES_Project
         void CompPad_On() { PLC01.SetDevice("Y2E", 1); } //흡착패드온
         void CompPad_Off() { PLC01.SetDevice("Y2E", 0); } //흡착패드오프
 
-        int iLoad = 0; //적재모드일때 기동순서
-        int iDeliv = 0; //배송모드일때 기동순서
-        int iReload = 0; //재적재모드일때 기동순서
+        public int iLoad = 0; //적재모드일때 기동순서
+        public int iDeliv = 0; //배송모드일때 기동순서
+        public int iReload = 0; //재적재모드일때 기동순서
         int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
         public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
-        int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
+        public int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
         int i;
         DateTime tBefore, tAfter; //공정중에 시간지연이 필요할때 사용
         short iLocUp, iLocDown; //서보의 위치결정데이터 1,3,5 and 2,4,6
         int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
         //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
-
-        public int[] Is_Order() //주문에 물어보는 값을 답하는 함수. [0]:주문여부(0:주문X 1:금속 2:비금속) [1]주소, [2]수량
-        {
-            int[] temp = new int[] { 0, 2, 1 };
-            return temp; //리턴하면 주문에서 빼야한다
-        }
 
         private TextBox[] ServoInput; //서보 티칭에 사용
 
@@ -249,6 +243,9 @@ namespace cnHRD_MES_Project
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
 
+            textBox1.Text = iMode.ToString();
+            textBox2.Text = iDeliv.ToString();
+
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
                 if (iLocation[4] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //남은 주문수량이 있고 그 물품이 창고에 있다면
@@ -266,7 +263,7 @@ namespace cnHRD_MES_Project
                     iLocation[3] = ORD.Is_Order()[1]; //배송지를 주문에 물어봐서 기입
                     iLocation[4] = ORD.Is_Order()[2]; //물품수량을 주문에 물어봐서 기입
                 }
-                else if (Is_Order()[0] == 0) //위의 주문이 용의치 않으면
+                else if (ORD.Is_Order()[0] == 0) //위의 주문이 용의치 않으면
                 {
                     iMode = 2; //적재모드
                     iLocation[1] = WH.Ware_Location(0)[0]; //┐
@@ -292,12 +289,12 @@ namespace cnHRD_MES_Project
                         else
                             Ware_Bwd();
                         if (!Get_Device("X6C"))
-                            ORD.Deliv_Start();
                             iDeliv++;
                         break;
                     case 1: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
                         if (Get_Device("X1A"))
+                            ORD.Deliv_Start();
                             iDeliv++;
                         break;
                     case 2: //2위치 서보이동 if 이동완료(X6C)까지
@@ -556,7 +553,5 @@ namespace cnHRD_MES_Project
                 }
             }
         }
-        }        
-        //public string ResultLog()
     }
 }
