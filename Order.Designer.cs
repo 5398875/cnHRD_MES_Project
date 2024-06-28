@@ -35,6 +35,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // Lv_Order
@@ -45,13 +46,14 @@
             this.columnHeader3,
             this.columnHeader4,
             this.columnHeader5,
-            this.columnHeader6});
+            this.columnHeader6,
+            this.columnHeader7});
             this.Lv_Order.FullRowSelect = true;
             this.Lv_Order.GridLines = true;
             this.Lv_Order.HideSelection = false;
-            this.Lv_Order.Location = new System.Drawing.Point(40, 128);
+            this.Lv_Order.Location = new System.Drawing.Point(16, 120);
             this.Lv_Order.Name = "Lv_Order";
-            this.Lv_Order.Size = new System.Drawing.Size(680, 288);
+            this.Lv_Order.Size = new System.Drawing.Size(768, 320);
             this.Lv_Order.TabIndex = 0;
             this.Lv_Order.UseCompatibleStateImageBehavior = false;
             this.Lv_Order.View = System.Windows.Forms.View.Details;
@@ -70,15 +72,23 @@
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "수량";
+            this.columnHeader4.Text = "주문수량";
+            this.columnHeader4.Width = 85;
             // 
             // columnHeader5
             // 
-            this.columnHeader5.Text = "접수시간";
+            this.columnHeader5.Text = "배송완료수량";
+            this.columnHeader5.Width = 142;
             // 
             // columnHeader6
             // 
-            this.columnHeader6.Text = "상태";
+            this.columnHeader6.Text = "접수시간";
+            this.columnHeader6.Width = 148;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "상태";
+            this.columnHeader7.Width = 87;
             // 
             // Order
             // 
@@ -86,6 +96,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Lv_Order);
+            this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Order";
             this.Text = "Form1";
@@ -102,5 +113,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader5;
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ListView Lv_Order;
+        private System.Windows.Forms.ColumnHeader columnHeader7;
     }
 }

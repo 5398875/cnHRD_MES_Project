@@ -391,18 +391,18 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(360, 328);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 15);
+            this.label1.Size = new System.Drawing.Size(54, 15);
             this.label1.TabIndex = 30;
-            this.label1.Text = "imode";
+            this.label1.Text = "icurrent";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(496, 328);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(40, 15);
+            this.label2.Size = new System.Drawing.Size(69, 15);
             this.label2.TabIndex = 31;
-            this.label2.Text = "ideliv";
+            this.label2.Text = "icomplete";
             // 
             // label3
             // 
