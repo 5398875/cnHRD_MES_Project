@@ -28,6 +28,8 @@ namespace cnHRD_MES_Project
         private void Main_Load(object sender, EventArgs e)
         {
             Oper.setMain(this);
+            Ord.TopLevel = false;
+            Ord.Order_Load(sender, e);
         }
             
 

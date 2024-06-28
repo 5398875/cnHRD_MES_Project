@@ -9,19 +9,20 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml.Schema;
+using System.Security.Cryptography;
 
 namespace cnHRD_MES_Project
 {
     public partial class Order : Form
     {
-        System.Windows.Forms.Timer Timer_Order = new System.Windows.Forms.Timer();
+        public System.Windows.Forms.Timer Timer_Order = new System.Windows.Forms.Timer();
 
         public Order()
         {
             InitializeComponent();
         }
 
-        private void Order_Load(object sender, EventArgs e)
+        public void Order_Load(object sender, EventArgs e)
         {
             Timer_Order.Interval = 1000;
             Timer_Order.Tick += new EventHandler(Timer_Or);
@@ -79,9 +80,9 @@ namespace cnHRD_MES_Project
                 else if (Lv_Order.Items[0].SubItems[1].Text == "비금속")
                     iOrder[0] = 2;
                 if (Lv_Order.Items[0].SubItems[1].Text == "서울")
-                    iOrder[1] = 1;
+                    iOrder[1] = 0;
                 else if (Lv_Order.Items[0].SubItems[1].Text == "부산")
-                    iOrder[1] = 2;
+                    iOrder[1] = 1;
             }
             return iOrder;
         }

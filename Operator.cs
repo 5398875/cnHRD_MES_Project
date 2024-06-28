@@ -245,6 +245,7 @@ namespace cnHRD_MES_Project
 
             textBox1.Text = iMode.ToString();
             textBox2.Text = iDeliv.ToString();
+            textBox3.Text = iLocation[0].ToString() + iLocation[1] + iLocation[2] + iLocation[3] + iLocation[4];
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
@@ -254,7 +255,7 @@ namespace cnHRD_MES_Project
                     iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
                     iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
                 }
-                else if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //주문이 있고 그 물품이 창고에 있다면
+                else if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(ORD.Is_Order()[0])[0] != 10) //주문이 있고 그 물품이 창고에 있다면
                 {
                     iMode = 1; //배송모드
                     iLocation[0] = ORD.Is_Order()[0]; //주문여부 or 물품종류를 주문에 물어봐서 기입
@@ -294,8 +295,11 @@ namespace cnHRD_MES_Project
                     case 1: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
                         if (Get_Device("X1A"))
+                        {
                             ORD.Deliv_Start();
+                            Stop_Fwd(); //물품이 걸리지 않게 내려놓는다
                             iDeliv++;
+                        }
                         break;
                     case 2: //2위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(iLocDown); //2,4,6위치
@@ -338,6 +342,7 @@ namespace cnHRD_MES_Project
                         {
                             Servo_Move(3);
                             CCon_On();
+                            Stop_Bwd();
                             if (Get_Device("X0A"))
                                 iDeliv++;
                         }
