@@ -20,9 +20,10 @@ namespace cnHRD_MES_Project
 
         Main main = null;
 
+
         public void setMain(Main main)
         {
-            this.main = main; 
+            this.main = main;
         }
 
         public Operator()
@@ -36,6 +37,7 @@ namespace cnHRD_MES_Project
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
+
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -98,70 +100,70 @@ namespace cnHRD_MES_Project
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
-            
+
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
 
             Timer_Operation.Start(); //타이머 시작
         }
 
-       private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
-       {
-           Timer_Operation.Stop(); //타이머 정지
-           PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
-           Sup_Bwd();     //┐
-           Trans_Bwd();   //┤
-           Con_Off();     //┤
-           Stop_Bwd();    //┼─공정 초기화
-           Out_Bwd();     //┤
-           Comp_Bwd();    //┤
-           CompPad_Off(); //┘
-           Bt_Start.Enabled = true;     //┐
-           bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
-           Bt_OpenServo.Enabled = true; //┘
+        private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
+        {
+            Timer_Operation.Stop(); //타이머 정지
+            PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
+            Sup_Bwd();     //┐
+            Trans_Bwd();   //┤
+            Con_Off();     //┤
+            Stop_Bwd();    //┼─공정 초기화
+            Out_Bwd();     //┤
+            Comp_Bwd();    //┤
+            CompPad_Off(); //┘
+            Bt_Start.Enabled = true;     //┐
+            bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
+            Bt_OpenServo.Enabled = true; //┘
         }
 
-       private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
-       {
+        private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
+        {
             Timer_Jog.Start();
             PLC01.SetDevice("Y69", 1); //역기동(Y69) ON
         }
 
-       private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"JOG상" 버튼을 뗏을때
+        private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"JOG상" 버튼을 뗏을때
         {
             PLC01.SetDevice("Y69", 0); //역기동(Y69) OFF
             Timer_Jog.Stop();
         }
 
-       private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"JOG하" 버튼을 눌렀을때
+        private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"JOG하" 버튼을 눌렀을때
         {
             Timer_Jog.Start();
             PLC01.SetDevice("Y68", 1); //정기동(Y68) ON
         }
 
-       private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"JOG하" 버튼을 뗏을때
+        private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"JOG하" 버튼을 뗏을때
         {
-           PLC01.SetDevice("Y68", 0); //정기동(Y68) OFF
+            PLC01.SetDevice("Y68", 0); //정기동(Y68) OFF
             Timer_Jog.Stop();
         }
 
-       //-------------------------------------사용자 함수-----------------------------------------
-       private bool Get_Device(string s) //s = PLC01의 parameter를
-       {
-           PLC01.GetDevice(s, out i); //PLC01에서 불러와서
-           if (i == 0) return false; //1이면 false
-           else        return true;  //0이면 true를 내보내는 함수
-       }
+        //-------------------------------------사용자 함수-----------------------------------------
+        private bool Get_Device(string s) //s = PLC01의 parameter를
+        {
+            PLC01.GetDevice(s, out i); //PLC01에서 불러와서
+            if (i == 0) return false; //1이면 false
+            else return true;  //0이면 true를 내보내는 함수
+        }
 
-       private void Servo_Move(short iLocation) //iLocation = 위치결정데이터 번호를
-       {
-           if (!Get_Device("X6C")) //서보가 기동중이 아닐때
-           {
-               PLC01.WriteBuffer(6, 1500, 1, iLocation); //U6\G1500에 입력후
-               PLC01.SetDevice("Y70", 1); //서보 기동신호(Y70)를
-               PLC01.SetDevice("Y70", 0); //잠시동안만 주고 끊기
-           }
-       }
+        private void Servo_Move(short iLocation) //iLocation = 위치결정데이터 번호를
+        {
+            if (!Get_Device("X6C")) //서보가 기동중이 아닐때
+            {
+                PLC01.WriteBuffer(6, 1500, 1, iLocation); //U6\G1500에 입력후
+                PLC01.SetDevice("Y70", 1); //서보 기동신호(Y70)를
+                PLC01.SetDevice("Y70", 0); //잠시동안만 주고 끊기
+            }
+        }
 
         void Sup_Fwd() { PLC01.SetDevice("Y20", 1); PLC01.SetDevice("Y21", 0); } //공급전진
         void Sup_Bwd() { PLC01.SetDevice("Y20", 0); PLC01.SetDevice("Y21", 1); } //공급후진
@@ -191,13 +193,14 @@ namespace cnHRD_MES_Project
         DateTime tBefore, tAfter; //공정중에 시간지연이 필요할때 사용
         short iLocUp, iLocDown; //서보의 위치결정데이터 1,3,5 and 2,4,6
         int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
-        //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
+                                             //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
+
 
         private TextBox[] ServoInput; //서보 티칭에 사용
 
         private void Bt_WriteServo_Click(object sender, EventArgs e) //서보에 위치결정데이터 쓰기
         {
-            int Servo_Speed = int.Parse(Tb_ServoSpeed.Text)*100; //서보속도
+            int Servo_Speed = int.Parse(Tb_ServoSpeed.Text) * 100; //서보속도
             ushort[] uServo_Speed = new ushort[2];         //┐
             uServo_Speed[0] = (ushort)Servo_Speed;         //┼─서보속도를 ushort의 배열로 바꾸기 위함
             uServo_Speed[1] = (ushort)(Servo_Speed >> 16); //┘
@@ -346,7 +349,7 @@ namespace cnHRD_MES_Project
                         if (!Get_Device("X0A"))
                         {
                             if (iLocation[0] == 1 && Get_Device("X09") || (iLocation[0] == 2 && !Get_Device("X09")))
-                                //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때
+                            //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때
                             {
                                 tBefore = DateTime.Now;
                                 if (iLocation[3] == 1) //배송지가 1이면
@@ -486,7 +489,7 @@ namespace cnHRD_MES_Project
 
             else if (iMode == 3) //재적재모드
             {
-                switch(iReload)
+                switch (iReload)
                 {
                     case 0: //컨구동, 스톱다운 if 스토퍼(X0B)까지
                         Con_On();
@@ -555,3 +558,4 @@ namespace cnHRD_MES_Project
         }
     }
 }
+
