@@ -556,7 +556,7 @@ namespace cnHRD_MES_Project
                 }
             }
         }
-        }        
+               
         //public string ResultLog()
     }
 }

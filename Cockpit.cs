@@ -192,26 +192,31 @@ namespace Project_v01
                 bt_Airline_OFF.Enabled = false;
             }
 
-            /*
+            
 
             //물품판별-금속.....작업중
 
-            DateTime S3_time;
-            DateTime S4_time;
+            
             if ((X0 & 0x200) == 0x200)
             {
-                S3_time = DateTime.Now;
-               
+                DateTime a=DateTime.Now;
+              //  S3_time = a.ToString();
+                if ((X0 & 0x400) == 0x400)
+                {
+                    DateTime b = DateTime.Now;
+                    //      S4_time = b.ToString();
+                    TimeSpan timespan = a - b;
+                    double time = Math.Abs(timespan.TotalMilliseconds);
+
+                }Debug.WriteLine("time");
+
+
             }
           
 
-            if ((X0 & 0x400) == 0x400)
-            {
-                S4_time = DateTime.Now;
-               
-            }
+           
             
-           // TimeSpan timeSpan = 
+           
              
             //          double time = Math.Abs(timeSpan.TotalSeconds);
 
