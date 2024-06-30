@@ -27,9 +27,9 @@ namespace Project_v01
         ActUtlType PLC01 = new ActUtlType();
         System.Windows.Forms.Timer readTimer = new System.Windows.Forms.Timer();
 
-      // Operator Operator = new Operator();         /// Operator로 부터 데이타 가져오기
+       Operator Operator = new Operator();         /// Operator로 부터 데이타 가져오기
      
-        /// </summary>
+       
         public Cockpit()
         {
             InitializeComponent();
@@ -82,7 +82,7 @@ namespace Project_v01
             PLC01.ReadDeviceBlock("X10", 1, out X10);
             PLC01.ReadDeviceBlock("Y20", 1, out Y20);
 
-            PLC01.GetDevice("SM0", out SM0);//PLC self-daignostics
+            PLC01.GetDevice("SM0", out SM0);//PLC 자가진단
             PLC01.GetDevice("SD0", out SD0);//error-code
             PLC01.GetDevice("Y60", out Y60);
             PLC01.GetDevice("X60", out X60);
@@ -91,33 +91,33 @@ namespace Project_v01
 
            //ProgressBar공정표시.....작업중 월요일(7/1) 테스트필요
            
-            if(iMode==2)   ////적재모드 공정진행표시
+            if(Operator.iMode==2)   ////적재모드 공정진행표시
             {
                 pb_Load.ForeColor = Color.LightGreen;
                 pb_Load.Style=ProgressBarStyle.Continuous;
                 pb_Load.Maximum = 10;
                 pb_Load.Minimum = 0;
                 pb_Load.Step = 1;
-                pb_Load.Value = iLoad;
+                pb_Load.Value = Operator.iLoad;
                
             }
-            else if(iMode==1)//배송모드 공정진행표시
+            else if(Operator.iMode==1)//배송모드 공정진행표시
             {
                 pb_Delivery.ForeColor = Color.LightGreen;
                 pb_Delivery .Style=ProgressBarStyle.Continuous;
                 pb_Delivery .Maximum = 9;  
                 pb_Delivery .Minimum = 0;
                 pb_Delivery .Step = 1;
-                pb_Delivery.Value = iDeliv;
+                pb_Delivery.Value = Operator.iDeliv;
             }
-            else if(iMode==3)   //재적재모드 공정진행표시
+            else if(Operator.iMode==3)   //재적재모드 공정진행표시
             {
                 pb_reLoad.ForeColor = Color.LightGreen;
                 pb_reLoad.Style=ProgressBarStyle.Continuous;
                 pb_reLoad .Maximum = 6;
                 pb_reLoad .Minimum = 0;
                 pb_reLoad .Step = 1;
-                pb_reLoad.Value = iReload;
+                pb_reLoad.Value = Operator.iReload;
 
             }
 
@@ -247,7 +247,7 @@ namespace Project_v01
             // bool Material = false;  //비금속
             // while(Material)
             //{
-            if (Is_Metal == 2)//비금속
+            if (Operator.Is_Metal == 2)//비금속
             {
                 bt_Lamp_Metal.BackColor = Color.LightGray;
                 bt_Lamp_Metal.Enabled = false;
