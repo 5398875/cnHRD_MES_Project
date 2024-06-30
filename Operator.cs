@@ -194,7 +194,13 @@ namespace cnHRD_MES_Project
         short iLocUp, iLocDown; //서보의 위치결정데이터 1,3,5 and 2,4,6
         int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
                                              //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
-
+        /// <summary>
+        /// 로그기록용 변수선언
+        /// </summary>
+        DateTime processStartTime;      //공정 시작 시점
+        DateTime processEndTime;        //공정 종료 시점
+        bool processStarted = false;    //공정 시작 알림용
+        bool is_Done = false;           //초기 성공여부 기록
 
         private TextBox[] ServoInput; //서보 티칭에 사용
 
@@ -272,6 +278,7 @@ namespace cnHRD_MES_Project
                 iReload = 0; //┘
                 Is_Metal = 2; //물품은 공정초기에 비금속으로 간주, 이후 자기센서가 한번이라도 들어오면 금속(1)로 전환
                 bStart = false; //초기상태 False. 공정시작
+                
             }
 
             else if (iMode == 1) //배송모드
@@ -279,6 +286,13 @@ namespace cnHRD_MES_Project
                 switch (iDeliv)
                 {
                     case 0: //1위치 서보이동 if 이동완료(X6C)까지
+                        if (processStarted == false)
+                        {
+                            processStartTime = DateTime.Now;
+                            processStarted = true;
+                            is_Done = false;
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                        }
                         Servo_Move(iLocUp); //1,3,5위치
                         ORD.Deliv_Check();
                         if (iLocation[1] == 0) //창고이동
@@ -295,6 +309,8 @@ namespace cnHRD_MES_Project
                             Stop_Fwd(); //물품이 걸리지 않게 내려놓는다
                             iDeliv++;
                         }
+                            ORD.Deliv_Start();
+                        iDeliv++;
                         break;
                     case 2: //2위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(iLocDown); //2,4,6위치
@@ -387,6 +403,10 @@ namespace cnHRD_MES_Project
                             iLocation[4]--; //주문수량 -1
                             ORD.Deliv_Complete();
                             bStart = true; //공정종료. 초기상태로
+                            is_Done = true;
+                            processEndTime = DateTime.Now;  //종료시점 일시기록
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
                 }
@@ -397,6 +417,13 @@ namespace cnHRD_MES_Project
                 switch (iLoad)
                 {
                     case 0: //공급전진 if 공급전(X10)까지
+                        if (processStarted == false)
+                        {
+                            processStartTime = DateTime.Now;
+                            processStarted = true;
+                            is_Done = false;
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                        }
                         if (!Get_Device("X08")) //물품이 없다면
                             bStart = true; //초기상태로
                         else if (Get_Device("X08"))
@@ -485,6 +512,10 @@ namespace cnHRD_MES_Project
                             if (Is_Metal == 1) WH.Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
                             else if (Is_Metal == 2) WH.Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
                             bStart = true; //공정종료. 초기상태로
+                            is_Done = true;
+                            processEndTime = DateTime.Now;  //종료시점 일시기록
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
                 }
@@ -495,6 +526,13 @@ namespace cnHRD_MES_Project
                 switch (iReload)
                 {
                     case 0: //컨구동, 스톱다운 if 스토퍼(X0B)까지
+                        if(processStarted == false)
+                        {
+                            processStartTime = DateTime.Now;
+                            processStarted = true;
+                            is_Done = false;
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                        }
                         Con_On();
                         Stop_Fwd();
                         if (Get_Device("X0B"))
@@ -555,10 +593,33 @@ namespace cnHRD_MES_Project
                             else if (Is_Metal == 2) WH.Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
                             ORD.Reload_Complete();
                             bStart = true; //공정종료. 초기상태로
+                            is_Done = true;
+                            processEndTime = DateTime.Now;  //종료시점 일시기록
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            processStarted = false; //진행 상황 표현
                         }
                         break;
                 }
             }
+        }
+        public class DoneOperation  //클래스 선언
+        {
+            public string Process_Type { get; set; }     //공정종류
+            public string DoneItem_Type { get; set; }    //취급물품
+            public DateTime Start_Time { get; set; }     //시작시간
+            public DateTime End_Time { get; set; }       //종료시간
+            public bool IsDone { get; set; }             //성공여부
+        }
+
+        string[] Done_Operation = new string[5];
+
+        public void Done(int ProcessType, int DoneItemType, DateTime StartTime, DateTime EndTime, Boolean IsDone)
+        {
+            Done_Operation[0] = ProcessType.ToString();
+            Done_Operation[1] = DoneItemType.ToString();
+            Done_Operation[2] = StartTime.ToString();
+            Done_Operation[3] = EndTime.ToString();
+            Done_Operation[4] = IsDone.ToString();
         }
     }
 }

@@ -66,6 +66,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.bt_OperationLog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Bt_OpenPLC
@@ -413,11 +414,21 @@
             this.label3.TabIndex = 32;
             this.label3.Text = "label3";
             // 
+            // bt_OperationLog
+            // 
+            this.bt_OperationLog.Location = new System.Drawing.Point(40, 216);
+            this.bt_OperationLog.Name = "bt_OperationLog";
+            this.bt_OperationLog.Size = new System.Drawing.Size(104, 56);
+            this.bt_OperationLog.TabIndex = 33;
+            this.bt_OperationLog.Text = "공정 기록";
+            this.bt_OperationLog.UseVisualStyleBackColor = true;
+            // 
             // Operator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 453);
+            this.Controls.Add(this.bt_OperationLog);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -504,6 +515,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button bt_OperationLog;
     }
 }
 
