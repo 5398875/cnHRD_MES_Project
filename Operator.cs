@@ -181,10 +181,11 @@ namespace cnHRD_MES_Project
         void CompPad_On() { PLC01.SetDevice("Y2E", 1); } //흡착패드온
         void CompPad_Off() { PLC01.SetDevice("Y2E", 0); } //흡착패드오프
 
+        
         public int iLoad = 0; //적재모드일때 기동순서
         public int iDeliv = 0; //배송모드일때 기동순서
         public int iReload = 0; //재적재모드일때 기동순서
-        int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
+         int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속  //표창기 public으로 변경
         public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
         public int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
         int i;

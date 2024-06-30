@@ -23,7 +23,7 @@ namespace cnHRD_MES_Project
 
         private void Warehouse_Load(object sender, EventArgs e)//폼 실행시,
         {
-            pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
+           // pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
         }
 
         private int[] FindLocationXY(int Type)
