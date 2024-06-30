@@ -844,6 +844,16 @@
             this.bt_OPR.UseVisualStyleBackColor = true;
             this.bt_OPR.Click += new System.EventHandler(this.bt_OPR_Click);
             // 
+            // bt_OPR
+            // 
+            this.bt_OPR.Location = new System.Drawing.Point(349, 58);
+            this.bt_OPR.Name = "bt_OPR";
+            this.bt_OPR.Size = new System.Drawing.Size(120, 30);
+            this.bt_OPR.TabIndex = 19;
+            this.bt_OPR.Text = "서버원점복귀";
+            this.bt_OPR.UseVisualStyleBackColor = true;
+            this.bt_OPR.Click += new System.EventHandler(this.bt_OPR_Click);
+            // 
             // bt_Server_move
             // 
             this.bt_Server_move.Location = new System.Drawing.Point(269, 22);
@@ -859,6 +869,15 @@
             this.bt_Error_Reset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Error_Reset.Name = "bt_Error_Reset";
             this.bt_Error_Reset.Size = new System.Drawing.Size(105, 24);
+            this.bt_Error_Reset.TabIndex = 18;
+            this.bt_Error_Reset.Text = "서버에러리셋";
+            this.bt_Error_Reset.UseVisualStyleBackColor = true;
+            // 
+            // bt_Error_Reset
+            // 
+            this.bt_Error_Reset.Location = new System.Drawing.Point(349, 24);
+            this.bt_Error_Reset.Name = "bt_Error_Reset";
+            this.bt_Error_Reset.Size = new System.Drawing.Size(120, 30);
             this.bt_Error_Reset.TabIndex = 18;
             this.bt_Error_Reset.Text = "서버에러리셋";
             this.bt_Error_Reset.UseVisualStyleBackColor = true;
@@ -927,6 +946,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(734, 566);
+            this.BackColor = System.Drawing.Color.Azure;
+            this.ClientSize = new System.Drawing.Size(839, 707);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox6);

@@ -60,6 +60,12 @@
     <Compile Include="Cockpit.Designer.cs">
       <DependentUpon>Cockpit.cs</DependentUpon>
     </Compile>
+    <Compile Include="Operator_Log.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Operator_Log.Designer.cs">
+      <DependentUpon>Operator_Log.cs</DependentUpon>
+    </Compile>
     <Compile Include="Order.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -100,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Operator.resx">
       <DependentUpon>Operator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Operator_Log.resx">
+      <DependentUpon>Operator_Log.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Order.resx">
       <DependentUpon>Order.cs</DependentUpon>
