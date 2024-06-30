@@ -36,10 +36,13 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // Lv_Order
             // 
+            this.Lv_Order.CheckBoxes = true;
             this.Lv_Order.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -90,11 +93,34 @@
             this.columnHeader7.Text = "상태";
             this.columnHeader7.Width = 87;
             // 
+            // radioButton1
+            // 
+            this.radioButton1.AutoSize = true;
+            this.radioButton1.Checked = true;
+            this.radioButton1.Location = new System.Drawing.Point(488, 120);
+            this.radioButton1.Name = "radioButton1";
+            this.radioButton1.Size = new System.Drawing.Size(123, 19);
+            this.radioButton1.TabIndex = 1;
+            this.radioButton1.TabStop = true;
+            this.radioButton1.Text = "물품 자동배송";
+            this.radioButton1.UseVisualStyleBackColor = true;
+            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(656, 120);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(123, 19);
+            this.radioButton2.TabIndex = 1;
+            this.radioButton2.Text = "물품 수동배송";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Lv_Order);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -103,6 +129,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Order_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -115,5 +142,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ListView Lv_Order;
         private System.Windows.Forms.ColumnHeader columnHeader7;
+        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
