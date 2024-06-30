@@ -27,7 +27,7 @@ namespace Project_v01
         ActUtlType PLC01 = new ActUtlType();
         System.Windows.Forms.Timer readTimer = new System.Windows.Forms.Timer();
 
-       Operator Operator = new Operator();         /// Operator로 부터 데이타 가져오기
+    //   Operator Operator = new Operator();         /// Operator로 부터 데이타 가져오기
      
        
         public Cockpit()
