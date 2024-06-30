@@ -103,6 +103,7 @@ namespace cnHRD_MES_Project
 
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
+            Bt_Start.BackColor = Color.DodgerBlue;
 
             Timer_Operation.Start(); //타이머 시작
         }
@@ -121,6 +122,7 @@ namespace cnHRD_MES_Project
             Bt_Start.Enabled = true;     //┐
             bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
             Bt_OpenServo.Enabled = true; //┘
+            Bt_Start.BackColor = Color.DarkGray;
         }
 
         private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
@@ -611,7 +613,15 @@ namespace cnHRD_MES_Project
             public bool IsDone { get; set; }             //성공여부
         }
 
-        string[] Done_Operation = new string[5];
+        private Operator_Log operatorLogForm;
+
+        private void bt_Result_Click(object sender, EventArgs e)
+        {
+            operatorLogForm = new Operator_Log();
+            operatorLogForm.Show();
+        }
+
+        public string[] Done_Operation = new string[5];
 
         public void Done(int ProcessType, int DoneItemType, DateTime StartTime, DateTime EndTime, Boolean IsDone)
         {

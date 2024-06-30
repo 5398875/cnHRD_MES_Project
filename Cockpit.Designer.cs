@@ -123,14 +123,14 @@
             this.button33 = new System.Windows.Forms.Button();
             this.button34 = new System.Windows.Forms.Button();
             this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.bt_OPR = new System.Windows.Forms.Button();
             this.bt_Server_move = new System.Windows.Forms.Button();
+            this.bt_Error_Reset = new System.Windows.Forms.Button();
             this.bt_Server_Error = new System.Windows.Forms.Button();
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.bt_Error_Reset = new System.Windows.Forms.Button();
-            this.bt_OPR = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.Conveyor.SuspendLayout();
@@ -1094,6 +1094,16 @@
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "서보모니터링";
             // 
+            // bt_OPR
+            // 
+            this.bt_OPR.Location = new System.Drawing.Point(349, 58);
+            this.bt_OPR.Name = "bt_OPR";
+            this.bt_OPR.Size = new System.Drawing.Size(120, 30);
+            this.bt_OPR.TabIndex = 19;
+            this.bt_OPR.Text = "서버원점복귀";
+            this.bt_OPR.UseVisualStyleBackColor = true;
+            this.bt_OPR.Click += new System.EventHandler(this.bt_OPR_Click);
+            // 
             // bt_Server_move
             // 
             this.bt_Server_move.Location = new System.Drawing.Point(307, 28);
@@ -1101,6 +1111,15 @@
             this.bt_Server_move.Size = new System.Drawing.Size(23, 25);
             this.bt_Server_move.TabIndex = 5;
             this.bt_Server_move.UseVisualStyleBackColor = true;
+            // 
+            // bt_Error_Reset
+            // 
+            this.bt_Error_Reset.Location = new System.Drawing.Point(349, 24);
+            this.bt_Error_Reset.Name = "bt_Error_Reset";
+            this.bt_Error_Reset.Size = new System.Drawing.Size(120, 30);
+            this.bt_Error_Reset.TabIndex = 18;
+            this.bt_Error_Reset.Text = "서버에러리셋";
+            this.bt_Error_Reset.UseVisualStyleBackColor = true;
             // 
             // bt_Server_Error
             // 
@@ -1140,30 +1159,11 @@
             this.label17.TabIndex = 3;
             this.label17.Text = "서보기동";
             // 
-            // bt_Error_Reset
-            // 
-            this.bt_Error_Reset.Location = new System.Drawing.Point(349, 24);
-            this.bt_Error_Reset.Name = "bt_Error_Reset";
-            this.bt_Error_Reset.Size = new System.Drawing.Size(120, 30);
-            this.bt_Error_Reset.TabIndex = 18;
-            this.bt_Error_Reset.Text = "서버에러리셋";
-            this.bt_Error_Reset.UseVisualStyleBackColor = true;
-           
-            // 
-            // bt_OPR
-            // 
-            this.bt_OPR.Location = new System.Drawing.Point(349, 58);
-            this.bt_OPR.Name = "bt_OPR";
-            this.bt_OPR.Size = new System.Drawing.Size(120, 30);
-            this.bt_OPR.TabIndex = 19;
-            this.bt_OPR.Text = "서버원점복귀";
-            this.bt_OPR.UseVisualStyleBackColor = true;
-            this.bt_OPR.Click += new System.EventHandler(this.bt_OPR_Click);
-            // 
             // Cockpit
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(839, 707);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox6);

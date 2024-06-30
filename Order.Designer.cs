@@ -51,9 +51,9 @@
             this.Lv_Order.FullRowSelect = true;
             this.Lv_Order.GridLines = true;
             this.Lv_Order.HideSelection = false;
-            this.Lv_Order.Location = new System.Drawing.Point(16, 120);
+            this.Lv_Order.Location = new System.Drawing.Point(16, 80);
             this.Lv_Order.Name = "Lv_Order";
-            this.Lv_Order.Size = new System.Drawing.Size(768, 320);
+            this.Lv_Order.Size = new System.Drawing.Size(768, 360);
             this.Lv_Order.TabIndex = 0;
             this.Lv_Order.UseCompatibleStateImageBehavior = false;
             this.Lv_Order.View = System.Windows.Forms.View.Details;
@@ -94,6 +94,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.MistyRose;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.Lv_Order);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
