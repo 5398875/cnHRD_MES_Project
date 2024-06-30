@@ -64,7 +64,7 @@
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.TPanel_SideMenu.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.TPanel_SideMenu.Size = new System.Drawing.Size(50, 562);
+            this.TPanel_SideMenu.Size = new System.Drawing.Size(50, 853);
             this.TPanel_SideMenu.TabIndex = 25;
             // 
             // Bt_Order_Form
@@ -145,7 +145,7 @@
             this.Bt_Close.FlatAppearance.BorderSize = 0;
             this.Bt_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Bt_Close.ForeColor = System.Drawing.Color.White;
-            this.Bt_Close.Location = new System.Drawing.Point(3, 515);
+            this.Bt_Close.Location = new System.Drawing.Point(3, 806);
             this.Bt_Close.Name = "Bt_Close";
             this.Bt_Close.Size = new System.Drawing.Size(44, 44);
             this.Bt_Close.TabIndex = 2;
@@ -156,9 +156,10 @@
             // Pn_Main
             // 
             this.Pn_Main.Controls.Add(this.label1);
-            this.Pn_Main.Location = new System.Drawing.Point(48, 0);
+            this.Pn_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Pn_Main.Location = new System.Drawing.Point(0, 0);
             this.Pn_Main.Name = "Pn_Main";
-            this.Pn_Main.Size = new System.Drawing.Size(936, 560);
+            this.Pn_Main.Size = new System.Drawing.Size(1582, 853);
             this.Pn_Main.TabIndex = 26;
             this.Pn_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.Pn_Main_Paint);
             // 
@@ -166,7 +167,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 59F);
-            this.label1.Location = new System.Drawing.Point(320, 216);
+            this.label1.Location = new System.Drawing.Point(624, 296);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(247, 99);
             this.label1.TabIndex = 27;
@@ -176,7 +177,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(983, 562);
+            this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.TPanel_SideMenu);
             this.Controls.Add(this.Pn_Main);
             this.Name = "Main";
