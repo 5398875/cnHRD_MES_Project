@@ -20,9 +20,10 @@ namespace cnHRD_MES_Project
 
         Main main = null;
 
+
         public void setMain(Main main)
         {
-            this.main = main; 
+            this.main = main;
         }
 
         public Operator()
@@ -36,6 +37,7 @@ namespace cnHRD_MES_Project
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
+
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -98,70 +100,70 @@ namespace cnHRD_MES_Project
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
-            
+
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
 
             Timer_Operation.Start(); //타이머 시작
         }
 
-       private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
-       {
-           Timer_Operation.Stop(); //타이머 정지
-           PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
-           Sup_Bwd();     //┐
-           Trans_Bwd();   //┤
-           Con_Off();     //┤
-           Stop_Bwd();    //┼─공정 초기화
-           Out_Bwd();     //┤
-           Comp_Bwd();    //┤
-           CompPad_Off(); //┘
-           Bt_Start.Enabled = true;     //┐
-           bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
-           Bt_OpenServo.Enabled = true; //┘
+        private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
+        {
+            Timer_Operation.Stop(); //타이머 정지
+            PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
+            Sup_Bwd();     //┐
+            Trans_Bwd();   //┤
+            Con_Off();     //┤
+            Stop_Bwd();    //┼─공정 초기화
+            Out_Bwd();     //┤
+            Comp_Bwd();    //┤
+            CompPad_Off(); //┘
+            Bt_Start.Enabled = true;     //┐
+            bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
+            Bt_OpenServo.Enabled = true; //┘
         }
 
-       private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
-       {
+        private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
+        {
             Timer_Jog.Start();
             PLC01.SetDevice("Y69", 1); //역기동(Y69) ON
         }
 
-       private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"JOG상" 버튼을 뗏을때
+        private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"JOG상" 버튼을 뗏을때
         {
             PLC01.SetDevice("Y69", 0); //역기동(Y69) OFF
             Timer_Jog.Stop();
         }
 
-       private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"JOG하" 버튼을 눌렀을때
+        private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"JOG하" 버튼을 눌렀을때
         {
             Timer_Jog.Start();
             PLC01.SetDevice("Y68", 1); //정기동(Y68) ON
         }
 
-       private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"JOG하" 버튼을 뗏을때
+        private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"JOG하" 버튼을 뗏을때
         {
-           PLC01.SetDevice("Y68", 0); //정기동(Y68) OFF
+            PLC01.SetDevice("Y68", 0); //정기동(Y68) OFF
             Timer_Jog.Stop();
         }
 
-       //-------------------------------------사용자 함수-----------------------------------------
-       private bool Get_Device(string s) //s = PLC01의 parameter를
-       {
-           PLC01.GetDevice(s, out i); //PLC01에서 불러와서
-           if (i == 0) return false; //1이면 false
-           else        return true;  //0이면 true를 내보내는 함수
-       }
+        //-------------------------------------사용자 함수-----------------------------------------
+        private bool Get_Device(string s) //s = PLC01의 parameter를
+        {
+            PLC01.GetDevice(s, out i); //PLC01에서 불러와서
+            if (i == 0) return false; //1이면 false
+            else return true;  //0이면 true를 내보내는 함수
+        }
 
-       private void Servo_Move(short iLocation) //iLocation = 위치결정데이터 번호를
-       {
-           if (!Get_Device("X6C")) //서보가 기동중이 아닐때
-           {
-               PLC01.WriteBuffer(6, 1500, 1, iLocation); //U6\G1500에 입력후
-               PLC01.SetDevice("Y70", 1); //서보 기동신호(Y70)를
-               PLC01.SetDevice("Y70", 0); //잠시동안만 주고 끊기
-           }
-       }
+        private void Servo_Move(short iLocation) //iLocation = 위치결정데이터 번호를
+        {
+            if (!Get_Device("X6C")) //서보가 기동중이 아닐때
+            {
+                PLC01.WriteBuffer(6, 1500, 1, iLocation); //U6\G1500에 입력후
+                PLC01.SetDevice("Y70", 1); //서보 기동신호(Y70)를
+                PLC01.SetDevice("Y70", 0); //잠시동안만 주고 끊기
+            }
+        }
 
         void Sup_Fwd() { PLC01.SetDevice("Y20", 1); PLC01.SetDevice("Y21", 0); } //공급전진
         void Sup_Bwd() { PLC01.SetDevice("Y20", 0); PLC01.SetDevice("Y21", 1); } //공급후진
@@ -181,24 +183,30 @@ namespace cnHRD_MES_Project
         void CompPad_On() { PLC01.SetDevice("Y2E", 1); } //흡착패드온
         void CompPad_Off() { PLC01.SetDevice("Y2E", 0); } //흡착패드오프
 
-        
-        public int iLoad = 0; //적재모드일때 기동순서
-        public int iDeliv = 0; //배송모드일때 기동순서
-        public int iReload = 0; //재적재모드일때 기동순서
-         int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속  //표창기 public으로 변경
+        public static int iLoad = 0; //적재모드일때 기동순서
+        public static int iDeliv = 0; //배송모드일때 기동순서
+        public static int iReload = 0; //재적재모드일때 기동순서
+        public static int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
         public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
-        public int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
+        public static int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
         int i;
         DateTime tBefore, tAfter; //공정중에 시간지연이 필요할때 사용
         short iLocUp, iLocDown; //서보의 위치결정데이터 1,3,5 and 2,4,6
         int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
-        //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
+                                             //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
+        /// <summary>
+        /// 로그기록용 변수선언
+        /// </summary>
+        DateTime processStartTime;      //공정 시작 시점
+        DateTime processEndTime;        //공정 종료 시점
+        bool processStarted = false;    //공정 시작 알림용
+        bool is_Done = false;           //초기 성공여부 기록
 
         private TextBox[] ServoInput; //서보 티칭에 사용
 
         private void Bt_WriteServo_Click(object sender, EventArgs e) //서보에 위치결정데이터 쓰기
         {
-            int Servo_Speed = int.Parse(Tb_ServoSpeed.Text)*100; //서보속도
+            int Servo_Speed = int.Parse(Tb_ServoSpeed.Text) * 100; //서보속도
             ushort[] uServo_Speed = new ushort[2];         //┐
             uServo_Speed[0] = (ushort)Servo_Speed;         //┼─서보속도를 ushort의 배열로 바꾸기 위함
             uServo_Speed[1] = (ushort)(Servo_Speed >> 16); //┘
@@ -244,32 +252,25 @@ namespace cnHRD_MES_Project
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
 
-            textBox1.Text = iMode.ToString();
-            textBox2.Text = iDeliv.ToString();
+            textBox3.Text = iLocation[0].ToString() + " " + iLocation[1] + " " + iLocation[2] + " " + iLocation[3] + " " + iLocation[4];
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
-                if (iLocation[4] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //남은 주문수량이 있고 그 물품이 창고에 있다면
-                {
-                    iMode = 1; //배송모드 - 배송할 물품이나 수량은 그대로
-                    iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
-                    iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
-                }
-                else if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(iLocation[0])[0] != 10) //주문이 있고 그 물품이 창고에 있다면
+                if (ORD.Is_Order()[0] != 0 && WH.Ware_Location(ORD.Is_Order()[0])[0] != 10) //주문이 있고 그게 창고에 있다면
                 {
                     iMode = 1; //배송모드
                     iLocation[0] = ORD.Is_Order()[0]; //주문여부 or 물품종류를 주문에 물어봐서 기입
                     iLocation[1] = WH.Ware_Location(iLocation[0])[0]; //┐
                     iLocation[2] = WH.Ware_Location(iLocation[0])[1]; //┴─해당 물품 위치를 창고에 물어봐서 기입
                     iLocation[3] = ORD.Is_Order()[1]; //배송지를 주문에 물어봐서 기입
-                    iLocation[4] = ORD.Is_Order()[2]; //물품수량을 주문에 물어봐서 기입
                 }
-                else if (ORD.Is_Order()[0] == 0) //위의 주문이 용의치 않으면
+                else // 주문이 없거나 주문물품이 창고에 없다면
                 {
-                    iMode = 2; //적재모드
+                    iMode = 2; //기본적재모드
                     iLocation[1] = WH.Ware_Location(0)[0]; //┐
                     iLocation[2] = WH.Ware_Location(0)[1]; //┴─빈자리를 창고에 물어봐서 기입
                 }
+                
                 iLocUp = (short)(((2 - iLocation[2]) * 2) + 1); //Y좌표가 0,1,2일때 위치결정데이터 5,3,1로 변환
                 iLocDown = (short)(((2 - iLocation[2]) + 1) * 2); //Y좌표가 0,1,2일때 위치결정데이터 6,4,2으로 변환
                 iLoad = 0;   //┐
@@ -277,6 +278,7 @@ namespace cnHRD_MES_Project
                 iReload = 0; //┘
                 Is_Metal = 2; //물품은 공정초기에 비금속으로 간주, 이후 자기센서가 한번이라도 들어오면 금속(1)로 전환
                 bStart = false; //초기상태 False. 공정시작
+                
             }
 
             else if (iMode == 1) //배송모드
@@ -284,7 +286,15 @@ namespace cnHRD_MES_Project
                 switch (iDeliv)
                 {
                     case 0: //1위치 서보이동 if 이동완료(X6C)까지
+                        if (processStarted == false)
+                        {
+                            processStartTime = DateTime.Now;
+                            processStarted = true;
+                            is_Done = false;
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                        }
                         Servo_Move(iLocUp); //1,3,5위치
+                        ORD.Deliv_Check();
                         if (iLocation[1] == 0) //창고이동
                             Ware_Fwd();
                         else
@@ -295,8 +305,12 @@ namespace cnHRD_MES_Project
                     case 1: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
                         if (Get_Device("X1A"))
-                            ORD.Deliv_Start();
+                        {
+                            Stop_Fwd(); //물품이 걸리지 않게 내려놓는다
                             iDeliv++;
+                        }
+                            ORD.Deliv_Start();
+                        iDeliv++;
                         break;
                     case 2: //2위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(iLocDown); //2,4,6위치
@@ -339,6 +353,7 @@ namespace cnHRD_MES_Project
                         {
                             Servo_Move(3);
                             CCon_On();
+                            Stop_Bwd();
                             if (Get_Device("X0A"))
                                 iDeliv++;
                         }
@@ -347,16 +362,20 @@ namespace cnHRD_MES_Project
                         if (!Get_Device("X0A"))
                         {
                             if (iLocation[0] == 1 && Get_Device("X09") || (iLocation[0] == 2 && !Get_Device("X09")))
-                                //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때
+                            //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때 = 주문과 맞을때
                             {
+                                ORD.Deliv_Start();
                                 tBefore = DateTime.Now;
                                 if (iLocation[3] == 1) //배송지가 1이면
                                     iDeliv = 8;        //8번공정으로
                                 else            //배송지가 0이면
                                     iDeliv = 9; //9번공정으로
                             }
-                            else           //주문과 다를경우
+                            else //주문과 다를경우
+                            {
+                                ORD.Reload_Start();
                                 iMode = 3; //재적재모드로
+                            }
                         }
                         break;
                     case 8: //배송지1 : 2초후 배출전진 if 배출전(X16)까지
@@ -370,6 +389,7 @@ namespace cnHRD_MES_Project
                                 Out_Bwd();
                                 Con_Off();
                                 iLocation[4]--; //배송수량 -1
+                                ORD.Deliv_Complete();
                                 bStart = true; //공정종료. 초기상태로
                             }
                         }
@@ -381,7 +401,12 @@ namespace cnHRD_MES_Project
                         {
                             Con_Off();
                             iLocation[4]--; //주문수량 -1
+                            ORD.Deliv_Complete();
                             bStart = true; //공정종료. 초기상태로
+                            is_Done = true;
+                            processEndTime = DateTime.Now;  //종료시점 일시기록
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
                 }
@@ -392,6 +417,13 @@ namespace cnHRD_MES_Project
                 switch (iLoad)
                 {
                     case 0: //공급전진 if 공급전(X10)까지
+                        if (processStarted == false)
+                        {
+                            processStartTime = DateTime.Now;
+                            processStarted = true;
+                            is_Done = false;
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                        }
                         if (!Get_Device("X08")) //물품이 없다면
                             bStart = true; //초기상태로
                         else if (Get_Device("X08"))
@@ -480,6 +512,10 @@ namespace cnHRD_MES_Project
                             if (Is_Metal == 1) WH.Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
                             else if (Is_Metal == 2) WH.Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
                             bStart = true; //공정종료. 초기상태로
+                            is_Done = true;
+                            processEndTime = DateTime.Now;  //종료시점 일시기록
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
                 }
@@ -487,9 +523,16 @@ namespace cnHRD_MES_Project
 
             else if (iMode == 3) //재적재모드
             {
-                switch(iReload)
+                switch (iReload)
                 {
                     case 0: //컨구동, 스톱다운 if 스토퍼(X0B)까지
+                        if(processStarted == false)
+                        {
+                            processStartTime = DateTime.Now;
+                            processStarted = true;
+                            is_Done = false;
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                        }
                         Con_On();
                         Stop_Fwd();
                         if (Get_Device("X0B"))
@@ -548,11 +591,36 @@ namespace cnHRD_MES_Project
                         {
                             if (Is_Metal == 1) WH.Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
                             else if (Is_Metal == 2) WH.Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
+                            ORD.Reload_Complete();
                             bStart = true; //공정종료. 초기상태로
+                            is_Done = true;
+                            processEndTime = DateTime.Now;  //종료시점 일시기록
+                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            processStarted = false; //진행 상황 표현
                         }
                         break;
                 }
             }
         }
+        public class DoneOperation  //클래스 선언
+        {
+            public string Process_Type { get; set; }     //공정종류
+            public string DoneItem_Type { get; set; }    //취급물품
+            public DateTime Start_Time { get; set; }     //시작시간
+            public DateTime End_Time { get; set; }       //종료시간
+            public bool IsDone { get; set; }             //성공여부
+        }
+
+        string[] Done_Operation = new string[5];
+
+        public void Done(int ProcessType, int DoneItemType, DateTime StartTime, DateTime EndTime, Boolean IsDone)
+        {
+            Done_Operation[0] = ProcessType.ToString();
+            Done_Operation[1] = DoneItemType.ToString();
+            Done_Operation[2] = StartTime.ToString();
+            Done_Operation[3] = EndTime.ToString();
+            Done_Operation[4] = IsDone.ToString();
+        }
     }
 }
+
