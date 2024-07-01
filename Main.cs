@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace cnHRD_MES_Project
 {
@@ -32,7 +33,7 @@ namespace cnHRD_MES_Project
             Ord.TopLevel = false;
             Ord.Order_Load(sender, e);
         }
-            
+
 
         private void CheckBoxHide_CheckedChanged(object sender, EventArgs e) //슬라이드 버튼 이름변경
         {

@@ -35,6 +35,8 @@ namespace cnHRD_MES_Project
         public int iCurrent = 0; //현재 주문번호 (=배달 완료 여부와 몇번째 주문인지)
         private void Timer_Or(object sender, EventArgs e)
         {
+            if (!File.Exists(filePath))
+                System.IO.File.Create(filePath);
             string[] Lines = File.ReadAllLines(filePath); //Lines[n]에 메모장의 n번째줄 저장
             if (Lines.Length >= 1) //메모장이 1줄 이상이라면
             {
