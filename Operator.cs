@@ -100,7 +100,6 @@ namespace cnHRD_MES_Project
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
-
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
             Bt_Start.BackColor = Color.DodgerBlue;
@@ -196,7 +195,7 @@ namespace cnHRD_MES_Project
         int i;
         DateTime tBefore, tAfter; //공정중에 시간지연이 필요할때 사용
         short iLocUp, iLocDown; //서보의 위치결정데이터 1,3,5 and 2,4,6
-        int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
+        public static int[] iLocation = { 0, 0, 0, 0, 0 }; //공정에서 사용하는 인수들 집합
                                              //[0](1:금속주문,2:비금속주문) [1]:X좌표 [2]:Y좌표 [3]:배송지 [4]:남은수량
         /// <summary>
         /// 로그기록용 변수선언
@@ -420,7 +419,7 @@ namespace cnHRD_MES_Project
             {
                 switch (iLoad)
                 {
-                    case 0: //공급전진 if 공급전(X10)까지
+                    case 0: //물품판별
                         if (processStarted == false)
                         {
                             processStartTime = DateTime.Now;
@@ -428,31 +427,35 @@ namespace cnHRD_MES_Project
                             is_Done = false;
                             Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
-                        if (!Get_Device("X08")) //물품이 없다면
+                        if (Get_Device("X08")) //물품이 있다면
+                            iLoad++;
+                        else if (!Get_Device("X08")) //물품이 없다면
                             bStart = true; //초기상태로
-                        else if (Get_Device("X08"))
-                            Sup_Fwd();
+
+                        break;
+                    case 1: //공급전진 if 공급전(X10)까지
+                        Sup_Fwd();
                         if (Get_Device("X10"))
                             iLoad++;
                         break;
-                    case 1: //공급후진 if 공급후(X11)까지
+                    case 2: //공급후진 if 공급후(X11)까지
                         Sup_Bwd();
                         if (Get_Device("X11"))
                             iLoad++;
                         break;
-                    case 2: //송출전진 if 송출전(X14)까지
+                    case 3: //송출전진 if 송출전(X14)까지
                         Trans_Fwd();
                         if (Get_Device("X14"))
                             iLoad++;
                         break;
-                    case 3: //송출후진, 컨구동 if 용량형(X0A)켜질때 까지 금속판별
+                    case 4: //송출후진, 컨구동 if 용량형(X0A)켜질때 까지 금속판별
                         Trans_Bwd(); Con_On();
                         if (Get_Device("X09")) //고주파센서(X09)가 한번이라도 감지되면 금속
                             Is_Metal = 1;
                         if (Get_Device("X0A"))
                             iLoad++;
                         break;
-                    case 4: //if 용량형(X0A)이 꺼질때 금속판별, 스톱다운 if 스토퍼(X0B)까지
+                    case 5: //if 용량형(X0A)이 꺼질때 금속판별, 스톱다운 if 스토퍼(X0B)까지
                         if (Get_Device("X09")) //고주파센서(X09)가 한번이라도 감지되면 금속
                             Is_Metal = 1;
                         if (!Get_Device("X0A"))
@@ -462,7 +465,7 @@ namespace cnHRD_MES_Project
                                 iLoad++;
                         }
                         break;
-                    case 5: //if 스토퍼(X0B) - 컨위치 서보이동 if 이동완료(X6C)까지
+                    case 6: //if 스토퍼(X0B) - 컨위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(7);
                         if (!Get_Device("X6C"))
                         {
@@ -470,7 +473,7 @@ namespace cnHRD_MES_Project
                             iLoad++;
                         }
                         break;
-                    case 6: //컨정지, 흡착온 - 1위치 서보이동 if 이동완료(X6C)까지                  
+                    case 7: //컨정지, 흡착온 - 1위치 서보이동 if 이동완료(X6C)까지                  
                         Con_Off();
                         CompPad_On();
                         tAfter = DateTime.Now;
@@ -485,12 +488,12 @@ namespace cnHRD_MES_Project
                                 iLoad++;
                         }
                         break;
-                    case 7: //흡착전진 if 흡착전(X1A)까지
+                    case 8: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
                         if (Get_Device("X1A"))
                             iLoad++;
                         break;
-                    case 8: //스톱업, 2위치 서보이동 if 이동완료(X6C)까지
+                    case 9: //스톱업, 2위치 서보이동 if 이동완료(X6C)까지
                         Stop_Bwd();
                         Servo_Move(iLocDown); //2,4,6
                         if (!Get_Device("X6C"))
@@ -499,7 +502,7 @@ namespace cnHRD_MES_Project
                             iLoad++;
                         }
                         break;
-                    case 9: //흡착오프 - 1위치 재이동 if 이동완료(X6C)까지
+                    case 10: //흡착오프 - 1위치 재이동 if 이동완료(X6C)까지
                         CompPad_Off();
                         tAfter = DateTime.Now;
                         if (tAfter > tBefore.AddMilliseconds(500)) //0.5초지연
@@ -509,7 +512,7 @@ namespace cnHRD_MES_Project
                                 iLoad++;
                         }
                         break;
-                    case 10: //흡착후진 - if흡착후(X1B)까지
+                    case 11: //흡착후진 - if흡착후(X1B)까지
                         Comp_Bwd();
                         if (Get_Device("X1B"))
                         {
@@ -619,7 +622,10 @@ namespace cnHRD_MES_Project
 
         private void bt_Result_Click(object sender, EventArgs e)
         {
-            operatorLogForm = new Operator_Log();
+            if (operatorLogForm == null || operatorLogForm.IsDisposed)
+            {
+                operatorLogForm = new Operator_Log();
+            }
             operatorLogForm.Show();
         }
 
@@ -632,6 +638,11 @@ namespace cnHRD_MES_Project
             Done_Operation[2] = StartTime.ToString();
             Done_Operation[3] = EndTime.ToString();
             Done_Operation[4] = IsDone.ToString();
+
+            if (operatorLogForm != null)
+            {
+                operatorLogForm.Get_Log(Done_Operation);
+            }
         }
     }
 }
