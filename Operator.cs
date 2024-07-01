@@ -184,18 +184,12 @@ namespace cnHRD_MES_Project
         void Ware_Bwd() { PLC01.SetDevice("Y2B", 0); PLC01.SetDevice("Y2C", 1); } //창고후진
         void CompPad_On() { PLC01.SetDevice("Y2E", 1); } //흡착패드온
         void CompPad_Off() { PLC01.SetDevice("Y2E", 0); } //흡착패드오프
-
-<<<<<<< HEAD
-        
-     //   public int iLoad = 0; //적재모드일때 기동순서
-     // public int iDeliv = 0; //배송모드일때 기동순서
-     //public int iReload = 0; //재적재모드일때 기동순서
-    // int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속  
+ 
         public static int iLoad = 0; //적재모드일때 기동순서
         public static int iDeliv = 0; //배송모드일때 기동순서
         public static int iReload = 0; //재적재모드일때 기동순서
         public static int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
->>>>>// 4ea7cfbaac4e63e720ef62443240b4f87f7ff9b2
+
         public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
         public static int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
         int i;
