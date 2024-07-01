@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Schema;
 using System.Security.Cryptography;
-
+//20240701
 namespace cnHRD_MES_Project
 {
     public partial class Order : Form

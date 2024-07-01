@@ -10,9 +10,6 @@ using System.Windows.Forms;
 using ActUtlTypeLib;
 using System.IO;
 using System.IO.Ports;
-using System.Net.Http.Headers;
-using System.Runtime.InteropServices;
-using System.Runtime.Remoting.Metadata.W3cXsd2001;
 using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Windows.Documents;
@@ -101,7 +98,7 @@ namespace Project_v01
                 pb_Load.Value = Operator.iLoad;
                
             }
-            else if(Operator.iMode==1)//배송모드 공정진행표시
+            else if(Operator.iMode==1)//배송모드 공정진행표시...8/9분기처리?
             {
                 pb_Delivery.ForeColor = Color.LightGreen;
                 pb_Delivery .Style=ProgressBarStyle.Continuous;
