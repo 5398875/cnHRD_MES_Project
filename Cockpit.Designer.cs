@@ -308,7 +308,7 @@
             // 
             this.tb_Error_log.BackColor = System.Drawing.Color.White;
             this.tb_Error_log.ForeColor = System.Drawing.Color.Red;
-            this.tb_Error_log.Location = new System.Drawing.Point(6, 554);
+            this.tb_Error_log.Location = new System.Drawing.Point(16, 554);
             this.tb_Error_log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Error_log.Multiline = true;
             this.tb_Error_log.Name = "tb_Error_log";
@@ -321,7 +321,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(8, 528);
+            this.label1.Location = new System.Drawing.Point(18, 528);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(74, 15);
             this.label1.TabIndex = 3;
@@ -329,7 +329,7 @@
             // 
             // tb_Clear_log
             // 
-            this.tb_Clear_log.Location = new System.Drawing.Point(8, 622);
+            this.tb_Clear_log.Location = new System.Drawing.Point(18, 622);
             this.tb_Clear_log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Clear_log.Name = "tb_Clear_log";
             this.tb_Clear_log.Size = new System.Drawing.Size(121, 32);
@@ -340,7 +340,7 @@
             // 
             // bt_Save_log
             // 
-            this.bt_Save_log.Location = new System.Drawing.Point(224, 622);
+            this.bt_Save_log.Location = new System.Drawing.Point(234, 622);
             this.bt_Save_log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Save_log.Name = "bt_Save_log";
             this.bt_Save_log.Size = new System.Drawing.Size(102, 31);
@@ -376,7 +376,7 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox4.Location = new System.Drawing.Point(453, 310);
+            this.groupBox4.Location = new System.Drawing.Point(435, 297);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -761,7 +761,7 @@
             this.groupBox2.Controls.Add(this.bt_Sup_fwd);
             this.groupBox2.Controls.Add(this.bt_Sup_bwd);
             this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(683, 19);
+            this.groupBox2.Location = new System.Drawing.Point(688, 19);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -836,10 +836,10 @@
             // 
             // bt_OPR
             // 
-            this.bt_OPR.Location = new System.Drawing.Point(399, 72);
+            this.bt_OPR.Location = new System.Drawing.Point(345, 55);
             this.bt_OPR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_OPR.Name = "bt_OPR";
-            this.bt_OPR.Size = new System.Drawing.Size(137, 38);
+            this.bt_OPR.Size = new System.Drawing.Size(137, 30);
             this.bt_OPR.TabIndex = 19;
             this.bt_OPR.Text = "서버원점복귀";
             this.bt_OPR.UseVisualStyleBackColor = true;
@@ -856,10 +856,10 @@
             // 
             // bt_Error_Reset
             // 
-            this.bt_Error_Reset.Location = new System.Drawing.Point(399, 30);
+            this.bt_Error_Reset.Location = new System.Drawing.Point(343, 20);
             this.bt_Error_Reset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Error_Reset.Name = "bt_Error_Reset";
-            this.bt_Error_Reset.Size = new System.Drawing.Size(137, 38);
+            this.bt_Error_Reset.Size = new System.Drawing.Size(137, 30);
             this.bt_Error_Reset.TabIndex = 18;
             this.bt_Error_Reset.Text = "서버에러리셋";
             this.bt_Error_Reset.UseVisualStyleBackColor = true;
@@ -928,7 +928,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(959, 679);
+            this.ClientSize = new System.Drawing.Size(1014, 728);
             this.Controls.Add(this.groupBox7);
             this.Controls.Add(this.groupBox8);
             this.Controls.Add(this.groupBox6);

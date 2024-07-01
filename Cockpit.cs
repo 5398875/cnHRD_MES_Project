@@ -221,7 +221,7 @@ namespace Project_v01
                 plc_Status_ok.Enabled = false;
             }
 
-            //에어공급//////////////////////통합시 trigger 수정(현재 X0,X1)////////////////
+            //에어공급
             if (Operator.Air== 1)
             {
                 bt_Airline_ON.BackColor = Color.Red;
@@ -239,11 +239,9 @@ namespace Project_v01
             }
 
 
-            ///물품판별 적재공정.....작업중 월요일(7/1) 테스트예정
+            ///물품판별 적재공정
 
-            // bool Material = false;  //비금속
-            // while(Material)
-            //{
+           
             if (Operator.iMetal == 2)//비금속
             {
                 bt_Lamp_Metal.BackColor = Color.LightGray;
