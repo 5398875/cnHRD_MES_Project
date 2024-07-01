@@ -75,7 +75,7 @@ namespace cnHRD_MES_Project
 
         private void Operator_Log_Closing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason==CloseReason.UserClosing)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
                 Hide();
