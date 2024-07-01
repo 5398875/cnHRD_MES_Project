@@ -38,6 +38,7 @@ namespace cnHRD_MES_Project
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
+            operatorLogForm = new Operator_Log();
 
         }
 
@@ -109,6 +110,9 @@ namespace cnHRD_MES_Project
             Air = 1;
 
             Timer_Operation.Start(); //타이머 시작
+
+            Cockpit CP = main.Cock1;
+            CP.bt_PLC_start_Click(sender, e);
         }
 
         private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
@@ -256,15 +260,12 @@ namespace cnHRD_MES_Project
             Tb_ServoLoc.Text = temp2.ToString();
         }
 
+
+
         public void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
-            Cockpit CP = main.Cock1;
-
-            CP.bt_PLC_start_Click(sender, e);
-
-            textBox1.Text = bStart.ToString();
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
@@ -291,7 +292,6 @@ namespace cnHRD_MES_Project
                 Is_Metal = 2; //물품은 공정초기에 비금속으로 간주, 이후 자기센서가 한번이라도 들어오면 금속(1)로 전환
                 iMetal = 0; //물품은 초기에 금속판별되지 않은상태
                 bStart = false; //초기상태 False. 공정시작
-                
             }
 
             else if (iMode == 1) //배송모드
@@ -304,7 +304,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Servo_Move(iLocUp); //1,3,5위치
                         ORD.Deliv_Check();
@@ -322,8 +322,6 @@ namespace cnHRD_MES_Project
                             Stop_Fwd(); //물품이 걸리지 않게 내려놓는다
                             iDeliv++;
                         }
-                            ORD.Deliv_Start();
-                        iDeliv++;
                         break;
                     case 2: //2위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(iLocDown); //2,4,6위치
@@ -418,7 +416,7 @@ namespace cnHRD_MES_Project
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                             processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
@@ -435,7 +433,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         if (Get_Device("X08")) //물품이 있다면
                             iLoad++;
@@ -532,7 +530,7 @@ namespace cnHRD_MES_Project
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                             processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
@@ -549,7 +547,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Con_On();
                         Stop_Fwd();
@@ -613,7 +611,7 @@ namespace cnHRD_MES_Project
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                             processStarted = false; //진행 상황 표현
                         }
                         break;
@@ -633,11 +631,7 @@ namespace cnHRD_MES_Project
 
         private void bt_Result_Click(object sender, EventArgs e)
         {
-            if (operatorLogForm == null || operatorLogForm.IsDisposed)
-            {
-                operatorLogForm = new Operator_Log();
-            }
-            operatorLogForm.Show();
+            operatorLogForm.Visible = true;
         }
 
         public string[] Done_Operation = new string[5];

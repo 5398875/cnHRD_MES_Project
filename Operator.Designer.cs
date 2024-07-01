@@ -54,18 +54,6 @@
             this.Bt_Servo5_Teaching = new System.Windows.Forms.Button();
             this.Bt_Servo6_Teaching = new System.Windows.Forms.Button();
             this.Bt_Servo7_Teaching = new System.Windows.Forms.Button();
-            this.lb00 = new System.Windows.Forms.Label();
-            this.lb10 = new System.Windows.Forms.Label();
-            this.lb01 = new System.Windows.Forms.Label();
-            this.lb11 = new System.Windows.Forms.Label();
-            this.lb02 = new System.Windows.Forms.Label();
-            this.lb12 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.bt_OperationLog = new System.Windows.Forms.Button();
             this.bt_Result = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -405,120 +393,6 @@
             this.Bt_Servo7_Teaching.UseVisualStyleBackColor = false;
             this.Bt_Servo7_Teaching.Click += new System.EventHandler(this.Bt_Servo7_Teaching_Click);
             // 
-            // lb00
-            // 
-            this.lb00.AutoSize = true;
-            this.lb00.Location = new System.Drawing.Point(143, 480);
-            this.lb00.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb00.Name = "lb00";
-            this.lb00.Size = new System.Drawing.Size(19, 18);
-            this.lb00.TabIndex = 28;
-            this.lb00.Text = "1";
-            // 
-            // lb10
-            // 
-            this.lb10.AutoSize = true;
-            this.lb10.Location = new System.Drawing.Point(220, 480);
-            this.lb10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb10.Name = "lb10";
-            this.lb10.Size = new System.Drawing.Size(19, 18);
-            this.lb10.TabIndex = 28;
-            this.lb10.Text = "1";
-            // 
-            // lb01
-            // 
-            this.lb01.AutoSize = true;
-            this.lb01.Location = new System.Drawing.Point(143, 461);
-            this.lb01.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb01.Name = "lb01";
-            this.lb01.Size = new System.Drawing.Size(19, 18);
-            this.lb01.TabIndex = 28;
-            this.lb01.Text = "1";
-            // 
-            // lb11
-            // 
-            this.lb11.AutoSize = true;
-            this.lb11.Location = new System.Drawing.Point(220, 461);
-            this.lb11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb11.Name = "lb11";
-            this.lb11.Size = new System.Drawing.Size(19, 18);
-            this.lb11.TabIndex = 28;
-            this.lb11.Text = "1";
-            // 
-            // lb02
-            // 
-            this.lb02.AutoSize = true;
-            this.lb02.Location = new System.Drawing.Point(143, 442);
-            this.lb02.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb02.Name = "lb02";
-            this.lb02.Size = new System.Drawing.Size(19, 18);
-            this.lb02.TabIndex = 28;
-            this.lb02.Text = "1";
-            // 
-            // lb12
-            // 
-            this.lb12.AutoSize = true;
-            this.lb12.Location = new System.Drawing.Point(220, 442);
-            this.lb12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lb12.Name = "lb12";
-            this.lb12.Size = new System.Drawing.Size(19, 18);
-            this.lb12.TabIndex = 28;
-            this.lb12.Text = "1";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(440, 432);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(153, 28);
-            this.textBox1.TabIndex = 29;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Location = new System.Drawing.Point(649, 432);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 28);
-            this.textBox2.TabIndex = 29;
-            // 
-            // textBox3
-            // 
-            this.textBox3.Location = new System.Drawing.Point(858, 432);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(153, 28);
-            this.textBox3.TabIndex = 29;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(495, 394);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(76, 18);
-            this.label1.TabIndex = 30;
-            this.label1.Text = "icurrent";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(682, 394);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 18);
-            this.label2.TabIndex = 31;
-            this.label2.Text = "icomplete";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(880, 394);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 18);
-            this.label3.TabIndex = 32;
-            this.label3.Text = "label3";
-            // 
             // bt_OperationLog
             // 
             this.bt_OperationLog.BackColor = System.Drawing.Color.DarkGray;
@@ -553,18 +427,6 @@
             this.ClientSize = new System.Drawing.Size(1409, 544);
             this.Controls.Add(this.bt_Result);
             this.Controls.Add(this.bt_OperationLog);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.lb12);
-            this.Controls.Add(this.lb02);
-            this.Controls.Add(this.lb11);
-            this.Controls.Add(this.lb01);
-            this.Controls.Add(this.lb10);
-            this.Controls.Add(this.lb00);
             this.Controls.Add(this.Bt_Servo7_Teaching);
             this.Controls.Add(this.Bt_Servo6_Teaching);
             this.Controls.Add(this.Bt_Servo5_Teaching);
@@ -630,18 +492,6 @@
         private System.Windows.Forms.Button Bt_Servo5_Teaching;
         private System.Windows.Forms.Button Bt_Servo6_Teaching;
         private System.Windows.Forms.Button Bt_Servo7_Teaching;
-        private System.Windows.Forms.Label lb00;
-        private System.Windows.Forms.Label lb10;
-        private System.Windows.Forms.Label lb01;
-        private System.Windows.Forms.Label lb11;
-        private System.Windows.Forms.Label lb02;
-        private System.Windows.Forms.Label lb12;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button bt_OperationLog;
         private System.Windows.Forms.Button bt_Result;
     }

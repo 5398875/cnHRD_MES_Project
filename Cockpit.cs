@@ -47,7 +47,7 @@ namespace Project_v01
             if (con_status == 0)
             {
                 readTimer = new Timer();
-                readTimer.Interval = 100; 
+                readTimer.Interval = 1000; 
                 readTimer.Tick += new EventHandler(ReadTimer_Tick);
                 readTimer.Start();
                

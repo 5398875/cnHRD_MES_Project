@@ -48,6 +48,7 @@
             this.Controls.Add(this.lv_OperatorLog);
             this.Name = "Operator_Log";
             this.Text = "Operator_Log";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Operator_Log_Closing);
             this.ResumeLayout(false);
 
         }
