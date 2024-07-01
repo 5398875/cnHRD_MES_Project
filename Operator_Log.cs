@@ -50,6 +50,10 @@ namespace cnHRD_MES_Project
                 }
                 if (Convert.ToInt16(doneOperation[1]) == 0)
                 {
+                    Converted_Log[1] = "판별중";
+                }
+                else if (Convert.ToInt16(doneOperation[1]) == 1)
+                {
                     Converted_Log[0] = "판별중";
                 }
                 else if (Convert.ToInt16(doneOperation[1]) == 1)
@@ -86,7 +90,7 @@ namespace cnHRD_MES_Project
 
         private void Operator_Log_Closing(object sender, FormClosingEventArgs e)
         {
-            if(e.CloseReason==CloseReason.UserClosing)
+            if (e.CloseReason == CloseReason.UserClosing)
             {
                 e.Cancel = true;
                 Hide();
