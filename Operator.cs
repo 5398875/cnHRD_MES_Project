@@ -183,7 +183,8 @@ namespace cnHRD_MES_Project
         void Ware_Bwd() { PLC01.SetDevice("Y2B", 0); PLC01.SetDevice("Y2C", 1); } //창고후진
         void CompPad_On() { PLC01.SetDevice("Y2E", 1); } //흡착패드온
         void CompPad_Off() { PLC01.SetDevice("Y2E", 0); } //흡착패드오프
- 
+
+
         public static int iLoad = 0; //적재모드일때 기동순서
         public static int iDeliv = 0; //배송모드일때 기동순서
         public static int iReload = 0; //재적재모드일때 기동순서
@@ -617,7 +618,10 @@ namespace cnHRD_MES_Project
 
         private void bt_Result_Click(object sender, EventArgs e)
         {
-            operatorLogForm = new Operator_Log();
+            if (operatorLogForm == null || operatorLogForm.IsDisposed)
+            {
+                operatorLogForm = new Operator_Log();
+            }
             operatorLogForm.Show();
         }
 
@@ -630,6 +634,11 @@ namespace cnHRD_MES_Project
             Done_Operation[2] = StartTime.ToString();
             Done_Operation[3] = EndTime.ToString();
             Done_Operation[4] = IsDone.ToString();
+
+            if (operatorLogForm != null)
+            {
+                operatorLogForm.Get_Log(Done_Operation);
+            }
         }
     }
 }
