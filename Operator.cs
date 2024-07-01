@@ -38,7 +38,6 @@ namespace cnHRD_MES_Project
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
-
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -256,6 +255,8 @@ namespace cnHRD_MES_Project
             Tb_ServoLoc.Text = temp2.ToString();
         }
 
+
+
         public void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
             Warehouse WH = main.Ware1;
@@ -291,7 +292,6 @@ namespace cnHRD_MES_Project
                 Is_Metal = 2; //물품은 공정초기에 비금속으로 간주, 이후 자기센서가 한번이라도 들어오면 금속(1)로 전환
                 iMetal = 0; //물품은 초기에 금속판별되지 않은상태
                 bStart = false; //초기상태 False. 공정시작
-                
             }
 
             else if (iMode == 1) //배송모드
@@ -322,8 +322,6 @@ namespace cnHRD_MES_Project
                             Stop_Fwd(); //물품이 걸리지 않게 내려놓는다
                             iDeliv++;
                         }
-                            ORD.Deliv_Start();
-                        iDeliv++;
                         break;
                     case 2: //2위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(iLocDown); //2,4,6위치
