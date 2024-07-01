@@ -48,8 +48,11 @@ namespace cnHRD_MES_Project
                 {
                     Converted_Log[0] = "적재공정";
                 }
-
-                if (Convert.ToInt16(doneOperation[1]) == 1)
+                if (Convert.ToInt16(doneOperation[1]) == 0)
+                {
+                    Converted_Log[0] = "판별중";
+                }
+                else if (Convert.ToInt16(doneOperation[1]) == 1)
                 {
                     Converted_Log[1] = "금속";
                 }
@@ -68,6 +71,14 @@ namespace cnHRD_MES_Project
             else    //완료시점에 호출되면 리스트뷰(종료시간 및 성공여부) 업데이트
             {
                 ListViewItem item = logItems[key];
+                if (Convert.ToInt32(Converted_Log[1]) == 1)
+                {
+                    item.SubItems[1].Text = "금속";
+                }
+                else if(Convert.ToInt32(Converted_Log[1]) == 2)
+                {
+                    item.SubItems[1].Text = "비금속";
+                }
                 item.SubItems[3].Text = doneOperation[3]; //종료시간
                 item.SubItems[4].Text = doneOperation[4] == "True" ? "공정완료" : "공정 중"; //성공여부 업데이트
             }
