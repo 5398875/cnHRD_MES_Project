@@ -102,7 +102,12 @@ namespace Project_v01
             {
                 pb_Delivery.ForeColor = Color.LightGreen;
                 pb_Delivery .Style=ProgressBarStyle.Continuous;
-                pb_Delivery .Maximum = 9;  
+               
+                if (Operator.iLocation[3] == 1)
+                    pb_Delivery.Maximum = 8;
+                else
+                    pb_Delivery.Maximum = 9;
+
                 pb_Delivery .Minimum = 0;
                 pb_Delivery .Step = 1;
                 pb_Delivery.Value = Operator.iDeliv;

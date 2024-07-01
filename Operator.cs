@@ -33,7 +33,7 @@ namespace cnHRD_MES_Project
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            Timer_Operation.Interval = 100;
+            Timer_Operation.Interval = 1000;
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
@@ -256,7 +256,7 @@ namespace cnHRD_MES_Project
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
 
-            textBox3.Text = iLocation[0].ToString() + " " + iLocation[1] + " " + iLocation[2] + " " + iLocation[3] + " " + iLocation[4];
+            textBox1.Text = bStart.ToString();
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
