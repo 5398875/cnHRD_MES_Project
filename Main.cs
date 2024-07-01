@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Project_v01;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -58,6 +59,7 @@ namespace cnHRD_MES_Project
 
         public Warehouse Ware1 { get => Ware; set => Ware = value; }
         public Order Ord1 { get => Ord; set => Ord = value; }
+        public Cockpit Cock1 { get => Cock; set => Cock = value; }
 
         private void Timer_Sl(object sender) //슬라이드 메뉴 사이즈 변경
         {

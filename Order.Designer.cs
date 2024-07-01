@@ -36,13 +36,12 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Rb_Manual = new System.Windows.Forms.RadioButton();
             this.Rb_Auto = new System.Windows.Forms.RadioButton();
+            this.Rb_Stop = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // Lv_Order
             // 
-            this.Lv_Order.CheckBoxes = true;
             this.Lv_Order.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
@@ -93,37 +92,37 @@
             this.columnHeader7.Text = "상태";
             this.columnHeader7.Width = 87;
             // 
-            // Rb_Manual
-            // 
-            this.Rb_Manual.AutoSize = true;
-            this.Rb_Manual.Checked = true;
-            this.Rb_Manual.Location = new System.Drawing.Point(488, 120);
-            this.Rb_Manual.Name = "Rb_Manual";
-            this.Rb_Manual.Size = new System.Drawing.Size(123, 19);
-            this.Rb_Manual.TabIndex = 1;
-            this.Rb_Manual.TabStop = true;
-            this.Rb_Manual.Text = "물품 자동배송";
-            this.Rb_Manual.UseVisualStyleBackColor = true;
-            this.Rb_Manual.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
-            // 
             // Rb_Auto
             // 
             this.Rb_Auto.AutoSize = true;
-            this.Rb_Auto.Location = new System.Drawing.Point(656, 120);
+            this.Rb_Auto.Checked = true;
+            this.Rb_Auto.Location = new System.Drawing.Point(488, 120);
             this.Rb_Auto.Name = "Rb_Auto";
-            this.Rb_Auto.Size = new System.Drawing.Size(88, 19);
+            this.Rb_Auto.Size = new System.Drawing.Size(123, 19);
             this.Rb_Auto.TabIndex = 1;
-            this.Rb_Auto.Text = "배송정지";
+            this.Rb_Auto.TabStop = true;
+            this.Rb_Auto.Text = "물품 자동배송";
             this.Rb_Auto.UseVisualStyleBackColor = true;
-            this.Rb_Auto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.Rb_Auto.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // Rb_Stop
+            // 
+            this.Rb_Stop.AutoSize = true;
+            this.Rb_Stop.Location = new System.Drawing.Point(656, 120);
+            this.Rb_Stop.Name = "Rb_Stop";
+            this.Rb_Stop.Size = new System.Drawing.Size(88, 19);
+            this.Rb_Stop.TabIndex = 1;
+            this.Rb_Stop.Text = "배송정지";
+            this.Rb_Stop.UseVisualStyleBackColor = true;
+            this.Rb_Stop.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // Order
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1123, 668);
+            this.Controls.Add(this.Rb_Stop);
             this.Controls.Add(this.Rb_Auto);
-            this.Controls.Add(this.Rb_Manual);
             this.Controls.Add(this.Lv_Order);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -144,7 +143,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ListView Lv_Order;
         private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.RadioButton Rb_Manual;
         private System.Windows.Forms.RadioButton Rb_Auto;
+        private System.Windows.Forms.RadioButton Rb_Stop;
     }
 }
