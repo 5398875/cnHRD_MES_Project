@@ -36,8 +36,8 @@
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.Rb_Manual = new System.Windows.Forms.RadioButton();
+            this.Rb_Auto = new System.Windows.Forms.RadioButton();
             this.SuspendLayout();
             // 
             // Lv_Order
@@ -93,29 +93,29 @@
             this.columnHeader7.Text = "상태";
             this.columnHeader7.Width = 87;
             // 
-            // radioButton1
+            // Rb_Manual
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(488, 120);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(123, 19);
-            this.radioButton1.TabIndex = 1;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "물품 자동배송";
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.Rb_Manual.AutoSize = true;
+            this.Rb_Manual.Checked = true;
+            this.Rb_Manual.Location = new System.Drawing.Point(488, 120);
+            this.Rb_Manual.Name = "Rb_Manual";
+            this.Rb_Manual.Size = new System.Drawing.Size(123, 19);
+            this.Rb_Manual.TabIndex = 1;
+            this.Rb_Manual.TabStop = true;
+            this.Rb_Manual.Text = "물품 자동배송";
+            this.Rb_Manual.UseVisualStyleBackColor = true;
+            this.Rb_Manual.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
-            // radioButton2
+            // Rb_Auto
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(656, 120);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(123, 19);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.Text = "물품 수동배송";
-            this.radioButton2.UseVisualStyleBackColor = true;
-            this.radioButton2.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
+            this.Rb_Auto.AutoSize = true;
+            this.Rb_Auto.Location = new System.Drawing.Point(656, 120);
+            this.Rb_Auto.Name = "Rb_Auto";
+            this.Rb_Auto.Size = new System.Drawing.Size(88, 19);
+            this.Rb_Auto.TabIndex = 1;
+            this.Rb_Auto.Text = "배송정지";
+            this.Rb_Auto.UseVisualStyleBackColor = true;
+            this.Rb_Auto.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // Order
             // 
@@ -142,7 +142,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader6;
         private System.Windows.Forms.ListView Lv_Order;
         private System.Windows.Forms.ColumnHeader columnHeader7;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.RadioButton Rb_Manual;
+        private System.Windows.Forms.RadioButton Rb_Auto;
     }
 }
