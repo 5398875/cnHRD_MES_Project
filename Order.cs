@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Schema;
 using System.Security.Cryptography;
-
+//20240701
 namespace cnHRD_MES_Project
 {
     public partial class Order : Form
@@ -57,11 +57,13 @@ namespace cnHRD_MES_Project
                     Lv_Order.Items.Add(item);
                     if (iCurrent > 1)
                         Lv_Order.Items[iCurrent - 2].Selected = false;
-                    Lv_Order.Items[iCurrent - 1].Selected = true;
-                    Lv_Order.Items[iCurrent - 1].Focused = true;
-                    Lv_Order.Focus();
-
-                    Lv_Order.Items[iCurrent - 1].EnsureVisible();
+                    if(Rb_Auto.Checked)
+                    {
+                        Lv_Order.Items[iCurrent - 1].Selected = true;
+                        Lv_Order.Items[iCurrent - 1].Focused = true;
+                        Lv_Order.Focus();
+                        Lv_Order.Items[iCurrent - 1].EnsureVisible();
+                    }
                 }
                 StreamWriter Order_Delete = new StreamWriter(filePath, false);
                 if (Lines.Length == 1)
@@ -85,7 +87,7 @@ namespace cnHRD_MES_Project
         public int[]Is_Order()
         {
             int[] iOrder = new int[] { 0, 0, 0 };
-            if (iCurrent <= iOrder_Complete) //배송을 하려면 주문번호가 발송한 숫자보다 커야함
+            if (Rb_Manual.Checked || iCurrent <= iOrder_Complete) //배송을 하려면 주문번호가 발송한 숫자보다 커야함
                 iOrder[0] = 0;
             else if (iCurrent > iOrder_Complete) //배송을 하려면 주문번호가 발송한 숫자보다 커야함
             {
