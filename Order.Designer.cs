@@ -56,7 +56,7 @@
             this.Lv_Order.HideSelection = false;
             this.Lv_Order.Location = new System.Drawing.Point(160, 160);
             this.Lv_Order.Name = "Lv_Order";
-            this.Lv_Order.Size = new System.Drawing.Size(840, 392);
+            this.Lv_Order.Size = new System.Drawing.Size(768, 360);
             this.Lv_Order.TabIndex = 0;
             this.Lv_Order.UseCompatibleStateImageBehavior = false;
             this.Lv_Order.View = System.Windows.Forms.View.Details;
