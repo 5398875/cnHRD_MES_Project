@@ -66,7 +66,7 @@
             this.Bt_OpenPLC.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
             this.Bt_OpenPLC.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_OpenPLC.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Bt_OpenPLC.Location = new System.Drawing.Point(11, 10);
+            this.Bt_OpenPLC.Location = new System.Drawing.Point(80, 8);
             this.Bt_OpenPLC.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_OpenPLC.Name = "Bt_OpenPLC";
             this.Bt_OpenPLC.Size = new System.Drawing.Size(198, 41);
@@ -84,7 +84,7 @@
             this.Bt_ClosePLC.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
             this.Bt_ClosePLC.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_ClosePLC.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Bt_ClosePLC.Location = new System.Drawing.Point(11, 58);
+            this.Bt_ClosePLC.Location = new System.Drawing.Point(80, 56);
             this.Bt_ClosePLC.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_ClosePLC.Name = "Bt_ClosePLC";
             this.Bt_ClosePLC.Size = new System.Drawing.Size(198, 41);
@@ -95,7 +95,7 @@
             // 
             // Lb_Connect
             // 
-            this.Lb_Connect.Location = new System.Drawing.Point(11, 106);
+            this.Lb_Connect.Location = new System.Drawing.Point(80, 104);
             this.Lb_Connect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_Connect.Name = "Lb_Connect";
             this.Lb_Connect.Size = new System.Drawing.Size(198, 28);
@@ -105,7 +105,7 @@
             // 
             // Lb_ServoConnect
             // 
-            this.Lb_ServoConnect.Location = new System.Drawing.Point(253, 58);
+            this.Lb_ServoConnect.Location = new System.Drawing.Point(296, 56);
             this.Lb_ServoConnect.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.Lb_ServoConnect.Name = "Lb_ServoConnect";
             this.Lb_ServoConnect.Size = new System.Drawing.Size(198, 28);
@@ -122,7 +122,7 @@
             this.Bt_OpenServo.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
             this.Bt_OpenServo.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_OpenServo.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Bt_OpenServo.Location = new System.Drawing.Point(253, 10);
+            this.Bt_OpenServo.Location = new System.Drawing.Point(296, 8);
             this.Bt_OpenServo.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_OpenServo.Name = "Bt_OpenServo";
             this.Bt_OpenServo.Size = new System.Drawing.Size(198, 41);
@@ -246,7 +246,7 @@
             this.Bt_Stop.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
             this.Bt_Stop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Stop.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Bt_Stop.Location = new System.Drawing.Point(275, 288);
+            this.Bt_Stop.Location = new System.Drawing.Point(320, 272);
             this.Bt_Stop.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Stop.Name = "Bt_Stop";
             this.Bt_Stop.Size = new System.Drawing.Size(198, 41);
@@ -263,7 +263,7 @@
             this.Bt_Start.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
             this.Bt_Start.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Start.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.Bt_Start.Location = new System.Drawing.Point(275, 240);
+            this.Bt_Start.Location = new System.Drawing.Point(320, 224);
             this.Bt_Start.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Start.Name = "Bt_Start";
             this.Bt_Start.Size = new System.Drawing.Size(198, 41);
@@ -401,7 +401,7 @@
             this.bt_OperationLog.FlatAppearance.MouseDownBackColor = System.Drawing.Color.SlateBlue;
             this.bt_OperationLog.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bt_OperationLog.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bt_OperationLog.Location = new System.Drawing.Point(55, 259);
+            this.bt_OperationLog.Location = new System.Drawing.Point(160, 232);
             this.bt_OperationLog.Margin = new System.Windows.Forms.Padding(4);
             this.bt_OperationLog.Name = "bt_OperationLog";
             this.bt_OperationLog.Size = new System.Drawing.Size(143, 67);

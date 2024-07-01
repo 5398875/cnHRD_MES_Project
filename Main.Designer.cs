@@ -156,9 +156,10 @@
             // Pn_Main
             // 
             this.Pn_Main.Controls.Add(this.label1);
-            this.Pn_Main.Location = new System.Drawing.Point(48, 0);
+            this.Pn_Main.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Pn_Main.Location = new System.Drawing.Point(0, 0);
             this.Pn_Main.Name = "Pn_Main";
-            this.Pn_Main.Size = new System.Drawing.Size(1113, 562);
+            this.Pn_Main.Size = new System.Drawing.Size(1582, 853);
             this.Pn_Main.TabIndex = 26;
             this.Pn_Main.Paint += new System.Windows.Forms.PaintEventHandler(this.Pn_Main_Paint);
             // 
@@ -177,10 +178,11 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(1113, 562);
+            this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.TPanel_SideMenu);
             this.Controls.Add(this.Pn_Main);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Main_Load);
             this.TPanel_SideMenu.ResumeLayout(false);
