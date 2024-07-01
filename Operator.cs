@@ -103,6 +103,7 @@ namespace cnHRD_MES_Project
 
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
+            Bt_Start.BackColor = Color.DodgerBlue;
 
             Timer_Operation.Start(); //타이머 시작
         }
@@ -121,6 +122,7 @@ namespace cnHRD_MES_Project
             Bt_Start.Enabled = true;     //┐
             bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
             Bt_OpenServo.Enabled = true; //┘
+            Bt_Start.BackColor = Color.DarkGray;
         }
 
         private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
@@ -182,11 +184,12 @@ namespace cnHRD_MES_Project
         void Ware_Bwd() { PLC01.SetDevice("Y2B", 0); PLC01.SetDevice("Y2C", 1); } //창고후진
         void CompPad_On() { PLC01.SetDevice("Y2E", 1); } //흡착패드온
         void CompPad_Off() { PLC01.SetDevice("Y2E", 0); } //흡착패드오프
-
+ 
         public static int iLoad = 0; //적재모드일때 기동순서
         public static int iDeliv = 0; //배송모드일때 기동순서
         public static int iReload = 0; //재적재모드일때 기동순서
         public static int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
+
         public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
         public static int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
         int i;
@@ -611,7 +614,15 @@ namespace cnHRD_MES_Project
             public bool IsDone { get; set; }             //성공여부
         }
 
-        string[] Done_Operation = new string[5];
+        private Operator_Log operatorLogForm;
+
+        private void bt_Result_Click(object sender, EventArgs e)
+        {
+            operatorLogForm = new Operator_Log();
+            operatorLogForm.Show();
+        }
+
+        public string[] Done_Operation = new string[5];
 
         public void Done(int ProcessType, int DoneItemType, DateTime StartTime, DateTime EndTime, Boolean IsDone)
         {
