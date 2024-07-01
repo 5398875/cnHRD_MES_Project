@@ -183,6 +183,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 27F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Honeydew;
             this.ClientSize = new System.Drawing.Size(982, 453);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
