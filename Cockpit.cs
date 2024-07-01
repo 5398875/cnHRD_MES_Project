@@ -35,10 +35,8 @@ namespace Project_v01
 
   
         
-        private void bt_PLC_start_Click(object sender, EventArgs e)
+        public void bt_PLC_start_Click(object sender, EventArgs e)
         {
-
-            
 
             int con_status = 0;
             PLC01.ActLogicalStationNumber = 1;
@@ -49,7 +47,7 @@ namespace Project_v01
             if (con_status == 0)
             {
                 readTimer = new Timer();
-                readTimer.Interval = 1; 
+                readTimer.Interval = 100; 
                 readTimer.Tick += new EventHandler(ReadTimer_Tick);
                 readTimer.Start();
                

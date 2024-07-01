@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ActUtlTypeLib;
+using Project_v01;
 
 namespace cnHRD_MES_Project
 {
@@ -98,11 +99,14 @@ namespace cnHRD_MES_Project
             PLC01.WriteBuffer(6, 1519, 1, (short)uJog_Speed[1]); //┴─U6\G1518번에 JOG속도
         }
 
+        public static int Air = 0; //Cockpit에서 쓸 공압유무
+
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
             Bt_Start.BackColor = Color.DodgerBlue;
+            Air = 1;
 
             Timer_Operation.Start(); //타이머 시작
         }
@@ -122,6 +126,7 @@ namespace cnHRD_MES_Project
             bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
             Bt_OpenServo.Enabled = true; //┘
             Bt_Start.BackColor = Color.DarkGray;
+            Air = 0;
         }
 
         private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
@@ -250,10 +255,13 @@ namespace cnHRD_MES_Project
             Tb_ServoLoc.Text = temp2.ToString();
         }
 
-        void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
+        public void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
+            Cockpit CP = main.Cock1;
+
+            CP.bt_PLC_start_Click(sender, e);
 
             textBox1.Text = bStart.ToString();
 
