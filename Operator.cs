@@ -263,7 +263,7 @@ namespace cnHRD_MES_Project
 
             CP.bt_PLC_start_Click(sender, e);
 
-            textBox1.Text = iLoad.ToString();
+            textBox1.Text = bStart.ToString();
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
