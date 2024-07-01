@@ -631,9 +631,6 @@ namespace cnHRD_MES_Project
 
         private void bt_Result_Click(object sender, EventArgs e)
         {
-            if (operatorLogForm == null || operatorLogForm.IsDisposed)
-            {
-            }
             operatorLogForm.Visible = true;
         }
 
