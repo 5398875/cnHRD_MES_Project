@@ -222,7 +222,7 @@ namespace Project_v01
             }
 
             //에어공급//////////////////////통합시 trigger 수정(현재 X0,X1)////////////////
-            if ((X0&0x01) == 0x01)
+            if (Operator.Air== 1)
             {
                 bt_Airline_ON.BackColor = Color.Red;
                 bt_Airline_ON.Enabled = false;
@@ -230,7 +230,7 @@ namespace Project_v01
                 bt_Airline_OFF.Enabled = false;
             }
 
-            if ((X0&0x02) == 0x02)
+            else
             {
                 bt_Airline_ON.BackColor = Color.LightGray;
                 bt_Airline_ON.Enabled = false;
@@ -244,7 +244,7 @@ namespace Project_v01
             // bool Material = false;  //비금속
             // while(Material)
             //{
-            if (Operator.Is_Metal == 2)//비금속
+            if (Operator.iMetal == 2)//비금속
             {
                 bt_Lamp_Metal.BackColor = Color.LightGray;
                 bt_Lamp_Metal.Enabled = false;
@@ -252,7 +252,7 @@ namespace Project_v01
                 bt_Lamp_NonMetal.Enabled = false;
             }
 
-            else //금속
+            else if(Operator.iMetal == 1)//금속
             {
                //  Material = true;
                  bt_Lamp_Metal.BackColor = Color.Red;
@@ -260,6 +260,13 @@ namespace Project_v01
                  bt_Lamp_NonMetal.BackColor = Color.LightGray;
                  bt_Lamp_NonMetal.Enabled = false;
                    
+            }
+            else
+            {
+                bt_Lamp_Metal.BackColor = Color.LightGray;
+                bt_Lamp_Metal.Enabled = false;
+                bt_Lamp_NonMetal.BackColor = Color.LightGray;
+                bt_Lamp_NonMetal.Enabled = false;
             }
 
            

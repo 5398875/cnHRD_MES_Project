@@ -138,7 +138,7 @@
             this.groupBox1.Size = new System.Drawing.Size(163, 254);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Communication";
+            this.groupBox1.Text = "통신";
             // 
             // bt_PLC_stop
             // 
@@ -760,6 +760,7 @@
             this.groupBox2.Controls.Add(this.bt_Send_fwd);
             this.groupBox2.Controls.Add(this.bt_Sup_fwd);
             this.groupBox2.Controls.Add(this.bt_Sup_bwd);
+            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.groupBox2.Location = new System.Drawing.Point(683, 19);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";

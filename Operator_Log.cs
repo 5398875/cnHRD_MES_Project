@@ -22,7 +22,7 @@ namespace cnHRD_MES_Project
             lv_OperatorLog.Columns.Add("시작시간", -2, HorizontalAlignment.Center);
             lv_OperatorLog.Columns.Add("종료시간", -2, HorizontalAlignment.Center);
             lv_OperatorLog.Columns.Add("성공여부", -2, HorizontalAlignment.Center);
-            lv_OperatorLog.Columns.Add("비고",-2, HorizontalAlignment.Center);
+            lv_OperatorLog.Columns.Add("비고", -2, HorizontalAlignment.Center);
 
             lv_OperatorLog.View = View.Details;
             lv_OperatorLog.GridLines = true;
@@ -31,45 +31,46 @@ namespace cnHRD_MES_Project
 
         }
 
+        Dictionary<string, ListViewItem> logItems = new Dictionary<string, ListViewItem>();
         string[] Converted_Log = new string[6];
 
         public void Get_Log(string[] doneOperation)
         {
-            if (Convert.ToInt16(doneOperation[0]) == 1)
-            {
-                Converted_Log[0] = "배송공정";
-            }
-            else if (Convert.ToInt16(doneOperation[0]) == 2)
-            {
-                Converted_Log[0] = "적재공정";
-            }
+            string key = doneOperation[2];  //시작시간을 키로 사용
 
-            if (Convert.ToInt16(doneOperation[1]) == 1)
+            if (!logItems.ContainsKey(key)) //공정초기 호출 시
             {
-                Converted_Log[1] = "금속";
-            }
-            else
-            {
-                Converted_Log[1] = "비금속";
-            }
-            Converted_Log[2] = doneOperation[2];
-            Converted_Log[3] = doneOperation[3];
-            if (doneOperation[4] == "True")
-            {
-                Converted_Log[4] = "공정완료";
-            }
-            else
-            {
-                Converted_Log[4] = "공정 중";
-            }
-            ListViewItem item = new ListViewItem(Converted_Log);
-            lv_OperatorLog.Items.Add(item);
+                if (Convert.ToInt16(doneOperation[0]) == 1)
+                {
+                    Converted_Log[0] = "배송공정";
+                }
+                else if (Convert.ToInt16(doneOperation[0]) == 2)
+                {
+                    Converted_Log[0] = "적재공정";
+                }
 
-            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[0]);
-            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[1]);
-            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[2]);
-            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[3]);  
-            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[4]);
+                if (Convert.ToInt16(doneOperation[1]) == 1)
+                {
+                    Converted_Log[1] = "금속";
+                }
+                else
+                {
+                    Converted_Log[1] = "비금속";
+                }
+                Converted_Log[2] = doneOperation[2];
+                Converted_Log[3] = doneOperation[3];
+                Converted_Log[4] = "공정 중";  //공정상태 초기값
+
+                ListViewItem item = new ListViewItem(Converted_Log);
+                lv_OperatorLog.Items.Add(item);
+                logItems[key] = item;
+            }
+            else    //완료시점에 호출되면 리스트뷰(종료시간 및 성공여부) 업데이트
+            {
+                ListViewItem item = logItems[key];
+                item.SubItems[3].Text = doneOperation[3]; //종료시간
+                item.SubItems[4].Text = doneOperation[4] == "True" ? "공정완료" : "공정 중"; //성공여부 업데이트
+            }
         }
     }
 }

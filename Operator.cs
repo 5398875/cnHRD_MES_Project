@@ -304,7 +304,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Servo_Move(iLocUp); //1,3,5위치
                         ORD.Deliv_Check();
@@ -416,7 +416,7 @@ namespace cnHRD_MES_Project
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                             processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
@@ -433,7 +433,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         if (Get_Device("X08")) //물품이 있다면
                             iLoad++;
@@ -530,7 +530,7 @@ namespace cnHRD_MES_Project
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                             processStarted = false; //시작지점 종료지점 저장소 초기화
                         }
                         break;
@@ -547,7 +547,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Con_On();
                         Stop_Fwd();
@@ -611,7 +611,7 @@ namespace cnHRD_MES_Project
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
                             processEndTime = DateTime.Now;  //종료시점 일시기록
-                            Done(iMode, Is_Metal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                             processStarted = false; //진행 상황 표현
                         }
                         break;
