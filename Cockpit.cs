@@ -92,7 +92,7 @@ namespace Project_v01
             {
                 pb_Load.ForeColor = Color.LightGreen;
                 pb_Load.Style=ProgressBarStyle.Continuous;
-                pb_Load.Maximum = 10;
+                pb_Load.Maximum = 11;
                 pb_Load.Minimum = 0;
                 pb_Load.Step = 1;
                 pb_Load.Value = Operator.iLoad;
