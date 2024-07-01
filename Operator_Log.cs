@@ -73,9 +73,13 @@ namespace cnHRD_MES_Project
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void Operator_Log_Closing(object sender, FormClosingEventArgs e)
         {
-            this.Visible = false;
+            if(e.CloseReason==CloseReason.UserClosing)
+            {
+                e.Cancel = true;
+                Hide();
+            }
         }
     }
 }
