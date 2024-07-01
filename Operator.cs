@@ -304,7 +304,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                             
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Servo_Move(iLocUp); //1,3,5위치
                         ORD.Deliv_Check();
@@ -314,10 +314,6 @@ namespace cnHRD_MES_Project
                             Ware_Bwd();
                         if (!Get_Device("X6C"))
                             iDeliv++;
-                        if (processStarted == true || is_Done == false)
-                        {
-                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
-                        }
                         break;
                     case 1: //흡착전진 if 흡착전(X1A)까지
                         Comp_Fwd();
@@ -437,16 +433,13 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
-                            
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         if (Get_Device("X08")) //물품이 있다면
                             iLoad++;
                         else if (!Get_Device("X08")) //물품이 없다면
                             bStart = true; //초기상태로
-                            if (processStarted == true || is_Done == false)
-                            {
-                                Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
-                            }
+
                         break;
                     case 1: //공급전진 if 공급전(X10)까지
                         Sup_Fwd();
@@ -554,15 +547,12 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
+                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Con_On();
                         Stop_Fwd();
                         if (Get_Device("X0B"))
                             iReload++;
-                        if (processStarted == true || is_Done == false)
-                        {
-                            Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
-                        }
                         break;
                     case 1: //컨위치 서보이동 if 이동완료(X6C)까지
                         Servo_Move(7);
