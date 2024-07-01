@@ -57,7 +57,7 @@ namespace cnHRD_MES_Project
                     Lv_Order.Items.Add(item);
                     if (iCurrent > 1)
                         Lv_Order.Items[iCurrent - 2].Selected = false;
-                    if(Rb_Auto.Checked)
+                    if(Rb_Stop.Checked)
                     {
                         Lv_Order.Items[iCurrent - 1].Selected = true;
                         Lv_Order.Items[iCurrent - 1].Focused = true;
@@ -87,7 +87,7 @@ namespace cnHRD_MES_Project
         public int[]Is_Order()
         {
             int[] iOrder = new int[] { 0, 0, 0 };
-            if (Rb_Manual.Checked || iCurrent <= iOrder_Complete) //배송을 하려면 주문번호가 발송한 숫자보다 커야함
+            if (Rb_Stop.Checked || iCurrent <= iOrder_Complete) //배송을 하려면 주문번호가 발송한 숫자보다 커야함
                 iOrder[0] = 0;
             else if (iCurrent > iOrder_Complete) //배송을 하려면 주문번호가 발송한 숫자보다 커야함
             {

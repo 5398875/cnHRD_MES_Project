@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using ActUtlTypeLib;
+using Project_v01;
 
 namespace cnHRD_MES_Project
 {
@@ -98,11 +99,14 @@ namespace cnHRD_MES_Project
             PLC01.WriteBuffer(6, 1519, 1, (short)uJog_Speed[1]); //┴─U6\G1518번에 JOG속도
         }
 
+        public static int Air = 0; //Cockpit에서 쓸 공압유무
+
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
             Bt_Stop.Enabled = true;   //┐
             Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
             Bt_Start.BackColor = Color.DodgerBlue;
+            Air = 1;
 
             Timer_Operation.Start(); //타이머 시작
         }
@@ -122,6 +126,7 @@ namespace cnHRD_MES_Project
             bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
             Bt_OpenServo.Enabled = true; //┘
             Bt_Start.BackColor = Color.DarkGray;
+            Air = 0;
         }
 
         private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
@@ -188,7 +193,8 @@ namespace cnHRD_MES_Project
         public static int iLoad = 0; //적재모드일때 기동순서
         public static int iDeliv = 0; //배송모드일때 기동순서
         public static int iReload = 0; //재적재모드일때 기동순서
-        public static int Is_Metal; //금속과 관련된 공정에서 사용. True=금속, False=비금속
+        public static int Is_Metal; //금속과 관련된 공정에서 사용(1:금속, 2:비금속)
+        public static int iMetal; //다른 Form에서 볼 금속여부(0:판별되지않음 1:금속 2:비금속)
 
         public bool bStart = true; //초기상태를 나타냄. 공정중 False였다가 공정 1사이클이 완료되면 True
         public static int iMode = 2; //공정모드. 1=배송 2=적재 3=재적재
@@ -250,10 +256,13 @@ namespace cnHRD_MES_Project
             Tb_ServoLoc.Text = temp2.ToString();
         }
 
-        void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
+        public void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
+            Cockpit CP = main.Cock1;
+
+            CP.bt_PLC_start_Click(sender, e);
 
             textBox1.Text = bStart.ToString();
 
@@ -280,6 +289,7 @@ namespace cnHRD_MES_Project
                 iDeliv = 0;  //├─각 공정순서 초기화
                 iReload = 0; //┘
                 Is_Metal = 2; //물품은 공정초기에 비금속으로 간주, 이후 자기센서가 한번이라도 들어오면 금속(1)로 전환
+                iMetal = 0; //물품은 초기에 금속판별되지 않은상태
                 bStart = false; //초기상태 False. 공정시작
                 
             }
@@ -461,6 +471,7 @@ namespace cnHRD_MES_Project
                         if (!Get_Device("X0A"))
                         {
                             Stop_Fwd();
+                            iMetal = Is_Metal;
                             if (Get_Device("X0B"))
                                 iLoad++;
                         }
