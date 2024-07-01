@@ -72,5 +72,10 @@ namespace cnHRD_MES_Project
                 item.SubItems[4].Text = doneOperation[4] == "True" ? "공정완료" : "공정 중"; //성공여부 업데이트
             }
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Visible = false;
+        }
     }
 }

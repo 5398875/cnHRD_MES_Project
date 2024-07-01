@@ -38,6 +38,8 @@ namespace cnHRD_MES_Project
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
             Timer_Jog.Interval = 100;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
+            operatorLogForm = new Operator_Log();
+
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -108,6 +110,9 @@ namespace cnHRD_MES_Project
             Air = 1;
 
             Timer_Operation.Start(); //타이머 시작
+
+            Cockpit CP = main.Cock1;
+            CP.bt_PLC_start_Click(sender, e);
         }
 
         private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
@@ -261,11 +266,6 @@ namespace cnHRD_MES_Project
         {
             Warehouse WH = main.Ware1;
             Order ORD = main.Ord1;
-            Cockpit CP = main.Cock1;
-
-            CP.bt_PLC_start_Click(sender, e);
-
-            textBox1.Text = bStart.ToString();
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
@@ -633,9 +633,8 @@ namespace cnHRD_MES_Project
         {
             if (operatorLogForm == null || operatorLogForm.IsDisposed)
             {
-                operatorLogForm = new Operator_Log();
             }
-            operatorLogForm.Show();
+            operatorLogForm.Visible = true;
         }
 
         public string[] Done_Operation = new string[5];
