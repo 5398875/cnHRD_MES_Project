@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -63,6 +64,12 @@ namespace cnHRD_MES_Project
             }
             ListViewItem item = new ListViewItem(Converted_Log);
             lv_OperatorLog.Items.Add(item);
+
+            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[0]);
+            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[1]);
+            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[2]);
+            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[3]);  
+            Debug.WriteLine("Converted_Log[0] = " + Converted_Log[4]);
         }
     }
 }

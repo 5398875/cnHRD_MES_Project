@@ -618,7 +618,10 @@ namespace cnHRD_MES_Project
 
         private void bt_Result_Click(object sender, EventArgs e)
         {
-            operatorLogForm = new Operator_Log();
+            if (operatorLogForm == null || operatorLogForm.IsDisposed)
+            {
+                operatorLogForm = new Operator_Log();
+            }
             operatorLogForm.Show();
         }
 
@@ -631,6 +634,11 @@ namespace cnHRD_MES_Project
             Done_Operation[2] = StartTime.ToString();
             Done_Operation[3] = EndTime.ToString();
             Done_Operation[4] = IsDone.ToString();
+
+            if (operatorLogForm != null)
+            {
+                operatorLogForm.Get_Log(Done_Operation);
+            }
         }
     }
 }

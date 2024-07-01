@@ -79,7 +79,7 @@
             this.Bt_OpenPLC.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_OpenPLC.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_OpenPLC.Location = new System.Drawing.Point(11, 10);
-            this.Bt_OpenPLC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_OpenPLC.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_OpenPLC.Name = "Bt_OpenPLC";
             this.Bt_OpenPLC.Size = new System.Drawing.Size(198, 41);
             this.Bt_OpenPLC.TabIndex = 10;
@@ -97,7 +97,7 @@
             this.Bt_ClosePLC.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_ClosePLC.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_ClosePLC.Location = new System.Drawing.Point(11, 58);
-            this.Bt_ClosePLC.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_ClosePLC.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_ClosePLC.Name = "Bt_ClosePLC";
             this.Bt_ClosePLC.Size = new System.Drawing.Size(198, 41);
             this.Bt_ClosePLC.TabIndex = 11;
@@ -135,7 +135,7 @@
             this.Bt_OpenServo.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_OpenServo.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_OpenServo.Location = new System.Drawing.Point(253, 10);
-            this.Bt_OpenServo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_OpenServo.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_OpenServo.Name = "Bt_OpenServo";
             this.Bt_OpenServo.Size = new System.Drawing.Size(198, 41);
             this.Bt_OpenServo.TabIndex = 14;
@@ -146,7 +146,7 @@
             // Tb_Servo1
             // 
             this.Tb_Servo1.Location = new System.Drawing.Point(726, 10);
-            this.Tb_Servo1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo1.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo1.Name = "Tb_Servo1";
             this.Tb_Servo1.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo1.TabIndex = 22;
@@ -155,7 +155,7 @@
             // Tb_Servo2
             // 
             this.Tb_Servo2.Location = new System.Drawing.Point(726, 48);
-            this.Tb_Servo2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo2.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo2.Name = "Tb_Servo2";
             this.Tb_Servo2.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo2.TabIndex = 22;
@@ -164,7 +164,7 @@
             // Tb_Servo3
             // 
             this.Tb_Servo3.Location = new System.Drawing.Point(726, 86);
-            this.Tb_Servo3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo3.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo3.Name = "Tb_Servo3";
             this.Tb_Servo3.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo3.TabIndex = 22;
@@ -173,7 +173,7 @@
             // Tb_Servo4
             // 
             this.Tb_Servo4.Location = new System.Drawing.Point(726, 125);
-            this.Tb_Servo4.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo4.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo4.Name = "Tb_Servo4";
             this.Tb_Servo4.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo4.TabIndex = 22;
@@ -182,7 +182,7 @@
             // Tb_Servo5
             // 
             this.Tb_Servo5.Location = new System.Drawing.Point(726, 163);
-            this.Tb_Servo5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo5.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo5.Name = "Tb_Servo5";
             this.Tb_Servo5.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo5.TabIndex = 22;
@@ -191,7 +191,7 @@
             // Tb_Servo6
             // 
             this.Tb_Servo6.Location = new System.Drawing.Point(726, 202);
-            this.Tb_Servo6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo6.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo6.Name = "Tb_Servo6";
             this.Tb_Servo6.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo6.TabIndex = 22;
@@ -200,7 +200,7 @@
             // Tb_Servo7
             // 
             this.Tb_Servo7.Location = new System.Drawing.Point(726, 240);
-            this.Tb_Servo7.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_Servo7.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_Servo7.Name = "Tb_Servo7";
             this.Tb_Servo7.Size = new System.Drawing.Size(197, 28);
             this.Tb_Servo7.TabIndex = 22;
@@ -209,7 +209,7 @@
             // Tb_ServoLoc
             // 
             this.Tb_ServoLoc.Location = new System.Drawing.Point(506, 106);
-            this.Tb_ServoLoc.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_ServoLoc.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_ServoLoc.Name = "Tb_ServoLoc";
             this.Tb_ServoLoc.Size = new System.Drawing.Size(197, 28);
             this.Tb_ServoLoc.TabIndex = 21;
@@ -223,7 +223,7 @@
             this.Bt_JogDown.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_JogDown.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_JogDown.Location = new System.Drawing.Point(506, 58);
-            this.Bt_JogDown.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_JogDown.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_JogDown.Name = "Bt_JogDown";
             this.Bt_JogDown.Size = new System.Drawing.Size(198, 41);
             this.Bt_JogDown.TabIndex = 19;
@@ -241,7 +241,7 @@
             this.Bt_JogUp.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_JogUp.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_JogUp.Location = new System.Drawing.Point(506, 10);
-            this.Bt_JogUp.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_JogUp.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_JogUp.Name = "Bt_JogUp";
             this.Bt_JogUp.Size = new System.Drawing.Size(198, 41);
             this.Bt_JogUp.TabIndex = 18;
@@ -259,7 +259,7 @@
             this.Bt_Stop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Stop.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_Stop.Location = new System.Drawing.Point(275, 288);
-            this.Bt_Stop.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Stop.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Stop.Name = "Bt_Stop";
             this.Bt_Stop.Size = new System.Drawing.Size(198, 41);
             this.Bt_Stop.TabIndex = 24;
@@ -276,7 +276,7 @@
             this.Bt_Start.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Start.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Bt_Start.Location = new System.Drawing.Point(275, 240);
-            this.Bt_Start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Start.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Start.Name = "Bt_Start";
             this.Bt_Start.Size = new System.Drawing.Size(198, 41);
             this.Bt_Start.TabIndex = 23;
@@ -290,7 +290,7 @@
             this.Bt_WriteServo.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_WriteServo.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_WriteServo.Location = new System.Drawing.Point(1045, 115);
-            this.Bt_WriteServo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_WriteServo.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_WriteServo.Name = "Bt_WriteServo";
             this.Bt_WriteServo.Size = new System.Drawing.Size(198, 41);
             this.Bt_WriteServo.TabIndex = 25;
@@ -301,7 +301,7 @@
             // Tb_ServoSpeed
             // 
             this.Tb_ServoSpeed.Location = new System.Drawing.Point(902, 307);
-            this.Tb_ServoSpeed.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Tb_ServoSpeed.Margin = new System.Windows.Forms.Padding(4);
             this.Tb_ServoSpeed.Name = "Tb_ServoSpeed";
             this.Tb_ServoSpeed.Size = new System.Drawing.Size(197, 28);
             this.Tb_ServoSpeed.TabIndex = 26;
@@ -313,7 +313,7 @@
             this.Bt_Servo1_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo1_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo1_Teaching.Location = new System.Drawing.Point(935, 10);
-            this.Bt_Servo1_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo1_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo1_Teaching.Name = "Bt_Servo1_Teaching";
             this.Bt_Servo1_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo1_Teaching.TabIndex = 27;
@@ -327,7 +327,7 @@
             this.Bt_Servo2_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo2_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo2_Teaching.Location = new System.Drawing.Point(935, 48);
-            this.Bt_Servo2_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo2_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo2_Teaching.Name = "Bt_Servo2_Teaching";
             this.Bt_Servo2_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo2_Teaching.TabIndex = 27;
@@ -341,7 +341,7 @@
             this.Bt_Servo3_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo3_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo3_Teaching.Location = new System.Drawing.Point(935, 86);
-            this.Bt_Servo3_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo3_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo3_Teaching.Name = "Bt_Servo3_Teaching";
             this.Bt_Servo3_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo3_Teaching.TabIndex = 27;
@@ -355,7 +355,7 @@
             this.Bt_Servo4_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo4_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo4_Teaching.Location = new System.Drawing.Point(935, 125);
-            this.Bt_Servo4_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo4_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo4_Teaching.Name = "Bt_Servo4_Teaching";
             this.Bt_Servo4_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo4_Teaching.TabIndex = 27;
@@ -369,7 +369,7 @@
             this.Bt_Servo5_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo5_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo5_Teaching.Location = new System.Drawing.Point(935, 163);
-            this.Bt_Servo5_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo5_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo5_Teaching.Name = "Bt_Servo5_Teaching";
             this.Bt_Servo5_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo5_Teaching.TabIndex = 27;
@@ -383,7 +383,7 @@
             this.Bt_Servo6_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo6_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo6_Teaching.Location = new System.Drawing.Point(935, 202);
-            this.Bt_Servo6_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo6_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo6_Teaching.Name = "Bt_Servo6_Teaching";
             this.Bt_Servo6_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo6_Teaching.TabIndex = 27;
@@ -397,7 +397,7 @@
             this.Bt_Servo7_Teaching.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_Servo7_Teaching.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.Bt_Servo7_Teaching.Location = new System.Drawing.Point(935, 240);
-            this.Bt_Servo7_Teaching.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Bt_Servo7_Teaching.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_Servo7_Teaching.Name = "Bt_Servo7_Teaching";
             this.Bt_Servo7_Teaching.Size = new System.Drawing.Size(66, 29);
             this.Bt_Servo7_Teaching.TabIndex = 27;
@@ -468,7 +468,7 @@
             // textBox1
             // 
             this.textBox1.Location = new System.Drawing.Point(440, 432);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(153, 28);
             this.textBox1.TabIndex = 29;
@@ -476,7 +476,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(649, 432);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(4);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(153, 28);
             this.textBox2.TabIndex = 29;
@@ -484,7 +484,7 @@
             // textBox3
             // 
             this.textBox3.Location = new System.Drawing.Point(858, 432);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(4);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(153, 28);
             this.textBox3.TabIndex = 29;
@@ -528,7 +528,7 @@
             this.bt_OperationLog.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.bt_OperationLog.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bt_OperationLog.Location = new System.Drawing.Point(55, 259);
-            this.bt_OperationLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.bt_OperationLog.Margin = new System.Windows.Forms.Padding(4);
             this.bt_OperationLog.Name = "bt_OperationLog";
             this.bt_OperationLog.Size = new System.Drawing.Size(143, 67);
             this.bt_OperationLog.TabIndex = 33;
@@ -537,7 +537,7 @@
             // 
             // bt_Result
             // 
-            this.bt_Result.Location = new System.Drawing.Point(528, 256);
+            this.bt_Result.Location = new System.Drawing.Point(528, 240);
             this.bt_Result.Name = "bt_Result";
             this.bt_Result.Size = new System.Drawing.Size(144, 72);
             this.bt_Result.TabIndex = 34;
@@ -594,7 +594,7 @@
             this.Font = new System.Drawing.Font("굴림", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.ForeColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Operator";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
