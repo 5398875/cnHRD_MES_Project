@@ -53,7 +53,7 @@
             this.Lv_Order.FullRowSelect = true;
             this.Lv_Order.GridLines = true;
             this.Lv_Order.HideSelection = false;
-            this.Lv_Order.Location = new System.Drawing.Point(160, 160);
+            this.Lv_Order.Location = new System.Drawing.Point(360, 160);
             this.Lv_Order.Name = "Lv_Order";
             this.Lv_Order.Size = new System.Drawing.Size(768, 360);
             this.Lv_Order.TabIndex = 0;
@@ -96,7 +96,7 @@
             // 
             this.Rb_Auto.AutoSize = true;
             this.Rb_Auto.Checked = true;
-            this.Rb_Auto.Location = new System.Drawing.Point(488, 120);
+            this.Rb_Auto.Location = new System.Drawing.Point(688, 120);
             this.Rb_Auto.Name = "Rb_Auto";
             this.Rb_Auto.Size = new System.Drawing.Size(123, 19);
             this.Rb_Auto.TabIndex = 1;
@@ -108,7 +108,7 @@
             // Rb_Stop
             // 
             this.Rb_Stop.AutoSize = true;
-            this.Rb_Stop.Location = new System.Drawing.Point(656, 120);
+            this.Rb_Stop.Location = new System.Drawing.Point(856, 120);
             this.Rb_Stop.Name = "Rb_Stop";
             this.Rb_Stop.Size = new System.Drawing.Size(88, 19);
             this.Rb_Stop.TabIndex = 1;
@@ -120,7 +120,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1123, 668);
+            this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.Rb_Stop);
             this.Controls.Add(this.Rb_Auto);
             this.Controls.Add(this.Lv_Order);

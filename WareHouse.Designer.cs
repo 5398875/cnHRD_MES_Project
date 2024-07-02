@@ -61,7 +61,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.pb_DockMonitor);
-            this.groupBox1.Location = new System.Drawing.Point(216, 8);
+            this.groupBox1.Location = new System.Drawing.Point(400, 72);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(416, 432);
             this.groupBox1.TabIndex = 0;
@@ -73,7 +73,7 @@
             this.lb32.AutoSize = true;
             this.lb32.Location = new System.Drawing.Point(288, 96);
             this.lb32.Name = "lb32";
-            this.lb32.Size = new System.Drawing.Size(0, 28);
+            this.lb32.Size = new System.Drawing.Size(0, 22);
             this.lb32.TabIndex = 1;
             // 
             // lb22
@@ -81,7 +81,7 @@
             this.lb22.AutoSize = true;
             this.lb22.Location = new System.Drawing.Point(288, 224);
             this.lb22.Name = "lb22";
-            this.lb22.Size = new System.Drawing.Size(0, 28);
+            this.lb22.Size = new System.Drawing.Size(0, 22);
             this.lb22.TabIndex = 1;
             // 
             // lb12
@@ -89,7 +89,7 @@
             this.lb12.AutoSize = true;
             this.lb12.Location = new System.Drawing.Point(288, 352);
             this.lb12.Name = "lb12";
-            this.lb12.Size = new System.Drawing.Size(0, 28);
+            this.lb12.Size = new System.Drawing.Size(0, 22);
             this.lb12.TabIndex = 1;
             // 
             // lb31
@@ -97,7 +97,7 @@
             this.lb31.AutoSize = true;
             this.lb31.Location = new System.Drawing.Point(80, 96);
             this.lb31.Name = "lb31";
-            this.lb31.Size = new System.Drawing.Size(0, 28);
+            this.lb31.Size = new System.Drawing.Size(0, 22);
             this.lb31.TabIndex = 1;
             // 
             // lb21
@@ -105,7 +105,7 @@
             this.lb21.AutoSize = true;
             this.lb21.Location = new System.Drawing.Point(80, 224);
             this.lb21.Name = "lb21";
-            this.lb21.Size = new System.Drawing.Size(0, 28);
+            this.lb21.Size = new System.Drawing.Size(0, 22);
             this.lb21.TabIndex = 1;
             // 
             // lb11
@@ -113,7 +113,7 @@
             this.lb11.AutoSize = true;
             this.lb11.Location = new System.Drawing.Point(80, 352);
             this.lb11.Name = "lb11";
-            this.lb11.Size = new System.Drawing.Size(0, 28);
+            this.lb11.Size = new System.Drawing.Size(0, 22);
             this.lb11.TabIndex = 1;
             // 
             // label6
@@ -121,7 +121,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(216, 48);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(66, 28);
+            this.label6.Size = new System.Drawing.Size(49, 22);
             this.label6.TabIndex = 1;
             this.label6.Text = "3, 2";
             // 
@@ -130,7 +130,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(16, 48);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(66, 28);
+            this.label5.Size = new System.Drawing.Size(49, 22);
             this.label5.TabIndex = 1;
             this.label5.Text = "3, 1";
             // 
@@ -139,7 +139,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(16, 176);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(66, 28);
+            this.label4.Size = new System.Drawing.Size(49, 22);
             this.label4.TabIndex = 1;
             this.label4.Text = "2, 1";
             // 
@@ -148,7 +148,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(216, 176);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 28);
+            this.label3.Size = new System.Drawing.Size(49, 22);
             this.label3.TabIndex = 1;
             this.label3.Text = "2, 2";
             // 
@@ -157,7 +157,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(216, 304);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 28);
+            this.label2.Size = new System.Drawing.Size(49, 22);
             this.label2.TabIndex = 1;
             this.label2.Text = "1, 2";
             // 
@@ -166,7 +166,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 304);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 28);
+            this.label1.Size = new System.Drawing.Size(49, 22);
             this.label1.TabIndex = 1;
             this.label1.Text = "1, 1";
             // 
@@ -181,10 +181,10 @@
             // 
             // Warehouse
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(17F, 27F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Honeydew;
-            this.ClientSize = new System.Drawing.Size(982, 453);
+            this.ClientSize = new System.Drawing.Size(1582, 853);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("굴림", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
