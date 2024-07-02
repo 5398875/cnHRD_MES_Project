@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,7 +14,7 @@ using Project_v01;
 
 namespace cnHRD_MES_Project
 {
-    public partial class Operator : Form
+     public partial class Operator : Form
     {
         System.Windows.Forms.Timer Timer_Operation = new System.Windows.Forms.Timer(); //동작용 타이머
         System.Windows.Forms.Timer Timer_Jog = new System.Windows.Forms.Timer(); //조그용 타이머
@@ -40,6 +41,19 @@ namespace cnHRD_MES_Project
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
             operatorLogForm = new Operator_Log();
 
+            Round(Pn_PLC, 20);
+            Round(Pn_PLCRb, 72);
+            Round(Rb_OpenPLC, 56);
+            Round(Rb_ClosePLC, 56);
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
+            int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+        private void Round(Control c, int i)
+        {
+            c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, i, i));
         }
 
         //------------------------------------------버튼-----------------------------------------
@@ -377,6 +391,7 @@ namespace cnHRD_MES_Project
                             {
                                 ORD.Deliv_Start();
                                 tBefore = DateTime.Now;
+                                iMetal = iLocation[0];
                                 if (iLocation[3] == 1) //배송지가 1이면
                                     iDeliv = 8;        //8번공정으로
                                 else            //배송지가 0이면
@@ -402,6 +417,10 @@ namespace cnHRD_MES_Project
                                 iLocation[4]--; //배송수량 -1
                                 ORD.Deliv_Complete();
                                 bStart = true; //공정종료. 초기상태로
+                                is_Done = true;
+                                processEndTime = DateTime.Now;  //종료시점 일시기록
+                                Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
+                                processStarted = false; //시작지점 종료지점 저장소 초기화
                             }
                         }
                         break;
@@ -606,8 +625,8 @@ namespace cnHRD_MES_Project
                         Comp_Bwd();
                         if (Get_Device("X1B"))
                         {
-                            if (Is_Metal == 1) WH.Is_Load(1, iLocation[1], iLocation[2]); //금속 적재
-                            else if (Is_Metal == 2) WH.Is_Load(2, iLocation[1], iLocation[2]); //비금속적재
+                            if (iLocation[0] == 1) WH.Is_Load(2, iLocation[1], iLocation[2]); //금속인줄 알았다면 비금속 적재
+                            else if (iLocation[0] == 2) WH.Is_Load(1, iLocation[1], iLocation[2]); //비금속인줄 알았다면 금속 적재
                             ORD.Reload_Complete();
                             bStart = true; //공정종료. 초기상태로
                             is_Done = true;
