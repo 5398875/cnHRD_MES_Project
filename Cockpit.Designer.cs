@@ -170,9 +170,9 @@
             this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label9.Location = new System.Drawing.Point(17, 134);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 15);
+            this.label9.Size = new System.Drawing.Size(70, 15);
             this.label9.TabIndex = 3;
-            this.label9.Text = "SERVER OFF";
+            this.label9.Text = "서버 OFF";
             // 
             // label8
             // 
@@ -180,9 +180,9 @@
             this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.label8.Location = new System.Drawing.Point(17, 104);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 15);
+            this.label8.Size = new System.Drawing.Size(63, 15);
             this.label8.TabIndex = 3;
-            this.label8.Text = "SERVER ON";
+            this.label8.Text = "서버 ON";
             // 
             // label4
             // 
