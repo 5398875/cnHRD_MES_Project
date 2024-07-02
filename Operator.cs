@@ -430,13 +430,14 @@ namespace cnHRD_MES_Project
                     case 0: //물품판별
                         if (processStarted == false)
                         {
-                            processStartTime = DateTime.Now;
                             processStarted = true;
                             is_Done = false;
+                                                    }
+                        if (Get_Device("X08")) //물품이 있다면
+                        { iLoad++;
+                            processStartTime = DateTime.Now;
                             Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
-                        if (Get_Device("X08")) //물품이 있다면
-                            iLoad++;
                         else if (!Get_Device("X08")) //물품이 없다면
                             bStart = true; //초기상태로
 
