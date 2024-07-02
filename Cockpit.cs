@@ -588,6 +588,7 @@ private void bt_Error_Reset_Click(object sender, EventArgs e)
 {
 
 PLC01.WriteBuffer(6, 1502, 1,1);
+            PLC01.WriteBuffer(6,1503,1,1);
 }
 
 //서버원점복귀
