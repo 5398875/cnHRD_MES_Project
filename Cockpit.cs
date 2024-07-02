@@ -33,9 +33,13 @@ namespace Project_v01
             InitializeComponent();
            
         }
+        /// <summary>
+        /// 타이머로 인해 초기화 반복회피위해 위치이동
+        /// </summary>
+        short[] err_code = new short[2];
+        short[] old_err = new short[2];
+        short[] new_err = new short[2];
 
-  
-        
         public void bt_PLC_start_Click(object sender, EventArgs e)
         {
 
@@ -44,6 +48,7 @@ namespace Project_v01
             con_status = PLC01.Open();
             bt_PLC_stop.Enabled = true;
             bt_PLC_start.Enabled = false;
+           
 
             if (con_status == 0)
             {
@@ -164,9 +169,7 @@ namespace Project_v01
                 bt_Server_Error.BackColor = Color.Red;
                 bt_Server_Error.Enabled = false;    
 
-                short[] err_code = new short[2];
-                short[] old_err = new short[2];
-                short[] new_err = new short[2];
+               
                
                 old_err[0] = new_err[0];
 
@@ -174,13 +177,14 @@ namespace Project_v01
                 
                 new_err[0] = err_code[0];
                 //////////////////////////////////////////////////////////////////////
-                Debug.WriteLine("new_err[0]" + " " + "old_err[0]");
+                Debug.WriteLine($"new_err[0]" + " " + "old_err[0]");
                 /////////////////////////////////////////////////////////////////////
                 if (new_err[0] != old_err[0])
                 {
                     tb_Error_log.ForeColor = Color.Red;
                     tb_Error_log.Text = tb_Error_log.Text + "에러" + Convert.ToString(err_code[0]) + " " + $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}" + "\r\n";
                     tb_Error_log.Text = tb_Error_log.Text + "경고" + Convert.ToString(err_code[1]) + " " + $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}" + "\r\n";
+                  //  old_err[0]=new_err[0];
                 }
                
             }
