@@ -131,11 +131,11 @@
             this.groupBox1.Controls.Add(this.bt_Lamp_stop);
             this.groupBox1.Controls.Add(this.bt_Lamp_start);
             this.groupBox1.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(224, 80);
+            this.groupBox1.Location = new System.Drawing.Point(136, 71);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(163, 254);
+            this.groupBox1.Size = new System.Drawing.Size(163, 273);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "통신";
@@ -143,7 +143,7 @@
             // bt_PLC_stop
             // 
             this.bt_PLC_stop.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.bt_PLC_stop.Location = new System.Drawing.Point(17, 66);
+            this.bt_PLC_stop.Location = new System.Drawing.Point(17, 72);
             this.bt_PLC_stop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_PLC_stop.Name = "bt_PLC_stop";
             this.bt_PLC_stop.Size = new System.Drawing.Size(89, 26);
@@ -168,7 +168,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(17, 134);
+            this.label9.Location = new System.Drawing.Point(17, 152);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(70, 15);
             this.label9.TabIndex = 3;
@@ -178,7 +178,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(17, 104);
+            this.label8.Location = new System.Drawing.Point(17, 116);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(63, 15);
             this.label8.TabIndex = 3;
@@ -188,7 +188,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(17, 194);
+            this.label4.Location = new System.Drawing.Point(17, 224);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 15);
             this.label4.TabIndex = 3;
@@ -198,7 +198,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(17, 164);
+            this.label3.Location = new System.Drawing.Point(17, 188);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(67, 15);
             this.label3.TabIndex = 3;
@@ -206,7 +206,7 @@
             // 
             // bt_Serv_OFF
             // 
-            this.bt_Serv_OFF.Location = new System.Drawing.Point(121, 128);
+            this.bt_Serv_OFF.Location = new System.Drawing.Point(121, 146);
             this.bt_Serv_OFF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Serv_OFF.Name = "bt_Serv_OFF";
             this.bt_Serv_OFF.Size = new System.Drawing.Size(25, 25);
@@ -215,7 +215,7 @@
             // 
             // bt_Serv_ON
             // 
-            this.bt_Serv_ON.Location = new System.Drawing.Point(121, 98);
+            this.bt_Serv_ON.Location = new System.Drawing.Point(121, 110);
             this.bt_Serv_ON.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Serv_ON.Name = "bt_Serv_ON";
             this.bt_Serv_ON.Size = new System.Drawing.Size(25, 25);
@@ -224,7 +224,7 @@
             // 
             // bt_Server_off
             // 
-            this.bt_Server_off.Location = new System.Drawing.Point(93, 188);
+            this.bt_Server_off.Location = new System.Drawing.Point(93, 218);
             this.bt_Server_off.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Server_off.Name = "bt_Server_off";
             this.bt_Server_off.Size = new System.Drawing.Size(53, 25);
@@ -233,7 +233,7 @@
             // 
             // bt_Server_on
             // 
-            this.bt_Server_on.Location = new System.Drawing.Point(93, 158);
+            this.bt_Server_on.Location = new System.Drawing.Point(93, 182);
             this.bt_Server_on.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Server_on.Name = "bt_Server_on";
             this.bt_Server_on.Size = new System.Drawing.Size(53, 25);
@@ -242,7 +242,7 @@
             // 
             // bt_Lamp_stop
             // 
-            this.bt_Lamp_stop.Location = new System.Drawing.Point(121, 68);
+            this.bt_Lamp_stop.Location = new System.Drawing.Point(121, 74);
             this.bt_Lamp_stop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Lamp_stop.Name = "bt_Lamp_stop";
             this.bt_Lamp_stop.Size = new System.Drawing.Size(25, 25);
@@ -273,7 +273,7 @@
             this.tb_Server_Speed0.Location = new System.Drawing.Point(111, 26);
             this.tb_Server_Speed0.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Server_Speed0.Name = "tb_Server_Speed0";
-            this.tb_Server_Speed0.Size = new System.Drawing.Size(60, 25);
+            this.tb_Server_Speed0.Size = new System.Drawing.Size(60, 27);
             this.tb_Server_Speed0.TabIndex = 4;
             // 
             // label5
@@ -301,35 +301,35 @@
             this.tb_Server_position.Location = new System.Drawing.Point(110, 61);
             this.tb_Server_position.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Server_position.Name = "tb_Server_position";
-            this.tb_Server_position.Size = new System.Drawing.Size(60, 25);
+            this.tb_Server_position.Size = new System.Drawing.Size(60, 27);
             this.tb_Server_position.TabIndex = 4;
             // 
             // tb_Error_log
             // 
             this.tb_Error_log.BackColor = System.Drawing.Color.White;
             this.tb_Error_log.ForeColor = System.Drawing.Color.Red;
-            this.tb_Error_log.Location = new System.Drawing.Point(229, 618);
+            this.tb_Error_log.Location = new System.Drawing.Point(587, 407);
             this.tb_Error_log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Error_log.Multiline = true;
             this.tb_Error_log.Name = "tb_Error_log";
             this.tb_Error_log.ReadOnly = true;
             this.tb_Error_log.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb_Error_log.Size = new System.Drawing.Size(345, 65);
+            this.tb_Error_log.Size = new System.Drawing.Size(345, 107);
             this.tb_Error_log.TabIndex = 6;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(231, 592);
+            this.label1.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.Location = new System.Drawing.Point(589, 381);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(74, 15);
+            this.label1.Size = new System.Drawing.Size(83, 17);
             this.label1.TabIndex = 3;
             this.label1.Text = "Error_log";
             // 
             // tb_Clear_log
             // 
-            this.tb_Clear_log.Location = new System.Drawing.Point(231, 686);
+            this.tb_Clear_log.Location = new System.Drawing.Point(589, 529);
             this.tb_Clear_log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.tb_Clear_log.Name = "tb_Clear_log";
             this.tb_Clear_log.Size = new System.Drawing.Size(121, 32);
@@ -340,7 +340,7 @@
             // 
             // bt_Save_log
             // 
-            this.bt_Save_log.Location = new System.Drawing.Point(447, 686);
+            this.bt_Save_log.Location = new System.Drawing.Point(805, 529);
             this.bt_Save_log.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Save_log.Name = "bt_Save_log";
             this.bt_Save_log.Size = new System.Drawing.Size(102, 31);
@@ -376,7 +376,7 @@
             this.groupBox4.Controls.Add(this.label10);
             this.groupBox4.Controls.Add(this.label2);
             this.groupBox4.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox4.Location = new System.Drawing.Point(648, 361);
+            this.groupBox4.Location = new System.Drawing.Point(867, 71);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -384,6 +384,7 @@
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "제품판별";
+            
             // 
             // bt_Lamp_NonMetal
             // 
@@ -555,7 +556,7 @@
             // 
             // bt_Process_start
             // 
-            this.bt_Process_start.Location = new System.Drawing.Point(658, 552);
+            this.bt_Process_start.Location = new System.Drawing.Point(571, 594);
             this.bt_Process_start.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Process_start.Name = "bt_Process_start";
             this.bt_Process_start.Size = new System.Drawing.Size(99, 28);
@@ -566,7 +567,7 @@
             // 
             // bt_Process_stop
             // 
-            this.bt_Process_stop.Location = new System.Drawing.Point(762, 552);
+            this.bt_Process_stop.Location = new System.Drawing.Point(675, 594);
             this.bt_Process_stop.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Process_stop.Name = "bt_Process_stop";
             this.bt_Process_stop.Size = new System.Drawing.Size(99, 28);
@@ -581,14 +582,15 @@
             this.groupBox5.Controls.Add(this.Airline);
             this.groupBox5.Controls.Add(this.Conveyor);
             this.groupBox5.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox5.Location = new System.Drawing.Point(394, 83);
+            this.groupBox5.Location = new System.Drawing.Point(329, 71);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox5.Size = new System.Drawing.Size(489, 146);
+            this.groupBox5.Size = new System.Drawing.Size(511, 146);
             this.groupBox5.TabIndex = 13;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "설비관리";
+      
             // 
             // bt_Sup_fwd
             // 
@@ -760,8 +762,8 @@
             this.groupBox2.Controls.Add(this.bt_Send_fwd);
             this.groupBox2.Controls.Add(this.bt_Sup_fwd);
             this.groupBox2.Controls.Add(this.bt_Sup_bwd);
-            this.groupBox2.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(901, 83);
+            this.groupBox2.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox2.Location = new System.Drawing.Point(1042, 71);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -769,11 +771,12 @@
             this.groupBox2.TabIndex = 14;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "센서모니터링";
+        
             // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.pb_Load);
-            this.groupBox3.Location = new System.Drawing.Point(223, 339);
+            this.groupBox3.Location = new System.Drawing.Point(136, 381);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -793,7 +796,7 @@
             // groupBox6
             // 
             this.groupBox6.Controls.Add(this.pb_Delivery);
-            this.groupBox6.Location = new System.Drawing.Point(223, 424);
+            this.groupBox6.Location = new System.Drawing.Point(135, 479);
             this.groupBox6.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -824,19 +827,21 @@
             this.groupBox7.Controls.Add(this.label17);
             this.groupBox7.Controls.Add(this.label5);
             this.groupBox7.Controls.Add(this.label6);
-            this.groupBox7.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox7.Location = new System.Drawing.Point(395, 242);
+            this.groupBox7.Font = new System.Drawing.Font("굴림", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox7.Location = new System.Drawing.Point(329, 232);
             this.groupBox7.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox7.Size = new System.Drawing.Size(486, 92);
+            this.groupBox7.Size = new System.Drawing.Size(511, 109);
             this.groupBox7.TabIndex = 17;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "서보모니터링";
+  
             // 
             // bt_OPR
             // 
-            this.bt_OPR.Location = new System.Drawing.Point(345, 55);
+            this.bt_OPR.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bt_OPR.Location = new System.Drawing.Point(356, 56);
             this.bt_OPR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_OPR.Name = "bt_OPR";
             this.bt_OPR.Size = new System.Drawing.Size(137, 30);
@@ -856,7 +861,8 @@
             // 
             // bt_Error_Reset
             // 
-            this.bt_Error_Reset.Location = new System.Drawing.Point(343, 20);
+            this.bt_Error_Reset.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.bt_Error_Reset.Location = new System.Drawing.Point(356, 21);
             this.bt_Error_Reset.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Error_Reset.Name = "bt_Error_Reset";
             this.bt_Error_Reset.Size = new System.Drawing.Size(137, 30);
@@ -906,7 +912,7 @@
             // groupBox8
             // 
             this.groupBox8.Controls.Add(this.pb_reLoad);
-            this.groupBox8.Location = new System.Drawing.Point(224, 509);
+            this.groupBox8.Location = new System.Drawing.Point(136, 573);
             this.groupBox8.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox8.Name = "groupBox8";
             this.groupBox8.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -947,6 +953,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Cockpit";
             this.Text = "CockpitMonitor";
+        
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
