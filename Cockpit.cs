@@ -99,7 +99,7 @@ namespace Project_v01
                 pb_Load.Value = Operator.iLoad;
                
             }
-            else if(Operator.iMode==1)//배송모드 공정진행표시...8/9분기처리?
+            else if(Operator.iMode==1)//배송모드 공정진행표시.
             {
                 pb_Delivery.ForeColor = Color.LightGreen;
                 pb_Delivery .Style=ProgressBarStyle.Continuous;
