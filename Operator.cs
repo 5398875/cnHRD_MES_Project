@@ -37,14 +37,24 @@ namespace cnHRD_MES_Project
         {
             Timer_Operation.Interval = 100;
             Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
-            Timer_Jog.Interval = 100;
+            Timer_Jog.Interval = 50;
             Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
             operatorLogForm = new Operator_Log();
 
-            Round(Pn_PLC, 20);
-            Round(Pn_PLCRb, 72);
-            Round(Rb_OpenPLC, 56);
-            Round(Rb_ClosePLC, 56);
+            Round(Pn_Open, 36);            Round(Pn_JOG, 36);            Round(Pn_Oper, 36);
+
+
+            Round(Pn_PLCOuter, 0);            Round(Bt_PLC, 0);            Round(Bt_PLCOn, 0);            Round(Bt_PLCOff, 0);
+            Round(Pn_ServoOuter, 0);            Round(Bt_Servo, 0);            Round(Bt_ServoOn, 0);            Round(Bt_ServoOff, 0);
+            Round(Pn_StartOuter, 0);            Round(Bt_Start, 0);            Round(Bt_StartOn, 0);            Round(Bt_StartOff, 0);
+
+            Round(panel1, 16);            Round(panel2, 16);            Round(panel3, 16);            Round(panel4, 16);
+            Round(panel5, 16);            Round(panel6, 16);            Round(panel7, 16);            Round(panel8, 16);
+            Round(panel9, 16);
+
+            Round(Pn_JogFull, 12);            Round(Pn_JogOuter, 12);
+
+            Round(label3, 12);            Round(label11, 12);            Round(label12, 12);
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
@@ -53,98 +63,115 @@ namespace cnHRD_MES_Project
 
         private void Round(Control c, int i)
         {
-            c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, i, i));
+            if (i == 0) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Height, c.Height));
+            else if (i == 1) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Width, c.Width));
+            else c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, i, i));
         }
 
         //------------------------------------------버튼-----------------------------------------
-        public int PLC_Open; //PLC 연결상태
+        public int PLC_Open = 1; //PLC 연결상태
 
-        private void Bt_OpenPLC_Click(object sender, EventArgs e) //"PLC 연결"버튼
+        private void Bt_PLC_Click(object sender, EventArgs e)
         {
-            PLC01.ActLogicalStationNumber = 1; //개인 MXComponent에 따라 수정할것
-            PLC_Open = PLC01.Open(); //연결시도
-            if (PLC_Open == 0) //연결에 성공하면
+            if (PLC_Open == 0) //PLC에 연결되어있다면
             {
-                Lb_Connect.Text = "연결됨";         //┐
-                Lb_Connect.ForeColor = Color.Green; //┴─초록글씨로 "연결됨"
-                Bt_ClosePLC.Enabled = true;  //┐
-                Bt_OpenServo.Enabled = true; //┼─버튼의 중복동작을 방지하기 위함
-                Bt_OpenPLC.Enabled = false;  //┘
-                PLC01.SetDevice("Y60", 1); //서보에 PLC레디(Y60)을 미리 보낸다
+                PLC01.Close(); //PLC 연결종료
+                Pn_PLCOuter.BackColor = Color.Black;
+                Bt_PLC.BackColor = Color.White;
+                Bt_PLCOff.Visible = true;
+                Bt_PLCOn.Visible = false;
+                PLC_Open = 1;
+                Bt_PLC.Text = "OFF";
+                Bt_PLC.ForeColor = Color.Black;
             }
-            else //연결에 실패하면
+            else if (PLC_Open != 0) //PLC에 연결되어있지 않다면
             {
-                Lb_Connect.Text = "연결실패 : 0x" + PLC_Open; //┐
-                Lb_Connect.ForeColor = Color.Red;             //┴─빨강글씨로 "연결실패"+오류번호
+                PLC01.ActLogicalStationNumber = 1; //개인 MXComponent에 따라 수정할것
+                PLC_Open = PLC01.Open(); //연결시도
+                if (PLC_Open == 0) //연결에 성공하면
+                {
+                    Pn_PLCOuter.BackColor = Color.FromArgb(255, 0, 120, 215);
+                    Bt_PLC.BackColor = Color.FromArgb(255, 0, 120, 215);
+                    Bt_PLCOff.Visible = false;
+                    Bt_PLCOn.Visible = true;
+                    PLC01.SetDevice("Y60", 1); //서보에 PLC레디(Y60)을 미리 보낸다
+                    Bt_PLC.Text = "ON";
+                    Bt_PLC.ForeColor = Color.White;
+                }
             }
         }
 
-        private void Bt_ClosePLC_Click(object sender, EventArgs e) //"PLC 연결 해제"버튼
+        private void Bt_Servo_Click(object sender, EventArgs e)
         {
-            PLC01.Close(); //PLC연결종료
-            Lb_Connect.Text = "연결종료";     //┐
-            Lb_Connect.ForeColor = Color.Red; //┴─빨강글씨로 "연결종료"
-            Bt_OpenPLC.Enabled = true;    //┐
-            Bt_OpenServo.Enabled = false; //┼─버튼의 중복동작을 방지하기 위함
-            Bt_Start.Enabled = false;     //┘
-        }
-
-        private void Bt_OpenServo_Click(object sender, EventArgs e) //"서보 준비" 버튼
-        {
-            if (Get_Device("X60") && Get_Device("Y60")) //PLC레디(Y60),서보레디(X60)이 전부 true면
+            if (Bt_Servo.Text == "ON")
             {
-                Lb_ServoConnect.Text = "서보 준비완료";      //┐
-                Lb_ServoConnect.ForeColor = Color.Green;    //┴─초록글씨로 "서보 준비완료"
-                Bt_Start.Enabled = true;     //┐
-                Bt_OpenServo.Enabled = false;//┴─버튼의 중복동작을 방지하기 위함
+                Pn_ServoOuter.BackColor = Color.Black;
+                Bt_Servo.BackColor = Color.White;
+                Bt_ServoOff.Visible = true;
+                Bt_ServoOn.Visible = false;
+                Bt_Servo.Text = "OFF";
+                Bt_Servo.ForeColor = Color.Black;
+            }
+            else if (Get_Device("X60") && Get_Device("Y60")) //PLC레디(Y60),서보레디(X60)이 전부 true면
+            {
+                Pn_ServoOuter.BackColor = Color.FromArgb(255, 0, 120, 215);
+                Bt_Servo.BackColor = Color.FromArgb(255, 0, 120, 215);
+                Bt_ServoOff.Visible = false;
+                Bt_ServoOn.Visible = true;
+                Bt_Servo.Text = "ON";
+                Bt_Servo.ForeColor = Color.White;
+
                 Servo_Move(9001); //원점복귀
-            }
-            else
-            {
-                Lb_ServoConnect.Text = "서보 준비실패"; //┐
-                Lb_ServoConnect.ForeColor = Color.Red;  //┴─빨간글씨로 "서보 준비실패"
-            }
 
-            int JogSpeed = 200000; //JOG 속도
-            ushort[] uJog_Speed = new ushort[2];      //┐
-            uJog_Speed[0] = (ushort)JogSpeed;         //┼─JOG속도를 ushort의 배열로 바꾸기 위함
-            uJog_Speed[1] = (ushort)(JogSpeed >> 16); //┘
+                int JogSpeed = 200000; //JOG 속도
+                ushort[] uJog_Speed = new ushort[2];      //┐
+                uJog_Speed[0] = (ushort)JogSpeed;         //┼─JOG속도를 ushort의 배열로 바꾸기 위함
+                uJog_Speed[1] = (ushort)(JogSpeed >> 16); //┘
 
-            PLC01.WriteBuffer(6, 1518, 1, (short)uJog_Speed[0]); //┐
-            PLC01.WriteBuffer(6, 1519, 1, (short)uJog_Speed[1]); //┴─U6\G1518번에 JOG속도
+                PLC01.WriteBuffer(6, 1518, 1, (short)uJog_Speed[0]); //┐
+                PLC01.WriteBuffer(6, 1519, 1, (short)uJog_Speed[1]); //┴─U6\G1518번에 JOG속도
+            }
         }
 
         public static int Air = 0; //Cockpit에서 쓸 공압유무
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
-            Bt_Stop.Enabled = true;   //┐
-            Bt_Start.Enabled = false; //┴─버튼의 중복동작을 방지하기 위함
-            Bt_Start.BackColor = Color.DodgerBlue;
-            Air = 1;
+            if (Bt_Start.Text == "RUN")
+            {
+                Air = 0;
+                Timer_Operation.Stop(); //타이머 정지
+                PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
+                Sup_Bwd();     //┐
+                Trans_Bwd();   //┤
+                Con_Off();     //┤
+                Stop_Bwd();    //┼─공정 초기화
+                Out_Bwd();     //┤
+                Comp_Bwd();    //┤
+                CompPad_Off(); //┤
+                bStart = true; //┘
 
-            Timer_Operation.Start(); //타이머 시작
+                Pn_StartOuter.BackColor = Color.Red;
+                Bt_Start.BackColor = Color.White;
+                Bt_StartOff.Visible = true;
+                Bt_StartOn.Visible = false;
+                Bt_Start.Text = "STOP";
+                Bt_Start.ForeColor = Color.Red;
+            }
+            else if (Bt_Start.Text == "STOP")
+            {
+                Air = 1;
+                Timer_Operation.Start(); //타이머 시작
+                Cockpit CP = main.Cock1;
+                CP.bt_PLC_start_Click(sender, e);
 
-            Cockpit CP = main.Cock1;
-            CP.bt_PLC_start_Click(sender, e);
-        }
-
-        private void Bt_Stop_Click(object sender, EventArgs e) //"정지 및 초기화" 버튼
-        {
-            Timer_Operation.Stop(); //타이머 정지
-            PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
-            Sup_Bwd();     //┐
-            Trans_Bwd();   //┤
-            Con_Off();     //┤
-            Stop_Bwd();    //┼─공정 초기화
-            Out_Bwd();     //┤
-            Comp_Bwd();    //┤
-            CompPad_Off(); //┘
-            Bt_Start.Enabled = true;     //┐
-            bStart = true;               //┼─버튼의 중복동작을 방지하기 위함
-            Bt_OpenServo.Enabled = true; //┘
-            Bt_Start.BackColor = Color.DarkGray;
-            Air = 0;
+                Pn_StartOuter.BackColor = Color.Green;
+                Bt_Start.BackColor = Color.Green;
+                Bt_StartOff.Visible = false;
+                Bt_StartOn.Visible = true;
+                Bt_Start.Text = "RUN";
+                Bt_Start.ForeColor = Color.White;
+            }
         }
 
         private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
@@ -270,11 +297,14 @@ namespace cnHRD_MES_Project
         {
             short[] temp = new short[2];
             PLC01.ReadBuffer(6, 800, 2, out temp[0]); //U6\G800(현재위치)
-            int temp2 = (ushort)temp[0] | ((int)temp[1] << 16); //2워드를 int(32비트)로 합치기
-            Tb_ServoLoc.Text = temp2.ToString();
+            if (temp[0] > 0)
+            {
+                int temp2 = (ushort)temp[0] | ((int)temp[1] << 16); //2워드를 int(32비트)로 합치기
+                Tb_ServoLoc.Text = temp2.ToString();
+                int i = (int)(temp2 * Pn_JogFull.Size.Height / 1500000);
+                Pn_JogNow.Location = new Point(0, i);
+            }
         }
-
-
 
         public void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
@@ -653,6 +683,8 @@ namespace cnHRD_MES_Project
         {
             operatorLogForm.Visible = true;
         }
+
+
 
         public string[] Done_Operation = new string[5];
 
