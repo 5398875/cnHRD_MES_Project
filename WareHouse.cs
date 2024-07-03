@@ -23,7 +23,7 @@ namespace cnHRD_MES_Project
 
         private void Warehouse_Load(object sender, EventArgs e)//폼 실행시,
         {
-           // pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
+            pb_DockMonitor.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/loading dock.png");
         }
 
         private int[] FindLocationXY(int Type)
@@ -86,24 +86,22 @@ namespace cnHRD_MES_Project
             Control[] controls = this.Controls.Find(lbName, true);   
             //this.control.find 내장함수 이용, lbname과 같은 이름을 가진 컨트롤 controls 생성 및 반환
 
-            if (controls[0] is Label lb)  //찾은 controls가 라벨 타입이라면,
+            if (controls[0] is PictureBox lb)  //찾은 controls가 라벨 타입이라면,
             {
                 switch (Type)   //case문으로 받은 종류 한글 네이밍
                 {
                     case 0:
-                        sType = "비어 있음";
+                        lb.Image.Dispose();
                         break;
 
                     case 1:
-                        sType = "금속";
+                        lb.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/Metal.png");
                         break;
 
                     case 2:
-                        sType = "비금속";
+                        lb.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/Non-Metal.png");
                         break;
                 }
-
-                lb.Text = sType;    //한글 네이밍한 종류를 각 라벨 텍스트에 표시
             }
         }
     }

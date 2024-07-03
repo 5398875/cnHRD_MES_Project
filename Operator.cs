@@ -43,7 +43,6 @@ namespace cnHRD_MES_Project
 
             Round(Pn_Open, 36);            Round(Pn_JOG, 36);            Round(Pn_Oper, 36);
 
-
             Round(Pn_PLCOuter, 0);            Round(Bt_PLC, 0);            Round(Bt_PLCOn, 0);            Round(Bt_PLCOff, 0);
             Round(Pn_ServoOuter, 0);            Round(Bt_Servo, 0);            Round(Bt_ServoOn, 0);            Round(Bt_ServoOff, 0);
             Round(Pn_StartOuter, 0);            Round(Bt_Start, 0);            Round(Bt_StartOn, 0);            Round(Bt_StartOff, 0);
@@ -157,6 +156,8 @@ namespace cnHRD_MES_Project
                 Bt_StartOn.Visible = false;
                 Bt_Start.Text = "STOP";
                 Bt_Start.ForeColor = Color.Red;
+                Cockpit CP = new Cockpit();
+                CP.bt_PLC_stop_Click(sender, e);
             }
             else if (Bt_Start.Text == "STOP")
             {
@@ -487,7 +488,7 @@ namespace cnHRD_MES_Project
                             processStartTime = DateTime.Now;
                             Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
-                        else if (!Get_Device("X08")) //물품이 없다면
+                        else if (!Get_Device("X08") || WH.Ware_Location(0)[0] == 10) //물품이 없거나 창고가 꽉찼다면
                             bStart = true; //초기상태로
 
                         break;
