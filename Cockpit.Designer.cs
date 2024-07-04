@@ -90,6 +90,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.pb_reLoad = new System.Windows.Forms.ProgressBar();
             this.panel1r = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.label20r = new System.Windows.Forms.Label();
             this.panel2r = new System.Windows.Forms.Panel();
             this.panel11r = new System.Windows.Forms.Panel();
@@ -104,23 +105,23 @@
             this.panel4r = new System.Windows.Forms.Panel();
             this.label24r = new System.Windows.Forms.Label();
             this.panel5r = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label23r = new System.Windows.Forms.Label();
             this.panel6r = new System.Windows.Forms.Panel();
+            this.panel13r = new System.Windows.Forms.Panel();
+            this.panel12r = new System.Windows.Forms.Panel();
+            this.panel7r = new System.Windows.Forms.Panel();
             this.label31r = new System.Windows.Forms.Label();
             this.label30r = new System.Windows.Forms.Label();
             this.label29r = new System.Windows.Forms.Label();
             this.label21r = new System.Windows.Forms.Label();
             this.panel8r = new System.Windows.Forms.Panel();
-            this.label22r = new System.Windows.Forms.Label();
-            this.panel7r = new System.Windows.Forms.Panel();
-            this.panel12r = new System.Windows.Forms.Panel();
-            this.panel13r = new System.Windows.Forms.Panel();
-            this.panel14r = new System.Windows.Forms.Panel();
-            this.panel15r = new System.Windows.Forms.Panel();
             this.panel16r = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel15r = new System.Windows.Forms.Panel();
+            this.panel14r = new System.Windows.Forms.Panel();
+            this.label22r = new System.Windows.Forms.Label();
             this.panel1r.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panel2r.SuspendLayout();
             this.panel11r.SuspendLayout();
             this.panel10r.SuspendLayout();
@@ -128,16 +129,15 @@
             this.panel3r.SuspendLayout();
             this.panel4r.SuspendLayout();
             this.panel5r.SuspendLayout();
-            this.panel6r.SuspendLayout();
-            this.panel8r.SuspendLayout();
-            this.panel7r.SuspendLayout();
-            this.panel12r.SuspendLayout();
-            this.panel13r.SuspendLayout();
-            this.panel14r.SuspendLayout();
-            this.panel15r.SuspendLayout();
-            this.panel16r.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel6r.SuspendLayout();
+            this.panel13r.SuspendLayout();
+            this.panel12r.SuspendLayout();
+            this.panel7r.SuspendLayout();
+            this.panel8r.SuspendLayout();
+            this.panel16r.SuspendLayout();
+            this.panel15r.SuspendLayout();
+            this.panel14r.SuspendLayout();
             this.SuspendLayout();
             // 
             // bt_PLC_stop
@@ -167,7 +167,7 @@
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label9.Location = new System.Drawing.Point(24, 112);
+            this.label9.Location = new System.Drawing.Point(32, 112);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(64, 24);
             this.label9.TabIndex = 3;
@@ -177,7 +177,7 @@
             // label8
             // 
             this.label8.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label8.Location = new System.Drawing.Point(24, 80);
+            this.label8.Location = new System.Drawing.Point(32, 80);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(64, 24);
             this.label8.TabIndex = 3;
@@ -187,7 +187,7 @@
             // label4
             // 
             this.label4.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(24, 176);
+            this.label4.Location = new System.Drawing.Point(32, 176);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(64, 24);
             this.label4.TabIndex = 3;
@@ -197,7 +197,7 @@
             // label3
             // 
             this.label3.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.Location = new System.Drawing.Point(24, 144);
+            this.label3.Location = new System.Drawing.Point(32, 144);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 24);
             this.label3.TabIndex = 3;
@@ -710,7 +710,7 @@
             this.bt_Server_moveR.BackColor = System.Drawing.Color.White;
             this.bt_Server_moveR.FlatAppearance.BorderSize = 0;
             this.bt_Server_moveR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_Server_moveR.Location = new System.Drawing.Point(80, 8);
+            this.bt_Server_moveR.Location = new System.Drawing.Point(72, 8);
             this.bt_Server_moveR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Server_moveR.Name = "bt_Server_moveR";
             this.bt_Server_moveR.Size = new System.Drawing.Size(24, 24);
@@ -733,7 +733,7 @@
             this.bt_Server_ErrorR.BackColor = System.Drawing.Color.White;
             this.bt_Server_ErrorR.FlatAppearance.BorderSize = 0;
             this.bt_Server_ErrorR.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.bt_Server_ErrorR.Location = new System.Drawing.Point(80, 32);
+            this.bt_Server_ErrorR.Location = new System.Drawing.Point(72, 32);
             this.bt_Server_ErrorR.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.bt_Server_ErrorR.Name = "bt_Server_ErrorR";
             this.bt_Server_ErrorR.Size = new System.Drawing.Size(24, 24);
@@ -743,7 +743,7 @@
             // label18
             // 
             this.label18.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label18.Location = new System.Drawing.Point(16, 32);
+            this.label18.Location = new System.Drawing.Point(8, 32);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(64, 24);
             this.label18.TabIndex = 3;
@@ -763,7 +763,7 @@
             // label17
             // 
             this.label17.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label17.Location = new System.Drawing.Point(16, 8);
+            this.label17.Location = new System.Drawing.Point(8, 8);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(64, 24);
             this.label17.TabIndex = 3;
@@ -787,6 +787,26 @@
             this.panel1r.Name = "panel1r";
             this.panel1r.Size = new System.Drawing.Size(160, 272);
             this.panel1r.TabIndex = 18;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel1.Controls.Add(this.bt_PLC_start);
+            this.panel1.Controls.Add(this.bt_PLC_stop);
+            this.panel1.Controls.Add(this.bt_Serv_ONR);
+            this.panel1.Controls.Add(this.bt_Server_offR);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.bt_Serv_OFFR);
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.bt_Server_onR);
+            this.panel1.Controls.Add(this.bt_Lamp_startR);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.bt_Lamp_stopR);
+            this.panel1.Location = new System.Drawing.Point(16, 64);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(128, 200);
+            this.panel1.TabIndex = 20;
             // 
             // label20r
             // 
@@ -959,6 +979,18 @@
             this.panel5r.Size = new System.Drawing.Size(160, 272);
             this.panel5r.TabIndex = 18;
             // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel2.Controls.Add(this.label2);
+            this.panel2.Controls.Add(this.bt_Lamp_NonMetalR);
+            this.panel2.Controls.Add(this.label10);
+            this.panel2.Controls.Add(this.bt_Lamp_MetalR);
+            this.panel2.Location = new System.Drawing.Point(16, 64);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(128, 200);
+            this.panel2.TabIndex = 20;
+            // 
             // label23r
             // 
             this.label23r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
@@ -985,6 +1017,42 @@
             this.panel6r.Name = "panel6r";
             this.panel6r.Size = new System.Drawing.Size(592, 160);
             this.panel6r.TabIndex = 18;
+            // 
+            // panel13r
+            // 
+            this.panel13r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel13r.Controls.Add(this.bt_Conv_CCWR);
+            this.panel13r.Controls.Add(this.bt_Conv_CWR);
+            this.panel13r.Controls.Add(this.label11);
+            this.panel13r.Controls.Add(this.label12);
+            this.panel13r.Location = new System.Drawing.Point(96, 72);
+            this.panel13r.Name = "panel13r";
+            this.panel13r.Size = new System.Drawing.Size(144, 72);
+            this.panel13r.TabIndex = 21;
+            // 
+            // panel12r
+            // 
+            this.panel12r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel12r.Controls.Add(this.bt_Airline_ONR);
+            this.panel12r.Controls.Add(this.bt_Airline_OFFR);
+            this.panel12r.Controls.Add(this.label14);
+            this.panel12r.Controls.Add(this.label13);
+            this.panel12r.Location = new System.Drawing.Point(264, 72);
+            this.panel12r.Name = "panel12r";
+            this.panel12r.Size = new System.Drawing.Size(144, 72);
+            this.panel12r.TabIndex = 21;
+            // 
+            // panel7r
+            // 
+            this.panel7r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel7r.Controls.Add(this.plc_Status_nokR);
+            this.panel7r.Controls.Add(this.plc_Status_okR);
+            this.panel7r.Controls.Add(this.label15);
+            this.panel7r.Controls.Add(this.label16);
+            this.panel7r.Location = new System.Drawing.Point(432, 72);
+            this.panel7r.Name = "panel7r";
+            this.panel7r.Size = new System.Drawing.Size(144, 72);
+            this.panel7r.TabIndex = 20;
             // 
             // label31r
             // 
@@ -1046,53 +1114,27 @@
             this.panel8r.Size = new System.Drawing.Size(592, 96);
             this.panel8r.TabIndex = 18;
             // 
-            // label22r
+            // panel16r
             // 
-            this.label22r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
-            this.label22r.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label22r.ForeColor = System.Drawing.Color.White;
-            this.label22r.Location = new System.Drawing.Point(16, 16);
-            this.label22r.Name = "label22r";
-            this.label22r.Size = new System.Drawing.Size(64, 64);
-            this.label22r.TabIndex = 19;
-            this.label22r.Text = "서보";
-            this.label22r.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.panel16r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel16r.Controls.Add(this.bt_Error_Reset);
+            this.panel16r.Controls.Add(this.bt_OPR);
+            this.panel16r.Location = new System.Drawing.Point(440, 16);
+            this.panel16r.Name = "panel16r";
+            this.panel16r.Size = new System.Drawing.Size(136, 64);
+            this.panel16r.TabIndex = 20;
             // 
-            // panel7r
+            // panel15r
             // 
-            this.panel7r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel7r.Controls.Add(this.plc_Status_nokR);
-            this.panel7r.Controls.Add(this.plc_Status_okR);
-            this.panel7r.Controls.Add(this.label15);
-            this.panel7r.Controls.Add(this.label16);
-            this.panel7r.Location = new System.Drawing.Point(432, 72);
-            this.panel7r.Name = "panel7r";
-            this.panel7r.Size = new System.Drawing.Size(144, 72);
-            this.panel7r.TabIndex = 20;
-            // 
-            // panel12r
-            // 
-            this.panel12r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel12r.Controls.Add(this.bt_Airline_ONR);
-            this.panel12r.Controls.Add(this.bt_Airline_OFFR);
-            this.panel12r.Controls.Add(this.label14);
-            this.panel12r.Controls.Add(this.label13);
-            this.panel12r.Location = new System.Drawing.Point(264, 72);
-            this.panel12r.Name = "panel12r";
-            this.panel12r.Size = new System.Drawing.Size(144, 72);
-            this.panel12r.TabIndex = 21;
-            // 
-            // panel13r
-            // 
-            this.panel13r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel13r.Controls.Add(this.bt_Conv_CCWR);
-            this.panel13r.Controls.Add(this.bt_Conv_CWR);
-            this.panel13r.Controls.Add(this.label11);
-            this.panel13r.Controls.Add(this.label12);
-            this.panel13r.Location = new System.Drawing.Point(96, 72);
-            this.panel13r.Name = "panel13r";
-            this.panel13r.Size = new System.Drawing.Size(144, 72);
-            this.panel13r.TabIndex = 21;
+            this.panel15r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.panel15r.Controls.Add(this.bt_Server_moveR);
+            this.panel15r.Controls.Add(this.label17);
+            this.panel15r.Controls.Add(this.label18);
+            this.panel15r.Controls.Add(this.bt_Server_ErrorR);
+            this.panel15r.Location = new System.Drawing.Point(312, 16);
+            this.panel15r.Name = "panel15r";
+            this.panel15r.Size = new System.Drawing.Size(112, 64);
+            this.panel15r.TabIndex = 20;
             // 
             // panel14r
             // 
@@ -1108,59 +1150,17 @@
             this.panel14r.Size = new System.Drawing.Size(200, 64);
             this.panel14r.TabIndex = 20;
             // 
-            // panel15r
+            // label22r
             // 
-            this.panel15r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel15r.Controls.Add(this.bt_Server_moveR);
-            this.panel15r.Controls.Add(this.label17);
-            this.panel15r.Controls.Add(this.label18);
-            this.panel15r.Controls.Add(this.bt_Server_ErrorR);
-            this.panel15r.Location = new System.Drawing.Point(304, 16);
-            this.panel15r.Name = "panel15r";
-            this.panel15r.Size = new System.Drawing.Size(128, 64);
-            this.panel15r.TabIndex = 20;
-            // 
-            // panel16r
-            // 
-            this.panel16r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel16r.Controls.Add(this.bt_Error_Reset);
-            this.panel16r.Controls.Add(this.bt_OPR);
-            this.panel16r.Location = new System.Drawing.Point(440, 16);
-            this.panel16r.Name = "panel16r";
-            this.panel16r.Size = new System.Drawing.Size(136, 64);
-            this.panel16r.TabIndex = 20;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel1.Controls.Add(this.bt_PLC_start);
-            this.panel1.Controls.Add(this.bt_PLC_stop);
-            this.panel1.Controls.Add(this.bt_Serv_ONR);
-            this.panel1.Controls.Add(this.bt_Server_offR);
-            this.panel1.Controls.Add(this.label9);
-            this.panel1.Controls.Add(this.bt_Serv_OFFR);
-            this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.bt_Server_onR);
-            this.panel1.Controls.Add(this.bt_Lamp_startR);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.bt_Lamp_stopR);
-            this.panel1.Location = new System.Drawing.Point(16, 64);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(128, 200);
-            this.panel1.TabIndex = 20;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Controls.Add(this.bt_Lamp_NonMetalR);
-            this.panel2.Controls.Add(this.label10);
-            this.panel2.Controls.Add(this.bt_Lamp_MetalR);
-            this.panel2.Location = new System.Drawing.Point(16, 64);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(128, 200);
-            this.panel2.TabIndex = 20;
+            this.label22r.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
+            this.label22r.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label22r.ForeColor = System.Drawing.Color.White;
+            this.label22r.Location = new System.Drawing.Point(16, 16);
+            this.label22r.Name = "label22r";
+            this.label22r.Size = new System.Drawing.Size(64, 64);
+            this.label22r.TabIndex = 19;
+            this.label22r.Text = "서보";
+            this.label22r.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Cockpit
             // 
@@ -1181,6 +1181,7 @@
             this.Text = "CockpitMonitor";
             this.Load += new System.EventHandler(this.Cockpit_Load);
             this.panel1r.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
             this.panel2r.ResumeLayout(false);
             this.panel11r.ResumeLayout(false);
             this.panel10r.ResumeLayout(false);
@@ -1189,20 +1190,19 @@
             this.panel3r.PerformLayout();
             this.panel4r.ResumeLayout(false);
             this.panel5r.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.panel6r.ResumeLayout(false);
-            this.panel8r.ResumeLayout(false);
-            this.panel7r.ResumeLayout(false);
-            this.panel7r.PerformLayout();
-            this.panel12r.ResumeLayout(false);
-            this.panel12r.PerformLayout();
             this.panel13r.ResumeLayout(false);
             this.panel13r.PerformLayout();
+            this.panel12r.ResumeLayout(false);
+            this.panel12r.PerformLayout();
+            this.panel7r.ResumeLayout(false);
+            this.panel7r.PerformLayout();
+            this.panel8r.ResumeLayout(false);
+            this.panel16r.ResumeLayout(false);
+            this.panel15r.ResumeLayout(false);
             this.panel14r.ResumeLayout(false);
             this.panel14r.PerformLayout();
-            this.panel15r.ResumeLayout(false);
-            this.panel16r.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

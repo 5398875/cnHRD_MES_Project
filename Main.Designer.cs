@@ -37,6 +37,11 @@
             this.Bt_Home = new System.Windows.Forms.Button();
             this.Pn_Main = new System.Windows.Forms.Panel();
             this.Pn_Sub = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Lb_Now = new System.Windows.Forms.Label();
             this.TPanel_TopMenu = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.button1 = new System.Windows.Forms.Button();
@@ -45,17 +50,16 @@
             this.Bt_Maximum = new System.Windows.Forms.Button();
             this.Bt_Minimum = new System.Windows.Forms.Button();
             this.Lb_MESSub = new System.Windows.Forms.Label();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Lb_Now = new System.Windows.Forms.Label();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.TPanel_SideMenu.SuspendLayout();
             this.Pn_Main.SuspendLayout();
             this.Pn_Sub.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.tableLayoutPanel2.SuspendLayout();
             this.TPanel_TopMenu.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.TPanel_SubMenu.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // TPanel_SideMenu
@@ -200,6 +204,7 @@
             // Pn_Sub
             // 
             this.Pn_Sub.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.Pn_Sub.Controls.Add(this.pictureBox1);
             this.Pn_Sub.Controls.Add(this.tableLayoutPanel2);
             this.Pn_Sub.Location = new System.Drawing.Point(80, 88);
             this.Pn_Sub.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -207,17 +212,82 @@
             this.Pn_Sub.Size = new System.Drawing.Size(1253, 570);
             this.Pn_Sub.TabIndex = 0;
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Location = new System.Drawing.Point(328, 152);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(208, 224);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 1;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
+            this.tableLayoutPanel2.Controls.Add(this.Lb_Now, 0, 2);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(536, 152);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 3;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.29192F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.70807F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(296, 224);
+            this.tableLayoutPanel2.TabIndex = 0;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("굴림", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(290, 118);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "WMS";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("굴림", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
+            this.label2.Location = new System.Drawing.Point(3, 118);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(290, 43);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "창고 관리 시스템";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // Lb_Now
+            // 
+            this.Lb_Now.AutoSize = true;
+            this.Lb_Now.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.Lb_Now.Font = new System.Drawing.Font("굴림", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Lb_Now.ForeColor = System.Drawing.Color.Black;
+            this.Lb_Now.Location = new System.Drawing.Point(3, 161);
+            this.Lb_Now.Name = "Lb_Now";
+            this.Lb_Now.Size = new System.Drawing.Size(290, 63);
+            this.Lb_Now.TabIndex = 2;
+            this.Lb_Now.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // TPanel_TopMenu
             // 
             this.TPanel_TopMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(56)))), ((int)(((byte)(68)))));
             this.TPanel_TopMenu.ColumnCount = 5;
-            this.TPanel_TopMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 25F));
+            this.TPanel_TopMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 75F));
             this.TPanel_TopMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 262F));
             this.TPanel_TopMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.TPanel_TopMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 42F));
             this.TPanel_TopMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 210F));
             this.TPanel_TopMenu.Controls.Add(this.tableLayoutPanel1, 4, 0);
             this.TPanel_TopMenu.Controls.Add(this.Lb_MESSub, 1, 0);
+            this.TPanel_TopMenu.Controls.Add(this.pictureBox2, 0, 0);
             this.TPanel_TopMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.TPanel_TopMenu.Location = new System.Drawing.Point(0, 0);
             this.TPanel_TopMenu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -333,64 +403,22 @@
             this.Lb_MESSub.Dock = System.Windows.Forms.DockStyle.Left;
             this.Lb_MESSub.Font = new System.Drawing.Font("굴림", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Lb_MESSub.ForeColor = System.Drawing.Color.White;
-            this.Lb_MESSub.Location = new System.Drawing.Point(28, 0);
+            this.Lb_MESSub.Location = new System.Drawing.Point(78, 0);
             this.Lb_MESSub.Name = "Lb_MESSub";
-            this.Lb_MESSub.Size = new System.Drawing.Size(138, 64);
+            this.Lb_MESSub.Size = new System.Drawing.Size(99, 64);
             this.Lb_MESSub.TabIndex = 3;
-            this.Lb_MESSub.Text = "☢MES";
+            this.Lb_MESSub.Text = "MES";
             this.Lb_MESSub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // tableLayoutPanel2
+            // pictureBox2
             // 
-            this.tableLayoutPanel2.ColumnCount = 1;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
-            this.tableLayoutPanel2.Controls.Add(this.label2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.Lb_Now, 0, 2);
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(464, 176);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 3;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 73.29192F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 26.70807F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 62F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(368, 224);
-            this.tableLayoutPanel2.TabIndex = 0;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("굴림", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label1.Location = new System.Drawing.Point(3, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(362, 118);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "☢MES";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Font = new System.Drawing.Font("굴림", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label2.Location = new System.Drawing.Point(3, 118);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(362, 43);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "공정 관리 시스템";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // Lb_Now
-            // 
-            this.Lb_Now.AutoSize = true;
-            this.Lb_Now.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.Lb_Now.Font = new System.Drawing.Font("굴림", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.Lb_Now.Location = new System.Drawing.Point(3, 161);
-            this.Lb_Now.Name = "Lb_Now";
-            this.Lb_Now.Size = new System.Drawing.Size(362, 63);
-            this.Lb_Now.TabIndex = 2;
-            this.Lb_Now.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.pictureBox2.Location = new System.Drawing.Point(35, 15);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(35, 15, 0, 0);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(40, 34);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 4;
+            this.pictureBox2.TabStop = false;
             // 
             // Main
             // 
@@ -410,12 +438,14 @@
             this.TPanel_SideMenu.ResumeLayout(false);
             this.Pn_Main.ResumeLayout(false);
             this.Pn_Sub.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
             this.TPanel_TopMenu.ResumeLayout(false);
             this.TPanel_TopMenu.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.TPanel_SubMenu.ResumeLayout(false);
-            this.tableLayoutPanel2.ResumeLayout(false);
-            this.tableLayoutPanel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -443,5 +473,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label Lb_Now;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
     }
 }
