@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Xml.Schema;
 using System.Security.Cryptography;
+using System.Runtime.InteropServices;
 
 namespace cnHRD_MES_Project
 {
@@ -27,6 +28,18 @@ namespace cnHRD_MES_Project
             Timer_Order.Interval = 1000; //타이머 간격 1초
             Timer_Order.Tick += new EventHandler(Timer_Or);
             Timer_Order.Start();
+            Round(label1, 36); //모서리 다듬기
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
+    int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+        private void Round(Control c, int i) //모서리 다듬기용 함수
+        {
+            if (i == 0) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Height, c.Height));
+            else if (i == 1) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Width, c.Width));
+            else c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, i, i));
         }
 
         string filePath = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory)+"/Order.txt";
@@ -35,6 +48,8 @@ namespace cnHRD_MES_Project
         public int iCurrent = 0; //현재 주문번호 (=배달 완료 여부와 몇번째 주문인지)
         private void Timer_Or(object sender, EventArgs e)
         {
+            Lb_Now.Text = DateTime.Now.ToString("현재시간 : yyyy:MM:dd hh:mm:ss");
+
             if (!File.Exists(filePath))
                 System.IO.File.Create(filePath);
             string[] Lines = File.ReadAllLines(filePath); //Lines[n]에 메모장의 n번째줄 저장

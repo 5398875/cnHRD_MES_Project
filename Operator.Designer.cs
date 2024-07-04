@@ -205,7 +205,7 @@
             this.Tb_ServoLoc.Name = "Tb_ServoLoc";
             this.Tb_ServoLoc.Size = new System.Drawing.Size(112, 24);
             this.Tb_ServoLoc.TabIndex = 21;
-            this.Tb_ServoLoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.Tb_ServoLoc.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Bt_JogDown
             // 
@@ -246,14 +246,14 @@
             // Bt_WriteServo
             // 
             this.Bt_WriteServo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.Bt_WriteServo.Font = new System.Drawing.Font("굴림", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.Bt_WriteServo.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.Bt_WriteServo.ForeColor = System.Drawing.Color.Black;
             this.Bt_WriteServo.Location = new System.Drawing.Point(104, 120);
             this.Bt_WriteServo.Margin = new System.Windows.Forms.Padding(4);
             this.Bt_WriteServo.Name = "Bt_WriteServo";
             this.Bt_WriteServo.Size = new System.Drawing.Size(96, 96);
             this.Bt_WriteServo.TabIndex = 25;
-            this.Bt_WriteServo.Text = "Write";
+            this.Bt_WriteServo.Text = "서보에 쓰기";
             this.Bt_WriteServo.UseVisualStyleBackColor = false;
             this.Bt_WriteServo.Click += new System.EventHandler(this.Bt_WriteServo_Click);
             // 

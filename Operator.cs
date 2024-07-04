@@ -22,7 +22,6 @@ namespace cnHRD_MES_Project
 
         Main main = null;
 
-
         public void setMain(Main main)
         {
             this.main = main;
@@ -36,10 +35,10 @@ namespace cnHRD_MES_Project
         private void Form1_Load(object sender, EventArgs e)
         {
             Timer_Operation.Interval = 100;
-            Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머
+            Timer_Operation.Tick += new EventHandler(Timer_Op); //오퍼레이팅 타이머 생성
             Timer_Jog.Interval = 50;
-            Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머
-            operatorLogForm = new Operator_Log();
+            Timer_Jog.Tick += new EventHandler(Timer_Jo); //JOG 타이머 생성
+            operatorLogForm = new Operator_Log(); //공정결과 같이 생성
 
             Round(Pn_Open, 36);            Round(Pn_JOG, 36);            Round(Pn_Oper, 36);
 
@@ -53,14 +52,14 @@ namespace cnHRD_MES_Project
 
             Round(Pn_JogFull, 12);            Round(Pn_JogOuter, 12);
 
-            Round(label3, 12);            Round(label11, 12);            Round(label12, 12);
+            Round(label3, 12);            Round(label11, 12);            Round(label12, 12); //모서리 다듬기
         }
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
         private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
             int nBottomRect, int nWidthEllipse, int nHeightEllipse);
 
-        private void Round(Control c, int i)
+        private void Round(Control c, int i) //모서리 다듬는 함수. 0이면 가로기준, 1이면 세로기준, 이외에는 그 숫자만큼 다듬기
         {
             if (i == 0) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Height, c.Height));
             else if (i == 1) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Width, c.Width));
@@ -70,18 +69,20 @@ namespace cnHRD_MES_Project
         //------------------------------------------버튼-----------------------------------------
         public int PLC_Open = 1; //PLC 연결상태
 
-        private void Bt_PLC_Click(object sender, EventArgs e)
+        private void Bt_PLC_Click(object sender, EventArgs e) //PLC버튼
         {
             if (PLC_Open == 0) //PLC에 연결되어있다면
             {
                 PLC01.Close(); //PLC 연결종료
-                Pn_PLCOuter.BackColor = Color.Black;
-                Bt_PLC.BackColor = Color.White;
-                Bt_PLCOff.Visible = true;
-                Bt_PLCOn.Visible = false;
-                PLC_Open = 1;
-                Bt_PLC.Text = "OFF";
-                Bt_PLC.ForeColor = Color.Black;
+                Pn_PLCOuter.BackColor = Color.Black; //┐
+                Bt_PLC.BackColor = Color.White;      //┤
+                Bt_PLCOff.Visible = true;            //┤
+                Bt_PLCOn.Visible = false;            //┼토글버튼을 위한 비쥬얼 세팅
+                Bt_PLC.Text = "OFF";                 //┤
+                Bt_PLC.ForeColor = Color.Black;      //┘
+                PLC_Open = 1; //연결 성공을 지움
+                Cockpit CP = new Cockpit();
+                CP.bt_PLC_stop_Click(sender, e); //콕핏의 시작버튼을 동시에 누르도록 함
             }
             else if (PLC_Open != 0) //PLC에 연결되어있지 않다면
             {
@@ -89,36 +90,38 @@ namespace cnHRD_MES_Project
                 PLC_Open = PLC01.Open(); //연결시도
                 if (PLC_Open == 0) //연결에 성공하면
                 {
-                    Pn_PLCOuter.BackColor = Color.FromArgb(255, 0, 120, 215);
-                    Bt_PLC.BackColor = Color.FromArgb(255, 0, 120, 215);
-                    Bt_PLCOff.Visible = false;
-                    Bt_PLCOn.Visible = true;
+                    Pn_PLCOuter.BackColor = Color.FromArgb(255, 0, 120, 215); //┐
+                    Bt_PLC.BackColor = Color.FromArgb(255, 0, 120, 215);      //┤
+                    Bt_PLCOff.Visible = false;                                //┤
+                    Bt_PLCOn.Visible = true;                                  //┼토글버튼을 위한 비쥬얼 세팅
+                    Bt_PLC.Text = "ON";                                       //┤
+                    Bt_PLC.ForeColor = Color.White;                           //┘
                     PLC01.SetDevice("Y60", 1); //서보에 PLC레디(Y60)을 미리 보낸다
-                    Bt_PLC.Text = "ON";
-                    Bt_PLC.ForeColor = Color.White;
+                    Cockpit CP = main.Cock1;
+                    CP.bt_PLC_start_Click(sender, e); //콕핏의 정지버튼을 동시에 누르도록 함
                 }
             }
         }
 
-        private void Bt_Servo_Click(object sender, EventArgs e)
+        private void Bt_Servo_Click(object sender, EventArgs e) //서보버튼
         {
-            if (Bt_Servo.Text == "ON")
+            if (Bt_Servo.Text == "ON") //서보가 켜져있으면
             {
-                Pn_ServoOuter.BackColor = Color.Black;
-                Bt_Servo.BackColor = Color.White;
-                Bt_ServoOff.Visible = true;
-                Bt_ServoOn.Visible = false;
-                Bt_Servo.Text = "OFF";
-                Bt_Servo.ForeColor = Color.Black;
+                Pn_ServoOuter.BackColor = Color.Black; //┐
+                Bt_Servo.BackColor = Color.White;      //┤
+                Bt_ServoOff.Visible = true;            //┤
+                Bt_ServoOn.Visible = false;            //┼토글버튼을 위한 비쥬얼 세팅
+                Bt_Servo.Text = "OFF";                 //┤
+                Bt_Servo.ForeColor = Color.Black;      //┘
             }
             else if (Get_Device("X60") && Get_Device("Y60")) //PLC레디(Y60),서보레디(X60)이 전부 true면
             {
-                Pn_ServoOuter.BackColor = Color.FromArgb(255, 0, 120, 215);
-                Bt_Servo.BackColor = Color.FromArgb(255, 0, 120, 215);
-                Bt_ServoOff.Visible = false;
-                Bt_ServoOn.Visible = true;
-                Bt_Servo.Text = "ON";
-                Bt_Servo.ForeColor = Color.White;
+                Pn_ServoOuter.BackColor = Color.FromArgb(255, 0, 120, 215); //┐
+                Bt_Servo.BackColor = Color.FromArgb(255, 0, 120, 215);      //┤
+                Bt_ServoOff.Visible = false;                                //┼토글버튼을 위한 비쥬얼 세팅
+                Bt_ServoOn.Visible = true;                                  //┤
+                Bt_Servo.Text = "ON";                                       //┤
+                Bt_Servo.ForeColor = Color.White;                           //┘
 
                 Servo_Move(9001); //원점복귀
 
@@ -136,9 +139,9 @@ namespace cnHRD_MES_Project
 
         private void Bt_Start_Click(object sender, EventArgs e) //"시작" 버튼
         {
-            if (Bt_Start.Text == "RUN")
+            if (Bt_Start.Text == "RUN") //동작중일때
             {
-                Air = 0;
+                Air = 0; //공압 꺼짐
                 Timer_Operation.Stop(); //타이머 정지
                 PLC01.SetDevice("Y70", 0); //서보 기동신호 초기화
                 Sup_Bwd();     //┐
@@ -150,53 +153,48 @@ namespace cnHRD_MES_Project
                 CompPad_Off(); //┤
                 bStart = true; //┘
 
-                Pn_StartOuter.BackColor = Color.Red;
-                Bt_Start.BackColor = Color.White;
-                Bt_StartOff.Visible = true;
-                Bt_StartOn.Visible = false;
-                Bt_Start.Text = "STOP";
-                Bt_Start.ForeColor = Color.Red;
-                Cockpit CP = new Cockpit();
-                CP.bt_PLC_stop_Click(sender, e);
+                Pn_StartOuter.BackColor = Color.Red; //┐
+                Bt_Start.BackColor = Color.White;    //┤
+                Bt_StartOff.Visible = true;          //┤
+                Bt_StartOn.Visible = false;          //┼토글버튼을 위한 비쥬얼 세팅
+                Bt_Start.Text = "STOP";              //┤
+                Bt_Start.ForeColor = Color.Red;      //┘
             }
-            else if (Bt_Start.Text == "STOP")
+            else if (Bt_Start.Text == "STOP") //정지상태일때
             {
-                Air = 1;
+                Air = 1; //공압 켜짐
                 Timer_Operation.Start(); //타이머 시작
-                Cockpit CP = main.Cock1;
-                CP.bt_PLC_start_Click(sender, e);
-
-                Pn_StartOuter.BackColor = Color.Green;
-                Bt_Start.BackColor = Color.Green;
-                Bt_StartOff.Visible = false;
-                Bt_StartOn.Visible = true;
-                Bt_Start.Text = "RUN";
-                Bt_Start.ForeColor = Color.White;
+                Pn_StartOuter.BackColor = Color.Green; //┐
+                Bt_Start.BackColor = Color.Green;      //┤
+                Bt_StartOff.Visible = false;           //┤
+                Bt_StartOn.Visible = true;             //┼토글버튼을 위한 비쥬얼 세팅
+                Bt_Start.Text = "RUN";                 //┤
+                Bt_Start.ForeColor = Color.White;      //┘
             }
         }
 
         private void Bt_JogUp_MouseDown(object sender, MouseEventArgs e) //"JOG상" 버튼을 눌렀을때
         {
-            Timer_Jog.Start();
+            Timer_Jog.Start(); //조그타이머 시작
             PLC01.SetDevice("Y69", 1); //역기동(Y69) ON
         }
 
         private void Bt_JogUp_MouseUp(object sender, MouseEventArgs e) //"JOG상" 버튼을 뗏을때
         {
             PLC01.SetDevice("Y69", 0); //역기동(Y69) OFF
-            Timer_Jog.Stop();
+            Timer_Jog.Stop(); //조그타이머 정지
         }
 
         private void Bt_JogDown_MouseDown(object sender, MouseEventArgs e) //"JOG하" 버튼을 눌렀을때
         {
-            Timer_Jog.Start();
+            Timer_Jog.Start(); //조그타이머 시작
             PLC01.SetDevice("Y68", 1); //정기동(Y68) ON
         }
 
         private void Bt_JogDown_MouseUp(object sender, MouseEventArgs e) //"JOG하" 버튼을 뗏을때
         {
             PLC01.SetDevice("Y68", 0); //정기동(Y68) OFF
-            Timer_Jog.Stop();
+            Timer_Jog.Stop(); //조그타이머 정지
         }
 
         //-------------------------------------사용자 함수-----------------------------------------
@@ -301,16 +299,16 @@ namespace cnHRD_MES_Project
             if (temp[0] > 0)
             {
                 int temp2 = (ushort)temp[0] | ((int)temp[1] << 16); //2워드를 int(32비트)로 합치기
-                Tb_ServoLoc.Text = temp2.ToString();
-                int i = (int)(temp2 * Pn_JogFull.Size.Height / 1500000);
-                Pn_JogNow.Location = new Point(0, i);
+                Tb_ServoLoc.Text = temp2.ToString(); //현재 위치를 기록
+                int i = (int)(temp2 * Pn_JogFull.Size.Height / 1500000); //위치를 나타내는 바(bar)의 필요값을 계산((현재위치/150만)*전체길이)
+                Pn_JogNow.Location = new Point(0, i); //바의 움직임을 갱신
             }
         }
 
         public void Timer_Op(object sender, EventArgs e) //타이머 Tick마다 실행
         {
-            Warehouse WH = main.Ware1;
-            Order ORD = main.Ord1;
+            Warehouse WH = main.Ware1; //┐
+            Order ORD = main.Ord1;     //┴호출용 선언
 
             if (bStart == true) //초기상태에서 가동모드(발송, 적재, 재적재)를 결정
             {
@@ -352,7 +350,7 @@ namespace cnHRD_MES_Project
                             Done(iMode, iMetal, processStartTime, processEndTime, is_Done);    //Done함수 필요한 인수 저장
                         }
                         Servo_Move(iLocUp); //1,3,5위치
-                        ORD.Deliv_Check();
+                        ORD.Deliv_Check(); //주문폼에 "검품중" 신호
                         if (iLocation[1] == 0) //창고이동
                             Ware_Fwd();
                         else
@@ -390,7 +388,7 @@ namespace cnHRD_MES_Project
                         Comp_Bwd();
                         if (Get_Device("X1B"))
                         {
-                            WH.Take_From(iLocation[1], iLocation[2]);
+                            WH.Take_From(iLocation[1], iLocation[2]); //창고에서 빼냈다는 신호를 줌
                             iDeliv++;
                         }
                         break;
@@ -420,9 +418,9 @@ namespace cnHRD_MES_Project
                             if (iLocation[0] == 1 && Get_Device("X09") || (iLocation[0] == 2 && !Get_Device("X09")))
                             //주문한게 금속이고 자기센서(X09)가 켜졌을때 or 주문한게 비금속이고 자기센서가 꺼졌을때 = 주문과 맞을때
                             {
-                                ORD.Deliv_Start();
+                                ORD.Deliv_Start(); //주문폼에 "배송중" 신호
                                 tBefore = DateTime.Now;
-                                iMetal = iLocation[0];
+                                iMetal = iLocation[0]; //금속 위치를 업데이트
                                 if (iLocation[3] == 1) //배송지가 1이면
                                     iDeliv = 8;        //8번공정으로
                                 else            //배송지가 0이면
@@ -430,7 +428,7 @@ namespace cnHRD_MES_Project
                             }
                             else //주문과 다를경우
                             {
-                                ORD.Reload_Start();
+                                ORD.Reload_Start(); //주문폼에 "재적재중" 신호
                                 iMode = 3; //재적재모드로
                             }
                         }

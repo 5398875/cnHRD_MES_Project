@@ -5,6 +5,7 @@ using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -30,6 +31,11 @@ namespace cnHRD_MES_Project
             lv_OperatorLog.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
         }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
+            int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
 
         Dictionary<string, ListViewItem> logItems = new Dictionary<string, ListViewItem>();
         string[] Converted_Log = new string[6];
@@ -96,5 +102,67 @@ namespace cnHRD_MES_Project
                 Hide();
             }
         }
+
+        private void Operator_Log_Load(object sender, EventArgs e)
+        {
+            Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+        }
+
+        private void Bt_Close_Click(object sender, EventArgs e)
+        {
+            Hide();
+        }
+
+        bool bMouseDown;
+        Point pLocation;
+
+        private void TPanel_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                bMouseDown = true;
+                pLocation = e.Location;
+            }
+        }
+
+        private void TPanel_MouseUP(object sender, MouseEventArgs e)
+        {
+            bMouseDown = false;
+        }
+
+        private void TPanel_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (bMouseDown)
+            {
+                this.Location = new Point((this.Location.X - pLocation.X) + e.X, (this.Location.Y - pLocation.Y) + e.Y);
+                this.Update();
+            }
+        }
+
+        private void Bt_Minimum_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void Bt_Maximum_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+                Bt_Maximum.Text = "❐";
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+                Bt_Maximum.Font = new Font("굴림", 14, FontStyle.Bold);
+                lv_OperatorLog.Size = new Size(this.Width - 50, this.Height - 120);
+            }
+            else
+            {
+                this.WindowState = FormWindowState.Normal;
+                Bt_Maximum.Text = "□";
+                Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, this.Width, this.Height, 15, 15));
+                Bt_Maximum.Font = new Font("굴림", 9, FontStyle.Bold);
+                lv_OperatorLog.Size = new Size(this.Width - 50, this.Height - 120);
+            }
+        }
+
     }
 }
