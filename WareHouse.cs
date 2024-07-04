@@ -148,8 +148,6 @@ namespace cnHRD_MES_Project
                         lb.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/Non-Metal.png");
                         break;
                 }
-
-                lb.Text = sType;    //한글 네이밍한 종류를 각 라벨 텍스트에 표시
             }
         }
     }
