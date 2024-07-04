@@ -75,17 +75,16 @@ namespace cnHRD_MES_Project
         public void Take_From(int X, int Y) //동작부에서 창고 적재물 추출 시 해당하는 창고 위치정보 클리어
         {
                 WH_Location[X, Y] = 0; //주어진 위치의 금속,비금속 제거
-                Update_Type(X + 1, Y + 1, 0);  //위치에서 추출해간 상품 라벨에서 제거
+                Update_Type(X + 1, Y + 1, 0);  //위치에서 추출해간 상품 픽쳐박스에서 제거
         }
 
-        string sType;   //라벨에 종류 네이밍을 위한 string 선언
+        string sType;   //픽쳐박스에 종류 네이밍을 위한 string 선언
 
-        private void Update_Type(int X, int Y, int Type)    //라벨 네이밍을 위한 매서드 선언, 3개의 매개변수 받아옴
+        private void Update_Type(int X, int Y, int Type)    //라벨 네이밍을 위한 함수 선언, 3개의 매개변수 받아옴
         {
-            string lbName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
-            Control[] controls = this.Controls.Find(lbName, true);   
-            //this.control.find 내장함수 이용, lbname과 같은 이름을 가진 컨트롤 controls 생성 및 반환
-
+            string lbName = $"lb{Y}{X}"; //$(보간된 원시 문자열 리터럴)을 이용, lb{Y}{X}라는 이름을 가진 픽쳐박스 생성
+            Control[] controls = this.Controls.Find(lbName, true);   //this.control.find 내장함수 이용, lbname과 같은 이름을 가진 컨트롤 controls 생성 및 반환
+            
             if (controls[0] is Label lb)  //찾은 controls가 라벨 타입이라면,
             {
                 switch (Type)   //case문으로 받은 종류 한글 네이밍
@@ -103,7 +102,7 @@ namespace cnHRD_MES_Project
                         break;
                 }
 
-                lb.Text = sType;    //한글 네이밍한 종류를 각 라벨 텍스트에 표시
+                lb.Text = sType;    //한글 네이밍한 종류를 각 픽쳐박스에 표시
             }
         }
     }
