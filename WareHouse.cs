@@ -124,9 +124,9 @@ namespace cnHRD_MES_Project
                 Update_Type(X + 1, Y + 1, 0);  //위치에서 추출해간 상품 라벨에서 제거
         }
 
-        string sType;   //라벨에 종류 네이밍을 위한 string 선언
+        string sType;   //픽쳐박스에 종류 네이밍을 위한 string 선언
 
-        private void Update_Type(int X, int Y, int Type)    //라벨 네이밍을 위한 매서드 선언, 3개의 매개변수 받아옴
+        private void Update_Type(int X, int Y, int Type)    //라벨 네이밍을 위한 함수 선언, 3개의 매개변수 받아옴
         {
             string lbName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
             Control[] controls = this.Controls.Find(lbName, true);   
@@ -148,6 +148,8 @@ namespace cnHRD_MES_Project
                         lb.Image = Image.FromFile(System.Environment.CurrentDirectory + "/images/Non-Metal.png");
                         break;
                 }
+
+                lb.Text = sType;    //한글 네이밍한 종류를 각 라벨 텍스트에 표시
             }
         }
     }
