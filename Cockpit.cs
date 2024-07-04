@@ -14,6 +14,7 @@ using System.Diagnostics;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 using System.Windows.Documents;
 using cnHRD_MES_Project;
+using System.Runtime.InteropServices;
 
 
 //test
@@ -57,16 +58,16 @@ namespace Project_v01
                 readTimer.Tick += new EventHandler(ReadTimer_Tick);
                 readTimer.Start();
                
-                bt_Lamp_start.BackColor = Color.Red;
-                bt_Lamp_stop.BackColor = Color.LightGray;
+                bt_Lamp_startR.BackColor = Color.Red;
+                bt_Lamp_stopR.BackColor = Color.LightGray;
 
             }
             else
             {
                 tb_Error_log.ForeColor = Color.Red;
                 tb_Error_log.Text = tb_Error_log.Text + "0x" + Convert.ToString(con_status, 16) + " " + $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}" + "\r\n";
-                bt_Lamp_start.BackColor = Color.LightGray;
-                bt_Lamp_stop.BackColor = Color.Red;
+                bt_Lamp_startR.BackColor = Color.LightGray;
+                bt_Lamp_stopR.BackColor = Color.Red;
 
             }
         }
@@ -97,9 +98,10 @@ namespace Project_v01
                 pb_Load.Minimum = 0;
                 pb_Load.Step = 1;
                 pb_Load.Value = Operator.iLoad;
-               
+                pb_reLoad.Value = 0;
+                pb_Delivery.Value = 0;
             }
-            else if(Operator.iMode==1)//배송모드 공정진행표시...8/9분기처리?
+            else if(Operator.iMode==1)//배송모드 공정진행표시.
             {
                 pb_Delivery.ForeColor = Color.LightGreen;
                 pb_Delivery .Style=ProgressBarStyle.Continuous;
@@ -112,6 +114,8 @@ namespace Project_v01
                 pb_Delivery .Minimum = 0;
                 pb_Delivery .Step = 1;
                 pb_Delivery.Value = Operator.iDeliv;
+                pb_reLoad.Value = 0;
+                pb_Load.Value = 0;
             }
             else if(Operator.iMode==3)   //재적재모드 공정진행표시
             {
@@ -121,7 +125,8 @@ namespace Project_v01
                 pb_reLoad .Minimum = 0;
                 pb_reLoad .Step = 1;
                 pb_reLoad.Value = Operator.iReload;
-
+                pb_Delivery.Value = 0;
+                pb_Load.Value = 0;
             }
 
             /////////////////////////////////////////////////////////////////////
@@ -129,18 +134,18 @@ namespace Project_v01
             //서버 ready
             if (X60==1&& Y60==1)
             {
-                bt_Serv_ON.BackColor = Color.Red;
-                bt_Serv_ON.Enabled = false;
-                bt_Serv_OFF.BackColor = Color.LightGray;
-                bt_Serv_OFF.Enabled = false;
+                bt_Serv_ONR.BackColor = Color.Red;
+                bt_Serv_ONR.Enabled = false;
+                bt_Serv_OFFR.BackColor = Color.LightGray;
+                bt_Serv_OFFR.Enabled = false;
 
             }
            else
             {
-                bt_Serv_OFF.BackColor = Color.Red;
-                bt_Serv_OFF.Enabled = false;
-                bt_Serv_ON.BackColor = Color.LightGray;
-                bt_Serv_ON.Enabled = false;
+                bt_Serv_OFFR.BackColor = Color.Red;
+                bt_Serv_OFFR.Enabled = false;
+                bt_Serv_ONR.BackColor = Color.LightGray;
+                bt_Serv_ONR.Enabled = false;
             }
 
             
@@ -166,8 +171,8 @@ namespace Project_v01
             //서보에러출력////확인필요!!!
             if (X68 ==1)
             {
-                bt_Server_Error.BackColor = Color.Red;
-                bt_Server_Error.Enabled = false;    
+                bt_Server_ErrorR.BackColor = Color.Red;
+                bt_Server_ErrorR.Enabled = false;    
 
                
                
@@ -190,21 +195,21 @@ namespace Project_v01
             }
             else
             {
-                bt_Server_Error.BackColor = Color.LightGray;
-                bt_Server_Error.Enabled = false;
+                bt_Server_ErrorR.BackColor = Color.LightGray;
+                bt_Server_ErrorR.Enabled = false;
             }
            
             ///// 서버 in move
             if (X6C == 1)
             {
-                bt_Server_move.BackColor = Color.Red;
-                bt_Server_move.Enabled = false;
+                bt_Server_moveR.BackColor = Color.Red;
+                bt_Server_moveR.Enabled = false;
 
             }
             else
             {
-                bt_Server_move.BackColor = Color.LightGray;
-                bt_Server_move.Enabled = false;
+                bt_Server_moveR.BackColor = Color.LightGray;
+                bt_Server_moveR.Enabled = false;
             }
                  
 
@@ -212,35 +217,35 @@ namespace Project_v01
             //PLC 상태점검 SM0...operation error code stored in SD0
             if (SM0 == 0)
             {
-                plc_Status_ok.BackColor = Color.Red;
-                plc_Status_nok.BackColor = Color.LightGray;
-                plc_Status_ok.Enabled = false;
+                plc_Status_okR.BackColor = Color.Red;
+                plc_Status_nokR.BackColor = Color.LightGray;
+                plc_Status_okR.Enabled = false;
                            
             }
             else
             {
                 tb_Error_log.ForeColor = Color.Red;
                 tb_Error_log.Text = tb_Error_log.Text + Convert.ToString(SD0) + " " + $"{DateTime.Now:yyyy-MM-dd HH:mm:ss.fff}" + "\r\n";
-                plc_Status_ok.BackColor = Color.LightGray;
-                plc_Status_nok.BackColor = Color.Red;
-                plc_Status_ok.Enabled = false;
+                plc_Status_okR.BackColor = Color.LightGray;
+                plc_Status_nokR.BackColor = Color.Red;
+                plc_Status_okR.Enabled = false;
             }
 
             //에어공급
             if (Operator.Air== 1)
             {
-                bt_Airline_ON.BackColor = Color.Red;
-                bt_Airline_ON.Enabled = false;
-                bt_Airline_OFF.BackColor = Color.LightGray;
-                bt_Airline_OFF.Enabled = false;
+                bt_Airline_ONR.BackColor = Color.Red;
+                bt_Airline_ONR.Enabled = false;
+                bt_Airline_OFFR.BackColor = Color.LightGray;
+                bt_Airline_OFFR.Enabled = false;
             }
 
             else
             {
-                bt_Airline_ON.BackColor = Color.LightGray;
-                bt_Airline_ON.Enabled = false;
-                bt_Airline_OFF.BackColor = Color.Red;
-                bt_Airline_OFF.Enabled = false;
+                bt_Airline_ONR.BackColor = Color.LightGray;
+                bt_Airline_ONR.Enabled = false;
+                bt_Airline_OFFR.BackColor = Color.Red;
+                bt_Airline_OFFR.Enabled = false;
             }
 
 
@@ -249,27 +254,27 @@ namespace Project_v01
            
             if (Operator.iMetal == 2)//비금속
             {
-                bt_Lamp_Metal.BackColor = Color.LightGray;
-                bt_Lamp_Metal.Enabled = false;
-                bt_Lamp_NonMetal.BackColor = Color.Red;
-                bt_Lamp_NonMetal.Enabled = false;
+                bt_Lamp_MetalR.BackColor = Color.LightGray;
+                bt_Lamp_MetalR.Enabled = false;
+                bt_Lamp_NonMetalR.BackColor = Color.Red;
+                bt_Lamp_NonMetalR.Enabled = false;
             }
 
             else if(Operator.iMetal == 1)//금속
             {
                //  Material = true;
-                 bt_Lamp_Metal.BackColor = Color.Red;
-                 bt_Lamp_Metal.Enabled = false;
-                 bt_Lamp_NonMetal.BackColor = Color.LightGray;
-                 bt_Lamp_NonMetal.Enabled = false;
+                 bt_Lamp_MetalR.BackColor = Color.Red;
+                 bt_Lamp_MetalR.Enabled = false;
+                 bt_Lamp_NonMetalR.BackColor = Color.LightGray;
+                 bt_Lamp_NonMetalR.Enabled = false;
                    
             }
             else
             {
-                bt_Lamp_Metal.BackColor = Color.LightGray;
-                bt_Lamp_Metal.Enabled = false;
-                bt_Lamp_NonMetal.BackColor = Color.LightGray;
-                bt_Lamp_NonMetal.Enabled = false;
+                bt_Lamp_MetalR.BackColor = Color.LightGray;
+                bt_Lamp_MetalR.Enabled = false;
+                bt_Lamp_NonMetalR.BackColor = Color.LightGray;
+                bt_Lamp_NonMetalR.Enabled = false;
             }
 
            
@@ -334,25 +339,25 @@ namespace Project_v01
                 //컨베이어 CW Lamp
                 if ((Y20 & 0x100) == 0x100)
                 {
-                    bt_Conv_CW.BackColor = Color.Red;
-                    bt_Conv_CW.Enabled = false;
+                    bt_Conv_CWR.BackColor = Color.Red;
+                    bt_Conv_CWR.Enabled = false;
                 }
                 else
                 {
-                    bt_Conv_CW.BackColor = Color.LightGray;
-                    bt_Conv_CW.Enabled = false;
+                    bt_Conv_CWR.BackColor = Color.LightGray;
+                    bt_Conv_CWR.Enabled = false;
                 }
 
                 //컨베이어CCW Lamp
                 if ((Y20 & 0x8000) == 0x8000)
                 {
-                 bt_Conv_CCW.BackColor = Color.Red;
-                 bt_Conv_CCW.Enabled = false;
+                 bt_Conv_CCWR.BackColor = Color.Red;
+                 bt_Conv_CCWR.Enabled = false;
                   }
                 else
                 {
-                 bt_Conv_CCW.BackColor = Color.LightGray;
-                     bt_Conv_CCW.Enabled = false;
+                 bt_Conv_CCWR.BackColor = Color.LightGray;
+                     bt_Conv_CCWR.Enabled = false;
                 }
 
 
@@ -528,12 +533,12 @@ namespace Project_v01
 }
 
 
-private void bt_PLC_stop_Click(object sender, EventArgs e)
+public void bt_PLC_stop_Click(object sender, EventArgs e)
 {
 
  PLC01.Close();
- bt_Lamp_stop.BackColor= Color.Red;
- bt_Lamp_start.BackColor= Color.LightGray ;
+ bt_Lamp_stopR.BackColor= Color.Red;
+ bt_Lamp_startR.BackColor= Color.LightGray ;
             bt_PLC_start.Enabled = true;
             bt_PLC_stop.Enabled = false;
  readTimer.Stop();
@@ -568,10 +573,10 @@ private void bt_Process_start_Click(object sender, EventArgs e)
 
 PLC01.SetDevice("X0", 1);
 PLC01.SetDevice("X1", 0);
-bt_Airline_ON.BackColor= Color.Red;
-bt_Airline_OFF.BackColor= Color.LightGray ;
-            bt_Process_start.Enabled = false;
-            bt_Process_stop.Enabled = true;
+bt_Airline_ONR.BackColor= Color.Red;
+bt_Airline_OFFR.BackColor= Color.LightGray ;
+            //bt_Process_start.Enabled = false;
+            //bt_Process_stop.Enabled = true;
 }
 
 private void bt_Process_stop_Click(object sender, EventArgs e)
@@ -579,10 +584,10 @@ private void bt_Process_stop_Click(object sender, EventArgs e)
 PLC01.SetDevice("X0", 0);
 PLC01.SetDevice("X1", 1);
 
-bt_Airline_OFF.BackColor = Color.Red;
-bt_Airline_ON.BackColor = Color.LightGray;
-            bt_Process_start.Enabled = true;
-            bt_Process_stop.Enabled = false;
+bt_Airline_OFFR.BackColor = Color.Red;
+bt_Airline_ONR.BackColor = Color.LightGray;
+            //bt_Process_start.Enabled = true;
+            //bt_Process_stop.Enabled = false;
 
         }
 
@@ -603,6 +608,35 @@ PLC01.SetDevice("Y70", 1);
 PLC01.SetDevice("Y70", 0);
 }
 
-       
+        private void Cockpit_Load(object sender, EventArgs e)
+        {
+            Round(panel10r, 24);            Round(panel11r, 24);            Round(panel1r, 24);            Round(panel2r, 24);            Round(panel3r, 24);
+            Round(panel4r, 24);            Round(panel5r, 24);            Round(panel6r, 24);            Round(panel8r, 24);            Round(panel9r, 24);
+
+            Round(panel12r, 12);            Round(panel13r, 12);            Round(panel14r, 12);            Round(panel15r, 12);            Round(panel16r, 12);
+            Round(panel7r, 12);            Round(panel1, 12);
+            Round(panel2, 12);
+
+            Round(label1r, 12);            Round(label20r, 12);            Round(label21r, 12);            Round(label22r, 12);            Round(label23r, 12);
+            Round(label24r, 12);            Round(label25r, 12);            Round(label26r, 12);            Round(label27r, 12);            Round(label28r, 12);
+            Round(label29r, 12);            Round(label30r, 12);            Round(label31r, 12);
+
+            Round(bt_Airline_OFFR, 0);            Round(bt_Airline_ONR, 0);            Round(bt_Conv_CCWR, 0);            Round(bt_Conv_CWR, 0);
+            Round(bt_Lamp_MetalR, 0);            Round(bt_Lamp_NonMetalR, 0);            Round(bt_Lamp_startR, 0);            Round(bt_Lamp_stopR, 0);
+            Round(bt_Server_ErrorR, 0);            Round(bt_Server_moveR, 0);            Round(bt_Server_offR, 0);            Round(bt_Server_onR, 0);
+            Round(bt_Serv_OFFR, 0);            Round(bt_Serv_ONR, 0);            Round(plc_Status_nokR, 0);            Round(plc_Status_okR, 0);
+        }
+
+        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect,
+    int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+
+        private void Round(Control c, int i)
+        {
+            if (i == 0) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Height, c.Height));
+            else if (i == 1) c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, c.Width, c.Width));
+            else c.Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, c.Width, c.Height, i, i));
+        }
+
     }
 }

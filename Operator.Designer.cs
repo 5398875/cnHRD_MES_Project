@@ -59,8 +59,10 @@
             this.Bt_PLCOn = new System.Windows.Forms.Button();
             this.Bt_PLCOff = new System.Windows.Forms.Button();
             this.Bt_PLC = new System.Windows.Forms.Button();
+            this.label11 = new System.Windows.Forms.Label();
             this.Pn_JOG = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
@@ -79,13 +81,11 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.Pn_Oper = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
             this.Pn_StartOuter = new System.Windows.Forms.Panel();
             this.Bt_StartOn = new System.Windows.Forms.Button();
             this.Bt_StartOff = new System.Windows.Forms.Button();
             this.Bt_Start = new System.Windows.Forms.Button();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.Pn_Open.SuspendLayout();
             this.Pn_ServoOuter.SuspendLayout();
@@ -369,8 +369,8 @@
             // 
             // bt_Result
             // 
-            this.bt_Result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
-            this.bt_Result.ForeColor = System.Drawing.Color.White;
+            this.bt_Result.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.bt_Result.ForeColor = System.Drawing.Color.Black;
             this.bt_Result.Location = new System.Drawing.Point(72, 160);
             this.bt_Result.Name = "bt_Result";
             this.bt_Result.Size = new System.Drawing.Size(144, 72);
@@ -516,6 +516,18 @@
             this.Bt_PLC.UseVisualStyleBackColor = false;
             this.Bt_PLC.Click += new System.EventHandler(this.Bt_PLC_Click);
             // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
+            this.label11.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(24, 24);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(240, 56);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "준비";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // Pn_JOG
             // 
             this.Pn_JOG.BackColor = System.Drawing.Color.White;
@@ -541,6 +553,16 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(144, 408);
             this.panel9.TabIndex = 36;
+            // 
+            // label9
+            // 
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(24, 312);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(96, 40);
+            this.label9.TabIndex = 32;
+            this.label9.Text = "현재위치";
+            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel8
             // 
@@ -710,9 +732,9 @@
             // 
             // label3
             // 
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
             this.label3.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.ForeColor = System.Drawing.Color.White;
             this.label3.Location = new System.Drawing.Point(24, 24);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(840, 56);
@@ -732,15 +754,16 @@
             this.Pn_Oper.Size = new System.Drawing.Size(288, 248);
             this.Pn_Oper.TabIndex = 4;
             // 
-            // label9
+            // label10
             // 
-            this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(24, 288);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(96, 40);
-            this.label9.TabIndex = 32;
-            this.label9.Text = "현재위치";
-            this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label10.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(24, 104);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(88, 40);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "공정";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Pn_StartOuter
             // 
@@ -793,34 +816,11 @@
             this.Bt_Start.UseVisualStyleBackColor = false;
             this.Bt_Start.Click += new System.EventHandler(this.Bt_Start_Click);
             // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(24, 104);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(88, 40);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "공정";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
-            this.label11.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(24, 24);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(240, 56);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "준비";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label12
             // 
-            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(207)))), ((int)(((byte)(218)))), ((int)(((byte)(225)))));
+            this.label12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(92)))), ((int)(((byte)(113)))), ((int)(((byte)(129)))));
             this.label12.Font = new System.Drawing.Font("굴림", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.ForeColor = System.Drawing.Color.White;
             this.label12.Location = new System.Drawing.Point(24, 24);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(240, 56);
