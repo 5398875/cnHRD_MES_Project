@@ -126,13 +126,13 @@ namespace cnHRD_MES_Project
 
         string sType;   //픽쳐박스에 종류 네이밍을 위한 string 선언
 
-        private void Update_Type(int X, int Y, int Type)    //라벨 네이밍을 위한 함수 선언, 3개의 매개변수 받아옴
+        private void Update_Type(int X, int Y, int Type)    //픽쳐박스 네이밍을 위한 함수 선언, 3개의 매개변수 받아옴
         {
-            string lbName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 라벨명을 가진 라벨네임 생성
+            string lbName = $"lb{Y}{X}"; //$(보간된 원시 리터럴)을 이용, lb{Y}{X}라는 이름을 가진 픽쳐박스네임 생성
             Control[] controls = this.Controls.Find(lbName, true);   
             //this.control.find 내장함수 이용, lbname과 같은 이름을 가진 컨트롤 controls 생성 및 반환
 
-            if (controls[0] is PictureBox lb)  //찾은 controls가 라벨 타입이라면,
+            if (controls[0] is PictureBox lb)  //찾은 controls가 픽쳐박스 타입이라면,
             {
                 switch (Type)   //case문으로 받은 종류 한글 네이밍
                 {
